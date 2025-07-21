@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Submodules with their own repos
-url-extract/
+# (managed via git submodule)

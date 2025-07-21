@@ -1,0 +1,3 @@
+[submodule "url-extract"]
+	path = url-extract
+	url = https://github.com/prompt-stack/url-extract.git
