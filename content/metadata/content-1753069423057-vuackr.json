@@ -1,0 +1,25 @@
+{
+  "id": "content-1753069423057-vuackr",
+  "created_at": "2025-07-21T03:43:43.057Z",
+  "updated_at": "2025-07-21T14:23:35.824Z",
+  "status": "inbox",
+  "source": {
+    "method": "upload",
+    "url": null
+  },
+  "content": {
+    "type": "image",
+    "title": "500 Camden 11X17_20160704130441.jpeg",
+    "full_text": "Binary file: 500 Camden 11X17_20160704130441.jpeg (873KB)",
+    "word_count": 6,
+    "hash": "sha256-064b9e13c62077592599a712b139130dc9ad58ca057113263c7508579bc7c12d"
+  },
+  "location": {
+    "inbox_path": "content/inbox/upload-1753069423057-vuackr.jpeg",
+    "final_path": null
+  },
+  "llm_analysis": null,
+  "tags": [
+    "prompt-stack"
+  ]
+}

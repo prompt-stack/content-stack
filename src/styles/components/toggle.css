@@ -1,0 +1,253 @@
+/* ==========================================================================
+   Toggle Component
+   ========================================================================== */
+
+/**
+ * Futuristic toggle switch with smooth animations
+ * Supports multiple sizes and label positions
+ */
+
+/* Toggle Container
+   ========================================================================== */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  position: relative;
+}
+
+/* Legacy class support */
+.toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  cursor: pointer;
+}
+
+/* Toggle Input (Hidden)
+   ========================================================================== */
+.toggle__input,
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Toggle Switch
+   ========================================================================== */
+.toggle__switch,
+.toggle-slider {
+  position: relative;
+  width: 56px;
+  height: 28px;
+  background: var(--border-light);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Toggle handle */
+.toggle__switch::before,
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Checked state */
+.toggle__input:checked + .toggle__switch,
+.toggle-input:checked + .toggle-slider {
+  background: linear-gradient(135deg, var(--color-plasma), #0099ff);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+}
+
+.toggle__input:checked + .toggle__switch::before,
+.toggle-input:checked + .toggle-slider::before {
+  transform: translateX(28px);
+}
+
+/* Focus state */
+.toggle__input:focus-visible + .toggle__switch,
+.toggle-input:focus-visible + .toggle-slider {
+  outline: 2px solid var(--color-plasma);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.toggle__input:disabled + .toggle__switch,
+.toggle-input:disabled + .toggle-slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toggle__input:disabled + .toggle__switch::before,
+.toggle-input:disabled + .toggle-slider::before {
+  box-shadow: none;
+}
+
+/* Toggle Label
+   ========================================================================== */
+.toggle__label,
+.toggle-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  user-select: none;
+  cursor: pointer;
+}
+
+/* Label positions */
+.toggle--label-left {
+  flex-direction: row-reverse;
+}
+
+.toggle--label-top {
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}
+
+.toggle--label-top .toggle__label {
+  margin-bottom: var(--space-sm);
+}
+
+/* Toggle Sizes
+   ========================================================================== */
+
+/* Small */
+.toggle--sm .toggle__switch {
+  width: 40px;
+  height: 20px;
+}
+
+.toggle--sm .toggle__switch::before {
+  width: 16px;
+  height: 16px;
+}
+
+.toggle--sm .toggle__input:checked + .toggle__switch::before {
+  transform: translateX(20px);
+}
+
+/* Large */
+.toggle--lg .toggle__switch {
+  width: 72px;
+  height: 36px;
+}
+
+.toggle--lg .toggle__switch::before {
+  width: 32px;
+  height: 32px;
+}
+
+.toggle--lg .toggle__input:checked + .toggle__switch::before {
+  transform: translateX(36px);
+}
+
+/* Toggle Variants
+   ========================================================================== */
+
+/* With icons */
+.toggle--icons .toggle__switch::after {
+  content: '✕';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.625rem;
+  color: var(--text-secondary);
+  transition: opacity var(--transition-base);
+}
+
+.toggle--icons .toggle__input:checked + .toggle__switch::after {
+  content: '✓';
+  left: 8px;
+  right: auto;
+  color: var(--text-inverse);
+}
+
+/* Success variant */
+.toggle--success .toggle__input:checked + .toggle__switch {
+  background: linear-gradient(135deg, var(--color-success), #00cc70);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
+}
+
+/* Warning variant */
+.toggle--warning .toggle__input:checked + .toggle__switch {
+  background: linear-gradient(135deg, var(--color-warning), #ff8800);
+  box-shadow: 0 0 12px rgba(255, 170, 0, 0.4);
+}
+
+/* Danger variant */
+.toggle--danger .toggle__input:checked + .toggle__switch {
+  background: linear-gradient(135deg, var(--color-error), #ff1744);
+  box-shadow: 0 0 12px rgba(255, 51, 102, 0.4);
+}
+
+/* Toggle Group
+   ========================================================================== */
+
+.toggle-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.toggle-group--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+/* Special Toggle Types
+   ========================================================================== */
+
+/* Loading state */
+.toggle--loading .toggle__switch::before {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Indeterminate state */
+.toggle--indeterminate .toggle__switch::before {
+  transform: translateX(14px);
+  width: 28px;
+}
+
+/* Toggle with description */
+.toggle__description {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+  line-height: 1.4;
+}
+
+/* Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .toggle {
+    gap: var(--space-sm);
+  }
+  
+  /* Force small size on mobile */
+  .toggle__switch {
+    width: 48px;
+    height: 24px;
+  }
+  
+  .toggle__switch::before {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .toggle__input:checked + .toggle__switch::before {
+    transform: translateX(24px);
+  }
+}

@@ -1,0 +1,346 @@
+/* ==========================================================================
+   Home Page
+   ========================================================================== */
+
+/**
+ * Landing page styles including hero section, feature cards, and quick links
+ * Features gradient text effects and hover animations
+ * All classes must use .home__ prefix for page-specific styles
+ */
+
+/* App Container
+   ========================================================================== */
+.home__container {
+  padding: var(--space-2xl) var(--space-xl);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Hero Section
+   ========================================================================== */
+.home__hero {
+  text-align: center;
+  padding: var(--space-3xl) 0;
+  animation: fadeIn 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero Title */
+.home__hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--text-primary), var(--color-plasma));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+}
+
+/* Hero Subtitle */
+.home__hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2xl);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Hero Actions */
+.home__hero-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2xl);
+}
+
+/* Feature Section
+   ========================================================================== */
+.home__features {
+  margin: var(--space-3xl) 0;
+}
+
+.home__features-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: var(--space-2xl);
+  background: linear-gradient(135deg, var(--text-primary), var(--color-plasma));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Features Grid */
+.home__features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+  animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+/* Feature Cards */
+.home__feature-card {
+  padding: var(--space-2xl);
+  text-align: center;
+  background: var(--surface-elevated);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.home__feature-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.home__feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.home__feature-card:hover::before {
+  opacity: 1;
+}
+
+/* Feature Icon */
+.home__feature-icon {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--color-plasma), #0099ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--space-md);
+  display: inline-block;
+  transition: transform var(--transition-base);
+}
+
+.home__feature-card:hover .home__feature-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Feature Content */
+.home__feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.home__feature-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Quick Links Section
+   ========================================================================== */
+.home__quick-links {
+  margin: var(--space-3xl) 0;
+}
+
+.home__quick-links-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: var(--space-2xl);
+}
+
+/* Quick Links Grid */
+.home__quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease-out 0.4s backwards;
+}
+
+/* Quick Link Card */
+.home__quick-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.home__quick-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-plasma), #0099ff);
+  transform: translateY(2px);
+  transition: transform var(--transition-base);
+}
+
+.home__quick-link:hover {
+  transform: translateY(-4px);
+  background: var(--surface-primary);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-plasma);
+}
+
+.home__quick-link:hover::after {
+  transform: translateY(0);
+}
+
+/* Quick Link Icon */
+.home__quick-link-icon {
+  font-size: 1.5rem;
+  color: var(--color-plasma);
+  transition: transform var(--transition-base);
+}
+
+.home__quick-link:hover .home__quick-link-icon {
+  transform: scale(1.2);
+}
+
+/* Quick Link Label */
+.home__quick-link-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Stats Section (Optional)
+   ========================================================================== */
+.home__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-xl);
+  margin-top: var(--space-3xl);
+  text-align: center;
+}
+
+.home__stat {
+  padding: var(--space-xl);
+  background: var(--surface-glass);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(8px);
+}
+
+.home__stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-plasma);
+  margin-bottom: var(--space-xs);
+}
+
+.home__stat-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* CTA Section
+   ========================================================================== */
+.home__cta {
+  text-align: center;
+  padding: var(--space-3xl) 0;
+  margin-top: var(--space-3xl);
+}
+
+.home__cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.home__cta-description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive
+   ========================================================================== */
+@media (max-width: 768px) {
+  .home__container {
+    padding: var(--space-lg);
+  }
+  
+  .home__hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .home__hero-subtitle {
+    font-size: 1.125rem;
+    padding: 0 var(--space-lg);
+  }
+  
+  .home__hero-actions {
+    padding: 0 var(--space-lg);
+  }
+  
+  .home__features-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .home__feature-card {
+    padding: var(--space-xl);
+  }
+  
+  .home__quick-links-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--space-sm);
+  }
+  
+  .home__quick-link {
+    padding: var(--space-md);
+  }
+  
+  .home__stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .home__cta-title {
+    font-size: 1.5rem;
+  }
+  
+  .home__cta-description {
+    font-size: 1rem;
+    padding: 0 var(--space-lg);
+  }
+}
+
+@media (max-width: 400px) {
+  .home__hero-title {
+    font-size: 2rem;
+  }
+  
+  .home__quick-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

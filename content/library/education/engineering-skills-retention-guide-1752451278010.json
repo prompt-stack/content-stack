@@ -1,0 +1,61 @@
+{
+  "id": "processed-1752464045378",
+  "source_metadata_id": "paste-1752451278010",
+  "category": "education",
+  "content_type": "chat-thread",
+  "confidence": "high",
+  "score": 9,
+  "title": "Engineering Skills Retention Guide",
+  "summary": "Comprehensive guide on what engineers learn in college vs what they retain, including year-by-year breakdown, MATLAB explanation, and a self-test framework for evaluating engineering thinking skills",
+  "key_points": [
+    "Engineers retain problem-solving frameworks more than specific technical details",
+    "MATLAB is a matrix-based programming environment for engineering simulations and computations",
+    "Key retained skills: breaking complex problems down, math modeling, using tools, design tradeoffs",
+    "Provides a 5-lens engineering check framework for self-testing",
+    "Year-by-year engineering curriculum breakdown from freshman to senior"
+  ],
+  "hooks": [
+    "Engineers don't retain every detail - here's what actually sticks",
+    "5-lens framework to test your engineering thinking",
+    "MATLAB: The calculator × spreadsheet × programming language hybrid"
+  ],
+  "quotable_moments": [
+    "Engineers don't retain every detail. What sticks is: How to break complex problems into solvable chunks",
+    "Think of MATLAB as a mix of: Calculator × Spreadsheet × Programming Language",
+    "You are my engineering coach. Help me stress-test the idea below through five lenses"
+  ],
+  "topics": [
+    "engineering education",
+    "MATLAB",
+    "problem-solving frameworks",
+    "college curriculum",
+    "self-assessment tools",
+    "technical skills retention"
+  ],
+  "metrics": {
+    "word_count": 1427,
+    "reading_time": "6 minutes",
+    "language": "en"
+  },
+  "channel_fitness": {
+    "tweet_single": 0.3,
+    "tweet_thread": 0.9,
+    "linkedin_post": 0.8,
+    "newsletter_section": 0.9,
+    "blog_article": 0.8,
+    "short_video_script": 0.4,
+    "knowledge_base_card": 1.0
+  },
+  "suggested_styles": [
+    "educational thread",
+    "how-to guide",
+    "framework template",
+    "curriculum breakdown"
+  ],
+  "action_flags": {
+    "needs_fact_check": false,
+    "contains_sensitive_content": false
+  },
+  "review_notes": "High-quality educational content with practical self-assessment framework. Well-structured with clear year-by-year progression and actionable testing methodology.",
+  "processed_at": "2025-07-14T10:40:45.378Z"
+}

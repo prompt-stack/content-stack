@@ -1,0 +1,119 @@
+{
+  "id": "processed-1752465519464",
+  "source_metadata_id": "paste-1752465111440",
+  "category": "tech",
+  "content_type": "chat-thread",
+  "confidence": "high",
+  "score": 9,
+  "title": "CI/CD Explained: Continuous Integration and Deployment",
+  "summary": "Comprehensive explanation of CI/CD practices including automation, testing, deployment pipelines, and real-world implementation examples with GitHub Actions and Vercel",
+  "key_points": [
+    "CI/CD automates testing and deployment to speed up release cycles",
+    "Continuous Integration (CI) automatically tests and merges code frequently",
+    "Continuous Delivery requires manual approval for production, while Continuous Deployment is fully automated",
+    "Typical CI/CD stack includes version control, pipelines, testing, deployment, and monitoring",
+    "Real-world example: Next.js + Supabase + Vercel with GitHub Actions"
+  ],
+  "hooks": [
+    "CI/CD stands for Continuous Integration and Continuous Deployment/Delivery",
+    "Automatically test and merge code into a shared repository",
+    "No human approval step - fully automated pipeline from commit to deploy",
+    "Every push to main deploys straight to production"
+  ],
+  "quotable_moments": [
+    "CI/CD is a software development practice that automates testing and deployment to speed up release cycles and reduce manual error",
+    "Goal: catch bugs early, avoid integration conflicts",
+    "Enables faster feedback and experimentation",
+    "Mature teams use preview deployments on every PR"
+  ],
+  "topics": [
+    "continuous integration",
+    "continuous deployment",
+    "continuous delivery",
+    "github actions",
+    "automated testing",
+    "devops",
+    "vercel deployment",
+    "ci/cd pipeline"
+  ],
+  "metrics": {
+    "word_count": 618,
+    "reading_time": "3 minutes",
+    "language": "en"
+  },
+  "channel_fitness": {
+    "tweet_single": 0.6,
+    "tweet_thread": 0.9,
+    "linkedin_post": 0.8,
+    "newsletter_section": 0.7,
+    "blog_article": 0.8,
+    "short_video_script": 0.5,
+    "knowledge_base_card": 0.9
+  },
+  "suggested_styles": [
+    "educational",
+    "technical tutorial",
+    "developer guide"
+  ],
+  "action_flags": {
+    "needs_fact_check": false,
+    "contains_sensitive_content": false
+  },
+  "technical_elements": {
+    "code_snippets": [
+      {
+        "language": "bash",
+        "snippet": "git checkout -b feature/new-dashboard",
+        "context": "Creating a new feature branch"
+      },
+      {
+        "language": "bash",
+        "snippet": "git push origin feature/new-dashboard",
+        "context": "Pushing feature branch to remote"
+      },
+      {
+        "language": "yaml",
+        "snippet": "name: CI\n\non:\n  pull_request:\n    branches: [main]\n\njobs:\n  build-and-test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-node@v3\n        with:\n          node-version: 18\n      - run: npm ci\n      - run: npm run lint\n      - run: npm run test\n      - run: npm run build",
+        "context": "GitHub Actions CI workflow example"
+      }
+    ],
+    "tools_mentioned": [
+      "GitHub Actions",
+      "CircleCI",
+      "Jenkins",
+      "Travis CI",
+      "Vercel",
+      "Netlify",
+      "AWS CodeDeploy",
+      "Docker",
+      "Sentry",
+      "Datadog",
+      "New Relic",
+      "Supabase",
+      "Next.js"
+    ],
+    "commands": [
+      "git checkout -b feature/new-dashboard",
+      "git push origin feature/new-dashboard",
+      "npm ci",
+      "npm run lint",
+      "npm run test",
+      "npm run build",
+      "supabase db diff"
+    ],
+    "technical_concepts": [
+      "Continuous Integration",
+      "Continuous Deployment",
+      "Continuous Delivery",
+      "automated testing",
+      "pull requests",
+      "staging environments",
+      "production deployments",
+      "preview deployments",
+      "canary deploys",
+      "database migrations"
+    ]
+  },
+  "review_notes": "High-quality technical content explaining CI/CD concepts with practical examples and implementation details",
+  "processed_at": "2025-07-14T04:00:00.000Z"
+}

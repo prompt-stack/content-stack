@@ -1,0 +1,25 @@
+{
+  "id": "content-1753069609263-5ahdeo",
+  "created_at": "2025-07-21T03:46:49.263Z",
+  "updated_at": "2025-07-21T14:23:35.820Z",
+  "status": "inbox",
+  "source": {
+    "method": "upload",
+    "url": null
+  },
+  "content": {
+    "type": "document",
+    "title": "Suade.pdf",
+    "full_text": "Binary file: Suade.pdf (5531KB)",
+    "word_count": 4,
+    "hash": "sha256-abb4804a73d2238e7c60f80e20c984857844fb94bb1463536b87902855ef9d7d"
+  },
+  "location": {
+    "inbox_path": "content/inbox/upload-1753069609263-5ahdeo.pdf",
+    "final_path": null
+  },
+  "llm_analysis": null,
+  "tags": [
+    "prompt-stack"
+  ]
+}

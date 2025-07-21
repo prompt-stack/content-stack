@@ -1,0 +1,46 @@
+/* ==========================================================================
+   EditableText Component
+   ========================================================================== */
+
+/**
+ * Inline editable text component
+ * Click to edit functionality with hover states
+ */
+
+.editabletext {
+  display: inline-block;
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.editabletext:hover {
+  background: var(--color-background);
+}
+
+.editabletext:hover::after {
+  content: '✏️';
+  position: absolute;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75em;
+  opacity: 0.6;
+  z-index: 10;
+}
+
+.editabletext__input {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  background: var(--color-background);
+  color: var(--color-text);
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  width: 100%;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary-light);
+}

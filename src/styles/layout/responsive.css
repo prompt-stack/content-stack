@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Responsive Layout & Utilities
+   ========================================================================== */
+
+/**
+ * Responsive layout containers, grids, and utilities
+ * Features breakpoint-specific utilities and layout helpers
+ */
+
+/* Layout Container
+   ========================================================================== */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+/* Container sizes */
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: var(--space-xl);
+    padding-right: var(--space-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+/* Fluid container */
+.container--fluid {
+  max-width: 100%;
+}
+
+/* Narrow container */
+.container--narrow {
+  max-width: 800px;
+}
+
+/* Wide container */
+.container--wide {
+  max-width: 1600px;
+}
+
+/* Main Layout
+   ========================================================================== */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.layout__sidebar {
+  flex-shrink: 0;
+}
+
+.layout__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.layout__content {
+  flex: 1;
+  padding: var(--space-xl);
+}
+
+/* With header offset */
+.layout--with-header .layout__content {
+  padding-top: calc(60px + var(--space-xl));
+}
+
+/* With sidebar */
+.layout--with-sidebar .layout__main {
+  margin-left: 280px;
+}
+
+.layout--with-sidebar-collapsed .layout__main {
+  margin-left: 80px;
+}
+
+/* Grid System
+   ========================================================================== */
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* Auto-fit grids */
+.grid--auto-xs {
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.grid--auto-sm {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.grid--auto-md {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid--auto-lg {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+/* Fixed column grids */
+.grid--cols-1 { grid-template-columns: 1fr; }
+.grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+.grid--cols-5 { grid-template-columns: repeat(5, 1fr); }
+.grid--cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+/* Gap variants */
+.grid--gap-sm { gap: var(--space-sm); }
+.grid--gap-md { gap: var(--space-md); }
+.grid--gap-lg { gap: var(--space-lg); }
+.grid--gap-xl { gap: var(--space-xl); }
+.grid--gap-2xl { gap: var(--space-2xl); }
+
+/* Flexbox Utilities
+   ========================================================================== */
+.flex {
+  display: flex;
+}
+
+.flex--inline {
+  display: inline-flex;
+}
+
+/* Direction */
+.flex--row { flex-direction: row; }
+.flex--row-reverse { flex-direction: row-reverse; }
+.flex--col { flex-direction: column; }
+.flex--col-reverse { flex-direction: column-reverse; }
+
+/* Justify */
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.justify-evenly { justify-content: space-evenly; }
+
+/* Align */
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-center { align-items: center; }
+.items-baseline { align-items: baseline; }
+.items-stretch { align-items: stretch; }
+
+/* Wrap */
+.flex--wrap { flex-wrap: wrap; }
+.flex--nowrap { flex-wrap: nowrap; }
+.flex--wrap-reverse { flex-wrap: wrap-reverse; }
+
+/* Gap */
+.gap-xs { gap: var(--space-xs); }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+.gap-xl { gap: var(--space-xl); }
+.gap-2xl { gap: var(--space-2xl); }
+
+/* Display Utilities
+   ========================================================================== */
+.block { display: block; }
+.inline-block { display: inline-block; }
+.inline { display: inline; }
+.hidden { display: none; }
+
+/* Visibility */
+.invisible { visibility: hidden; }
+.visible { visibility: visible; }
+
+/* Position Utilities
+   ========================================================================== */
+.static { position: static; }
+.fixed { position: fixed; }
+.absolute { position: absolute; }
+.relative { position: relative; }
+.sticky { position: sticky; }
+
+/* Z-index */
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+.z-100 { z-index: 100; }
+
+/* Overflow */
+.overflow-auto { overflow: auto; }
+.overflow-hidden { overflow: hidden; }
+.overflow-visible { overflow: visible; }
+.overflow-scroll { overflow: scroll; }
+.overflow-x-auto { overflow-x: auto; }
+.overflow-y-auto { overflow-y: auto; }
+
+/* Responsive Display Utilities
+   ========================================================================== */
+
+/* Small screens and up (640px) */
+@media (min-width: 640px) {
+  .sm\:block { display: block; }
+  .sm\:inline-block { display: inline-block; }
+  .sm\:inline { display: inline; }
+  .sm\:flex { display: flex; }
+  .sm\:grid { display: grid; }
+  .sm\:hidden { display: none; }
+}
+
+/* Medium screens and up (768px) */
+@media (min-width: 768px) {
+  .md\:block { display: block; }
+  .md\:inline-block { display: inline-block; }
+  .md\:inline { display: inline; }
+  .md\:flex { display: flex; }
+  .md\:grid { display: grid; }
+  .md\:hidden { display: none; }
+  
+  /* Grid columns */
+  .md\:grid--cols-1 { grid-template-columns: 1fr; }
+  .md\:grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .md\:grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .md\:grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Large screens and up (1024px) */
+@media (min-width: 1024px) {
+  .lg\:block { display: block; }
+  .lg\:inline-block { display: inline-block; }
+  .lg\:inline { display: inline; }
+  .lg\:flex { display: flex; }
+  .lg\:grid { display: grid; }
+  .lg\:hidden { display: none; }
+  
+  /* Grid columns */
+  .lg\:grid--cols-1 { grid-template-columns: 1fr; }
+  .lg\:grid--cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .lg\:grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .lg\:grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .lg\:grid--cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .lg\:grid--cols-6 { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* Extra large screens and up (1280px) */
+@media (min-width: 1280px) {
+  .xl\:block { display: block; }
+  .xl\:inline-block { display: inline-block; }
+  .xl\:inline { display: inline; }
+  .xl\:flex { display: flex; }
+  .xl\:grid { display: grid; }
+  .xl\:hidden { display: none; }
+}
+
+/* Print Utilities
+   ========================================================================== */
+@media print {
+  .print\:hidden { display: none; }
+  .print\:block { display: block; }
+  
+  /* Hide UI elements when printing */
+  .header,
+  .sidebar,
+  .mobile-menu,
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Adjust layout for print */
+  .layout__main {
+    margin-left: 0 !important;
+  }
+  
+  .layout__content {
+    padding: 0 !important;
+  }
+}
+
+/* Responsive Spacing Utilities
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Reduce padding on mobile */
+  .mobile\:p-sm { padding: var(--space-sm); }
+  .mobile\:p-md { padding: var(--space-md); }
+  .mobile\:px-sm { padding-left: var(--space-sm); padding-right: var(--space-sm); }
+  .mobile\:px-md { padding-left: var(--space-md); padding-right: var(--space-md); }
+  .mobile\:py-sm { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
+  .mobile\:py-md { padding-top: var(--space-md); padding-bottom: var(--space-md); }
+  
+  /* Reduce margins on mobile */
+  .mobile\:m-0 { margin: 0; }
+  .mobile\:mx-auto { margin-left: auto; margin-right: auto; }
+  .mobile\:my-sm { margin-top: var(--space-sm); margin-bottom: var(--space-sm); }
+  .mobile\:my-md { margin-top: var(--space-md); margin-bottom: var(--space-md); }
+}
+
+/* Aspect Ratio Utilities
+   ========================================================================== */
+.aspect-square { aspect-ratio: 1 / 1; }
+.aspect-video { aspect-ratio: 16 / 9; }
+.aspect-4\/3 { aspect-ratio: 4 / 3; }
+.aspect-21\/9 { aspect-ratio: 21 / 9; }
+
+/* Screen Reader Only
+   ========================================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus Visible Only
+   ========================================================================== */
+.focus-visible:focus {
+  outline: 2px solid var(--color-plasma);
+  outline-offset: 2px;
+}
+
+.focus-visible:focus:not(:focus-visible) {
+  outline: none;
+}

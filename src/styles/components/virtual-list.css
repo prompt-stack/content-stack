@@ -1,0 +1,53 @@
+/* VirtualList Component Styles */
+
+.virtual-list {
+  position: relative;
+  width: 100%;
+}
+
+/* Container for react-window */
+.virtual-list__container {
+  /* Override react-window inline styles if needed */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-medium) transparent;
+}
+
+.virtual-list__container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.virtual-list__container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.virtual-list__container::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-full);
+  transition: background-color var(--duration-fast);
+}
+
+.virtual-list__container::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* Simple mode (non-virtualized) */
+.virtual-list--simple {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  contain: layout style;
+}
+
+/* Loading state */
+.virtual-list--loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Empty state */
+.virtual-list--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-style: italic;
+}

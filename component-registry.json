@@ -1,0 +1,92 @@
+{
+  "primitives": {
+    "Textarea": {
+      "file": "Textarea.tsx",
+      "css": "/styles/components/forms.css",
+      "dependencies": "None (primitive component)",
+      "utilities": null
+    },
+    "Text": {
+      "file": "Text.tsx",
+      "css": "Uses global typography styles",
+      "dependencies": "None (primitive component)",
+      "utilities": null
+    },
+    "Tag": {
+      "file": "Tag.tsx",
+      "css": "/styles/components/tag.css",
+      "dependencies": "None (primitive component)",
+      "utilities": "None"
+    },
+    "Select": {
+      "file": "Select.tsx",
+      "css": "/styles/components/forms.css",
+      "dependencies": "None (primitive component)",
+      "utilities": null
+    },
+    "Radio": {
+      "file": "Radio.tsx",
+      "css": "/styles/components/forms.css",
+      "dependencies": "None (primitive component)",
+      "utilities": null
+    },
+    "Link": {
+      "file": "Link.tsx",
+      "css": "Uses global link styles",
+      "dependencies": "None (primitive component)",
+      "utilities": null
+    },
+    "Label": {
+      "file": "Label.tsx",
+      "css": "/styles/components/forms.css",
+      "dependencies": "None (primitive component)",
+      "utilities": null
+    },
+    "Input": {
+      "file": "Input.tsx",
+      "css": "/styles/components/forms.css",
+      "dependencies": "None (primitive component)",
+      "utilities": null
+    },
+    "Image": {
+      "file": "Image.tsx",
+      "css": "Uses global image styles",
+      "dependencies": "None (primitive component)",
+      "utilities": null
+    },
+    "FileInput": {
+      "file": "FileInput.tsx",
+      "css": "/styles/components/fileinput.css",
+      "dependencies": null,
+      "utilities": null
+    },
+    "EditableText": {
+      "file": "EditableText.tsx",
+      "css": "/styles/components/editabletext.css",
+      "dependencies": "None (primitive component)",
+      "utilities": "None"
+    },
+    "Checkbox": {
+      "file": "Checkbox.tsx",
+      "css": "/styles/components/forms.css",
+      "dependencies": "None (primitive component)",
+      "utilities": null
+    },
+    "Button": {
+      "file": "Button.tsx",
+      "css": "/styles/components/button.css",
+      "dependencies": "None (primitive component)",
+      "utilities": null
+    },
+    "Box": {
+      "file": "Box.tsx",
+      "css": "none (utilities only)",
+      "dependencies": "None (primitive component)",
+      "utilities": "spacing, display, flexbox, background, shadow, border"
+    }
+  },
+  "composed": {},
+  "features": {},
+  "layout": {},
+  "pages": {}
+}

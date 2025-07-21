@@ -1,0 +1,63 @@
+{
+  "id": "processed-1752450201272",
+  "source_metadata_id": "paste-1752450081763",
+  "category": "tech",
+  "content_type": "chat-thread",
+  "confidence": "high",
+  "score": 9,
+  "title": "Understanding APIs, CRUD Operations, and JSON Data Types",
+  "summary": "Beginner-friendly Q&A conversation explaining how APIs work, the 4 CRUD operations (Create, Read, Update, Delete) as building blocks of web data interaction, and JSON data types. Covers practical examples of API endpoints, why most web apps are CRUD-based, and the 6 JSON data types.",
+  "key_points": [
+    "APIs are interfaces that allow software systems to communicate, acting like a waiter between apps and data",
+    "CRUD operations (Create, Read, Update, Delete) are the 4 core functions for working with web data",
+    "80-90% of web applications are primarily CRUD-based at their core",
+    "JSON has 6 data types: objects, arrays, strings, numbers, booleans, and null",
+    "Objects and arrays are composite types that contain other values, while strings, numbers, booleans, and null are primitive types"
+  ],
+  "hooks": [
+    "80-90% of web applications are just creative skins around CRUD operations",
+    "Think of APIs as a waiter between your app and your data",
+    "You can build 80% of the internet with HTML/CSS/JS + CRUD - it's not hyperbole, it's structurally true"
+  ],
+  "quotable_moments": [
+    "The API is the gatekeeper that exposes specific interactions to the outside world",
+    "CRUD defines the 4 core operations for working with data over the web",
+    "Most websites and apps are just creative skins around CRUD. The complexity lies in the business logic, not the data flow"
+  ],
+  "topics": [
+    "APIs",
+    "CRUD operations",
+    "JSON data types",
+    "Web development",
+    "Backend development",
+    "REST APIs",
+    "Data structures",
+    "HTTP methods"
+  ],
+  "metrics": {
+    "word_count": 1450,
+    "reading_time": "6 minutes",
+    "language": "English"
+  },
+  "channel_fitness": {
+    "tweet_single": 0.8,
+    "tweet_thread": 0.9,
+    "linkedin_post": 0.7,
+    "newsletter_section": 0.6,
+    "blog_article": 0.8,
+    "short_video_script": 0.9,
+    "knowledge_base_card": 0.9
+  },
+  "suggested_styles": [
+    "Educational thread breaking down technical concepts",
+    "Beginner-friendly tutorial format",
+    "Q&A style explanation",
+    "Visual diagram with examples"
+  ],
+  "action_flags": {
+    "needs_fact_check": false,
+    "contains_sensitive_content": false
+  },
+  "review_notes": "High-quality educational content with clear explanations and practical examples. Good for beginners learning web development concepts.",
+  "processed_at": "2025-07-13T23:43:21.272Z"
+} 

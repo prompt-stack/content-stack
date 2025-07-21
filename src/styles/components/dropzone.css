@@ -1,0 +1,291 @@
+/* ==========================================================================
+   Dropzone Feature
+   ========================================================================== */
+
+/**
+ * Compact drag-and-drop file upload zones
+ * Features hover states, active states, and smooth transitions
+ */
+
+/* Dropzone Container
+   ========================================================================== */
+.dropzone {
+  position: relative;
+  width: 100%;
+}
+
+/* Compact Dropzone Area
+   ========================================================================== */
+.dropzone-compact-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  background: var(--surface-glass);
+  border: 2px dashed var(--border-light);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover State */
+.dropzone-compact-area:hover {
+  border-color: var(--color-plasma);
+  border-style: solid;
+  background: rgba(0, 212, 255, 0.05);
+}
+
+/* Active/Dragging State */
+.dropzone-compact-area.is-active,
+.dropzone-compact-area--active {
+  border-color: var(--color-plasma);
+  border-style: solid;
+  background: rgba(0, 212, 255, 0.1);
+  animation: pulse 2s infinite;
+}
+
+/* Dropzone Content
+   ========================================================================== */
+.dropzone__icon {
+  font-size: 1.5rem;
+  color: var(--color-plasma);
+  transition: transform var(--transition-base);
+}
+
+.dropzone-compact-area:hover .dropzone__icon,
+.dropzone-compact-area.is-active .dropzone__icon {
+  transform: scale(1.1);
+}
+
+.dropzone__text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.dropzone__hint {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin-left: var(--space-xs);
+}
+
+/* File Preview
+   ========================================================================== */
+.dropzone__preview {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  background: var(--surface-primary);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-sm);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.dropzone__preview-icon {
+  font-size: 1.25rem;
+  color: var(--color-plasma);
+}
+
+.dropzone__preview-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dropzone__preview-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropzone__preview-size {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.dropzone__preview-remove {
+  padding: var(--space-xs);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: color var(--transition-base);
+  background: none;
+  border: none;
+  font-size: 1rem;
+}
+
+.dropzone__preview-remove:hover {
+  color: var(--color-error);
+}
+
+/* Progress Bar
+   ========================================================================== */
+.dropzone__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border-light);
+  overflow: hidden;
+}
+
+.dropzone__progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-plasma), #0099ff);
+  transition: width var(--transition-base);
+}
+
+/* Dropzone States
+   ========================================================================== */
+
+/* Loading State */
+.dropzone--loading .dropzone-compact-area {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.dropzone--loading .dropzone__icon {
+  animation: spin 1s linear infinite;
+}
+
+/* Error State */
+.dropzone--error .dropzone-compact-area {
+  border-color: var(--color-error);
+  background: rgba(255, 51, 102, 0.05);
+}
+
+.dropzone--error .dropzone__icon {
+  color: var(--color-error);
+}
+
+/* Success State */
+.dropzone--success .dropzone-compact-area {
+  border-color: var(--color-success);
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.dropzone--success .dropzone__icon {
+  color: var(--color-success);
+}
+
+/* Disabled State */
+.dropzone--disabled .dropzone-compact-area {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Multiple Files Support
+   ========================================================================== */
+.dropzone__preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Dropzone Variants
+   ========================================================================== */
+
+/* Large Dropzone */
+.dropzone--large .dropzone-compact-area {
+  padding: var(--space-2xl);
+  flex-direction: column;
+}
+
+.dropzone--large .dropzone__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+.dropzone--large .dropzone__text {
+  font-size: 1rem;
+}
+
+/* Inline Dropzone */
+.dropzone--inline .dropzone-compact-area {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}
+
+/* Circular Dropzone */
+.dropzone--circular .dropzone-compact-area {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  flex-direction: column;
+  padding: var(--space-md);
+}
+
+.dropzone--circular .dropzone__text {
+  display: none;
+}
+
+.dropzone--circular .dropzone__icon {
+  font-size: 2rem;
+}
+
+/* Visual Effects
+   ========================================================================== */
+
+/* Ripple effect on drop */
+@keyframes dropRipple {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.dropzone-compact-area::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: var(--color-plasma);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dropzone-compact-area.is-dropping::after {
+  animation: dropRipple 0.6s ease-out;
+}
+
+/* Responsive
+   ========================================================================== */
+@media (max-width: 768px) {
+  .dropzone-compact-area {
+    padding: var(--space-md);
+  }
+  
+  .dropzone__hint {
+    display: none;
+  }
+  
+  .dropzone__preview-list {
+    max-height: 150px;
+  }
+  
+  .dropzone--large .dropzone-compact-area {
+    padding: var(--space-lg);
+  }
+  
+  .dropzone--large .dropzone__icon {
+    font-size: 2rem;
+  }
+}

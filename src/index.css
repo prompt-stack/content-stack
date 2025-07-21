@@ -1,0 +1,368 @@
+/* ==========================================================================
+   Content Stack CSS Architecture
+   
+   Following the Component-Style Contract with zero orphans and clear layers.
+   All components have style companions, utilities use the Box bridge pattern.
+   
+   Structure:
+   - Components: Both primitives and composed (button, card, modal, etc.)
+   - Features: Empty for now - will add as features are built
+   - Layout: Header, navigation, mobile menu
+   - Pages: Route-specific styles
+   - Utilities: Spacing, typography, theme toggle
+   ========================================================================== */
+
+/**
+ * Define cascade layers for predictable specificity
+ * Order matters: later layers override earlier ones
+ * 
+ * Layer hierarchy matches component architecture:
+ * - reset: CSS reset/normalize
+ * - base: Design tokens, global styles, animations
+ * - components: Primitives and composed components
+ * - features: Feature-specific styles (when built)
+ * - pages: Page-specific overrides
+ * - utilities: Utility classes (highest specificity)
+ * 
+ * This ensures styles cascade predictably and match our
+ * component dependency flow: primitives → composed → features → pages
+ */
+@layer reset, base, components, features, pages, utilities;
+
+/* Base Styles
+   ========================================================================== */
+@import './styles/globals.css' layer(base);
+@import './styles/base/animations.css' layer(base);
+
+/* Component Styles
+   ========================================================================== */
+@import './styles/components/button.css' layer(components);
+@import './styles/components/card.css' layer(components);
+@import './styles/components/badge.css' layer(components);
+@import './styles/components/modal.css' layer(components);
+@import './styles/components/spinner.css' layer(components);
+@import './styles/components/toggle.css' layer(components);
+@import './styles/components/forms.css' layer(components);
+@import './styles/components/dropzone.css' layer(components);
+@import './styles/components/fileinput.css' layer(components);
+@import './styles/components/editabletext.css' layer(components);
+@import './styles/components/editable-field.css' layer(components);
+@import './styles/components/tag.css' layer(components);
+@import './styles/components/scroll-container.css' layer(components);
+@import './styles/components/virtual-list.css' layer(components);
+
+/* Feature Styles
+   ========================================================================== */
+@import './styles/features/content-inbox.css' layer(features);
+
+/* Page Styles
+   ========================================================================== */
+@import './styles/pages/home.css' layer(pages);
+@import './styles/pages/inbox.css' layer(pages);
+@import './styles/pages/health.css' layer(pages);
+@import './styles/pages/subscription.css' layer(pages);
+@import './styles/pages/playground.css' layer(pages);
+@import './styles/playground/inbox-workflow-demo.css' layer(pages);
+
+/* Layout Styles
+   ========================================================================== */
+@import './styles/layout/header.css' layer(pages);
+@import './styles/layout/navigation.css' layer(pages);
+@import './styles/layout/responsive.css' layer(pages);
+@import './styles/layout/mobile-menu.css' layer(pages);
+
+/* Utilities - Always last for highest specificity
+   ========================================================================== */
+@import './styles/utils/utilities.css' layer(utilities);
+@import './styles/utils/spacing-fixes.css' layer(utilities);
+@import './styles/utils/input-fixes.css' layer(utilities);
+@import './styles/utils/theme-toggle.css' layer(utilities);
+
+
+/* Root container */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Layout styles */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--surface-secondary);
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 0;
+  overflow-y: auto;
+  background-color: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+/* Header Styles - Futuristic */
+.header {
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-glass);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+  min-height: 72px;
+}
+
+/* Brand Section */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  transition: all var(--transition-base);
+}
+
+.header-brand:hover {
+  color: var(--color-plasma);
+}
+
+.header-brand-icon {
+  font-size: 1.75rem;
+  background: linear-gradient(135deg, var(--color-plasma), #0099ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigation */
+.header-nav {
+  display: flex;
+  gap: var(--space-xs);
+  margin-left: var(--space-xl);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  background: transparent;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: var(--surface-glass);
+}
+
+.nav-link--active {
+  color: var(--color-plasma);
+  background: rgba(0, 212, 255, 0.1);
+}
+
+/* Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-left: auto;
+}
+
+/* Menu Dropdown */
+.menu-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.menu-trigger:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--color-plasma);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + var(--space-sm));
+  right: 0;
+  min-width: 320px;
+  background: var(--surface-elevated);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all var(--transition-base);
+}
+
+.dropdown-menu[data-state="open"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown Menu Sections */
+.user-info-section {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.user-email {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.theme-section {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.theme-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-sm);
+}
+
+.menu-divider {
+  height: 1px;
+  background: var(--border-light);
+  margin: 0;
+}
+
+.menu-section {
+  padding: var(--space-sm) 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+  padding: var(--space-sm) var(--space-lg);
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.menu-item:hover {
+  background: var(--surface-glass);
+  color: var(--color-plasma);
+}
+
+.menu-item i {
+  width: 20px;
+  text-align: center;
+  color: var(--text-tertiary);
+}
+
+.menu-item:hover i {
+  color: var(--color-plasma);
+}
+
+.menu-trigger-arrow {
+  transition: transform var(--transition-base);
+  font-size: 0.75rem;
+  margin-left: var(--space-xs);
+}
+
+.menu-trigger-arrow--open {
+  transform: rotate(180deg);
+}
+
+/* Light mode adjustments */
+@media (prefers-color-scheme: light) {
+  .header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+  }
+}
+
+/* Hamburger Menu Button */
+.hamburger-button {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  color: var(--text-primary);
+  font-size: 1.125rem;
+}
+
+.hamburger-button:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--color-plasma);
+  transform: scale(1.05);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 var(--space-md);
+  }
+  
+  .header-nav {
+    display: none;
+  }
+  
+  .header-brand-text {
+    display: none;
+  }
+  
+  .hamburger-button {
+    display: flex;
+  }
+  
+  .header-actions > *:not(.hamburger-button) {
+    display: none;
+  }
+}

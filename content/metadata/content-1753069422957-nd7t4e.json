@@ -1,0 +1,25 @@
+{
+  "id": "content-1753069422957-nd7t4e",
+  "created_at": "2025-07-21T03:43:42.957Z",
+  "updated_at": "2025-07-21T14:23:35.824Z",
+  "status": "inbox",
+  "source": {
+    "method": "upload",
+    "url": null
+  },
+  "content": {
+    "type": "image",
+    "title": "IMG_0083.jpg",
+    "full_text": "Binary file: IMG_0083.jpg (216KB)",
+    "word_count": 4,
+    "hash": "sha256-a4ea0ddee23fe3ea4cee2fd43e2d942cadf6b8c3445b0a82553004554b556f1b"
+  },
+  "location": {
+    "inbox_path": "content/inbox/upload-1753069422957-nd7t4e.jpg",
+    "final_path": null
+  },
+  "llm_analysis": null,
+  "tags": [
+    "prompt-stack"
+  ]
+}

@@ -1,0 +1,124 @@
+/* ScrollContainer Component Styles */
+
+.scroll-container {
+  position: relative;
+  overflow: hidden;
+  /* Prevent layout shifts during animations */
+  contain: layout style;
+}
+
+/* Direction variants */
+.scroll-container--vertical {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scroll-container--horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.scroll-container--both {
+  overflow: auto;
+}
+
+/* Smooth scrolling */
+.scroll-container--smooth {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+.scroll-container--hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.scroll-container--hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
+/* Custom scrollbar styles */
+.scroll-container:not(.scroll-container--hide-scrollbar) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-medium) transparent;
+}
+
+.scroll-container:not(.scroll-container--hide-scrollbar)::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scroll-container:not(.scroll-container--hide-scrollbar)::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-container:not(.scroll-container--hide-scrollbar)::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-full);
+  transition: background-color var(--duration-fast);
+}
+
+.scroll-container:not(.scroll-container--hide-scrollbar)::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* Fade edges effect */
+.scroll-container--fade-edges {
+  position: relative;
+}
+
+.scroll-container--fade-edges::before,
+.scroll-container--fade-edges::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Vertical fade edges */
+.scroll-container--fade-edges.scroll-container--vertical::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--color-background), transparent);
+}
+
+.scroll-container--fade-edges.scroll-container--vertical::after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background: linear-gradient(to top, var(--color-background), transparent);
+}
+
+/* Horizontal fade edges */
+.scroll-container--fade-edges.scroll-container--horizontal::before {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 24px;
+  background: linear-gradient(to right, var(--color-background), transparent);
+}
+
+.scroll-container--fade-edges.scroll-container--horizontal::after {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 24px;
+  background: linear-gradient(to left, var(--color-background), transparent);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .scroll-container {
+    /* Enable momentum scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Smaller scrollbar on mobile */
+  .scroll-container:not(.scroll-container--hide-scrollbar)::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}

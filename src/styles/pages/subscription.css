@@ -1,0 +1,392 @@
+/* ==========================================================================
+   Subscription Page Styles
+   ========================================================================== */
+
+/**
+ * Pricing and subscription management page with tier comparison
+ * All classes must use .subscription__ prefix for page-specific styles
+ */
+
+/* Page Layout
+   ========================================================================== */
+.subscription__page {
+  min-height: 100vh;
+  background: var(--surface-secondary);
+}
+
+/* Header Section
+   ========================================================================== */
+.subscription__header {
+  background: var(--surface-primary);
+  border-bottom: 1px solid var(--border-light);
+  padding: var(--space-2xl) var(--space-xl) var(--space-3xl);
+  position: relative;
+}
+
+.subscription__back-button {
+  position: absolute;
+  top: var(--space-xl);
+  left: var(--space-xl);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  color: var(--text-secondary);
+}
+
+.subscription__back-button:hover {
+  background: var(--surface-elevated);
+  border-color: var(--color-plasma);
+  color: var(--color-plasma);
+  transform: translateX(-2px);
+}
+
+.subscription__header-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.subscription__title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-md) 0;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--color-plasma) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subscription__subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-2xl) 0;
+}
+
+/* Billing Toggle
+   ========================================================================== */
+.subscription__billing-toggle {
+  display: inline-flex;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  padding: var(--space-xs);
+  gap: var(--space-xs);
+}
+
+.subscription__billing-option {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.subscription__billing-option--active {
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.subscription__billing-badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--color-success);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+/* Pricing Grid
+   ========================================================================== */
+.subscription__pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-xl);
+  max-width: 1200px;
+  margin: -3rem auto var(--space-3xl);
+  padding: 0 var(--space-xl);
+}
+
+/* Pricing Card
+   ========================================================================== */
+.subscription__pricing-card {
+  background: var(--surface-primary);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  position: relative;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+}
+
+.subscription__pricing-card:hover {
+  border-color: var(--border-medium);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.subscription__pricing-card--popular {
+  border-color: var(--color-plasma);
+  box-shadow: 0 0 0 1px var(--color-plasma), var(--shadow-glow);
+}
+
+.subscription__pricing-card--current {
+  background: var(--surface-elevated);
+}
+
+.subscription__popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-plasma);
+  color: var(--color-starlight);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Pricing Card Header
+   ========================================================================== */
+.subscription__card-header {
+  text-align: center;
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: var(--space-xl);
+}
+
+.subscription__tier-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-md) 0;
+}
+
+.subscription__tier-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.subscription__price-amount {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.subscription__price-interval {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+}
+
+.subscription__tier-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Features & Limitations
+   ========================================================================== */
+.subscription__card-features {
+  flex: 1;
+  margin-bottom: var(--space-xl);
+}
+
+.subscription__features-list,
+.subscription__limitations-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.subscription__feature-item,
+.subscription__limitation-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  font-size: 0.875rem;
+}
+
+.subscription__feature-icon {
+  color: var(--color-success);
+  font-size: 0.75rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.subscription__limitation-icon {
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.subscription__limitations-list {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border-light);
+}
+
+.subscription__limitation-item {
+  color: var(--text-tertiary);
+}
+
+/* Pricing CTA
+   ========================================================================== */
+.subscription__card-footer {
+  margin-top: auto;
+}
+
+.subscription__pricing-cta {
+  width: 100%;
+  justify-content: center;
+}
+
+/* FAQ Section
+   ========================================================================== */
+.subscription__footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl) var(--space-3xl);
+}
+
+.subscription__faq-section {
+  margin-bottom: var(--space-3xl);
+}
+
+.subscription__faq-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-2xl) 0;
+  text-align: center;
+}
+
+.subscription__faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+}
+
+.subscription__faq-item {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+}
+
+.subscription__faq-question {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.subscription__faq-answer {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Money Back Guarantee
+   ========================================================================== */
+.subscription__guarantee {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.subscription__guarantee-icon {
+  font-size: 3rem;
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+.subscription__guarantee-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-xs) 0;
+}
+
+.subscription__guarantee-content p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Responsive
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .subscription__pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .subscription__header {
+    padding: var(--space-xl) var(--space-md) var(--space-2xl);
+  }
+  
+  .subscription__title {
+    font-size: 2rem;
+  }
+  
+  .subscription__subtitle {
+    font-size: 1rem;
+  }
+  
+  .subscription__pricing-grid {
+    margin-top: -2rem;
+    padding: 0 var(--space-md);
+    gap: var(--space-lg);
+  }
+  
+  .subscription__pricing-card {
+    padding: var(--space-lg);
+  }
+  
+  .subscription__price-amount {
+    font-size: 2.5rem;
+  }
+  
+  .subscription__faq-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  
+  .subscription__guarantee {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .subscription__footer {
+    padding: 0 var(--space-md) var(--space-2xl);
+  }
+}

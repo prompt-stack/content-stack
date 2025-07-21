@@ -1,0 +1,423 @@
+/* ==========================================================================
+   Input and Form Fixes - Icon alignment and textarea performance
+   ========================================================================== */
+
+@layer utilities {
+  /* Input with Icon Fixes
+     ========================================================================== */
+  
+  /* Wrapper for inputs with icons */
+  .input-group__wrapper {
+    position: relative;
+    display: block;
+  }
+  
+  /* Icon positioning and centering */
+  .input-group__icon {
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 2.75rem !important;
+    height: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--text-tertiary) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Input padding when icon is present */
+  .input-group__wrapper .input {
+    padding-left: 2.75rem;
+    width: 100%;
+  }
+  
+  /* Ensure input height and alignment is consistent */
+  .input {
+    min-height: 2.5rem;
+    line-height: 1.5;
+    vertical-align: middle;
+  }
+  
+  /* Fix input text vertical alignment */
+  .input-group__wrapper .input {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Textarea Performance Fixes
+     ========================================================================== */
+  
+  /* Fix laggy resize by using GPU acceleration */
+  textarea.input {
+    resize: vertical;
+    min-height: 4rem;
+    will-change: height;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* Smooth resize transition */
+  textarea.input:not(:focus) {
+    transition: none;
+  }
+  
+  /* Remove inline styles that cause performance issues */
+  textarea.input[style*="height"],
+  textarea.input[style*="width"] {
+    transition: none !important;
+  }
+  
+  /* Optimize resize handle */
+  textarea.input::-webkit-resizer {
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23999'%3E%3Cpath d='M16 16L8 16L16 8z'/%3E%3Cpath d='M16 12L12 16L16 16z' opacity='0.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    cursor: se-resize;
+  }
+
+  /* Form Group Adjustments
+     ========================================================================== */
+  
+  .form-group {
+    position: relative;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: var(--font-medium);
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+  }
+  
+  /* Input States with Icons
+     ========================================================================== */
+  
+  /* Focus state */
+  .input-group__wrapper:focus-within .input-group__icon {
+    color: var(--brand-primary);
+  }
+  
+  /* Error state */
+  .input-group__wrapper.has-error .input-group__icon {
+    color: var(--status-error);
+  }
+  
+  /* Disabled state */
+  .input-group__wrapper.is-disabled .input-group__icon {
+    opacity: 0.5;
+  }
+
+  /* Specific Icon Adjustments
+     ========================================================================== */
+  
+  /* Reset all icon sizes first */
+  .input-group__icon i[class*="fa-"] {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    width: auto !important;
+    height: auto !important;
+  }
+  
+  /* Search icon */
+  .fa-search.input-group__icon,
+  .input-group__icon.fa-search {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Lock icon */
+  .fa-lock.input-group__icon,
+  .input-group__icon.fa-lock {
+    font-size: 1rem !important;
+  }
+  
+  /* Mail icon */
+  .fa-envelope.input-group__icon,
+  .input-group__icon.fa-envelope {
+    font-size: 0.875rem !important;
+  }
+  
+  /* User icon */
+  .fa-user.input-group__icon,
+  .input-group__icon.fa-user {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Ensure proper input styling */
+  .input-group__wrapper input.input {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    height: 2.5rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Select Dropdown Fixes
+     ========================================================================== */
+  
+  select.input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem !important;
+    cursor: pointer;
+    line-height: 1.5 !important;
+    height: 2.5rem !important;
+  }
+  
+  select.input:focus {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%2300d4ff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+  }
+
+  /* Checkbox and Radio Button Fixes
+     ========================================================================== */
+  
+  .checkbox-label,
+  .radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: pointer;
+    user-select: none;
+    padding: var(--space-xs) 0;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .checkbox-label:last-child,
+  .radio-label:last-child {
+    margin-bottom: 0;
+  }
+  
+  .checkbox-label input[type="checkbox"],
+  .radio-label input[type="radio"] {
+    margin: 0;
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+  
+  .checkbox-label span,
+  .radio-label span {
+    line-height: 1.2;
+    font-size: 0.875rem;
+  }
+  
+  /* Custom checkbox/radio styles for better alignment */
+  input[type="checkbox"],
+  input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--surface-primary);
+    border: 2px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+  }
+  
+  input[type="radio"] {
+    border-radius: 50%;
+  }
+  
+  input[type="checkbox"]:checked,
+  input[type="radio"]:checked {
+    background: var(--brand-primary);
+    border-color: var(--brand-primary);
+  }
+  
+  input[type="checkbox"]:checked::after {
+    content: '✓';
+    display: block;
+    color: white;
+    font-size: 0.75rem;
+    text-align: center;
+    line-height: 0.75rem;
+    font-weight: bold;
+  }
+  
+  input[type="radio"]:checked::after {
+    content: '';
+    display: block;
+    width: 0.375rem;
+    height: 0.375rem;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* URL Input Fixes
+     ========================================================================== */
+  
+  .url-input-wrapper {
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-sm);
+    width: 100%;
+  }
+  
+  .url-input-field {
+    flex: 1;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--surface-primary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    min-height: 2.5rem;
+  }
+  
+  .url-input-wrapper .btn {
+    flex-shrink: 0;
+  }
+  
+  /* Input + Button Combinations
+     ========================================================================== */
+  
+  /* Ensure flex containers with inputs and buttons align properly */
+  div:has(> .input):has(> .btn) {
+    align-items: stretch;
+  }
+  
+  /* Dropzone Improvements
+     ========================================================================== */
+  
+  .dropzone {
+    position: relative;
+    cursor: pointer;
+    transition: all var(--transition-base);
+  }
+  
+  .dropzone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2xl);
+    border: 2px dashed var(--border-default);
+    border-radius: var(--radius-md);
+    background: var(--surface-secondary);
+    transition: all var(--transition-base);
+  }
+  
+  .dropzone:hover .dropzone-content,
+  .dropzone.is-active .dropzone-content {
+    border-color: var(--brand-primary);
+    background: var(--surface-hover);
+  }
+  
+  .dropzone-icon {
+    font-size: 3rem;
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-md);
+    transition: all var(--transition-base);
+  }
+  
+  .dropzone:hover .dropzone-icon,
+  .dropzone.is-active .dropzone-icon {
+    color: var(--brand-primary);
+    transform: translateY(-2px);
+  }
+  
+  .dropzone-text {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    text-align: center;
+  }
+  
+  .dropzone-hint {
+    margin-top: var(--space-xs);
+    color: var(--text-tertiary);
+    font-size: var(--text-xs);
+  }
+  
+  /* Full Screen Drop Overlay */
+  .full-screen-drop-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .full-screen-drop-overlay.is-active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+  
+  .full-screen-drop-content {
+    padding: var(--space-3xl);
+    background: var(--surface-elevated);
+    border: 3px dashed var(--brand-primary);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+  }
+  
+  .full-screen-drop-overlay.is-active .full-screen-drop-content {
+    transform: scale(1);
+  }
+  
+  .full-screen-drop-icon {
+    font-size: 4rem;
+    color: var(--brand-primary);
+    margin-bottom: var(--space-lg);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+  }
+
+  /* Responsive Adjustments
+     ========================================================================== */
+  
+  @media (max-width: 768px) {
+    .input-group__wrapper .input {
+      padding-left: 2.5rem;
+    }
+    
+    .input-group__icon {
+      width: 2.5rem;
+    }
+    
+    .url-input-wrapper {
+      flex-direction: column;
+    }
+    
+    .url-input-field {
+      width: 100%;
+    }
+    
+    .dropzone-content {
+      padding: var(--space-xl);
+    }
+  }
+}

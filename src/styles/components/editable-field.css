@@ -1,0 +1,140 @@
+/* EditableField Component Styles */
+
+.editable-field {
+  position: relative;
+  width: 100%;
+}
+
+/* Label */
+.editable-field__label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  color: var(--text-primary);
+}
+
+.editable-field__required {
+  color: var(--color-danger);
+  margin-left: var(--space-xs);
+}
+
+/* Display Mode */
+.editable-field__display {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+  transition: all var(--duration-fast);
+  cursor: pointer;
+  min-height: 40px;
+}
+
+.editable-field__display:hover:not(.editable-field--disabled .editable-field__display) {
+  background: var(--bg-tertiary);
+  border-color: var(--border-light);
+}
+
+.editable-field__value {
+  flex: 1;
+  min-width: 0;
+}
+
+.editable-field__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.editable-field__placeholder {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.editable-field__edit-button {
+  opacity: 0;
+  transition: opacity var(--duration-fast);
+}
+
+.editable-field__display:hover .editable-field__edit-button {
+  opacity: 1;
+}
+
+/* Edit Mode */
+.editable-field--editing .editable-field__display {
+  display: none;
+}
+
+.editable-field__input-wrapper {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: flex-start;
+}
+
+.editable-field__input,
+.editable-field__textarea {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: inherit;
+  transition: border-color var(--duration-fast);
+}
+
+.editable-field__input:focus,
+.editable-field__textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.editable-field__textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.editable-field__actions {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+/* Error State */
+.editable-field--error .editable-field__input,
+.editable-field--error .editable-field__textarea {
+  border-color: var(--color-danger);
+}
+
+.editable-field__error {
+  color: var(--color-danger);
+  margin-top: var(--space-xs);
+}
+
+/* Disabled State */
+.editable-field--disabled {
+  opacity: 0.6;
+}
+
+.editable-field--disabled .editable-field__display {
+  cursor: not-allowed;
+  background: var(--bg-disabled);
+}
+
+.editable-field--disabled .editable-field__edit-button {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .editable-field__display {
+    padding: var(--space-xs) var(--space-sm);
+    min-height: 36px;
+  }
+  
+  .editable-field__actions {
+    flex-direction: column;
+    width: auto;
+  }
+}

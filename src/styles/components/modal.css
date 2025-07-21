@@ -1,0 +1,386 @@
+/* ==========================================================================
+   Modal Component
+   ========================================================================== */
+
+/**
+ * Futuristic modal dialog with glass morphism effects
+ * Supports multiple sizes and content types
+ */
+
+/* Modal Overlay
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--surface-overlay);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+  padding: var(--space-lg);
+}
+
+/* Click outside to close */
+.modal-overlay--closeable {
+  cursor: pointer;
+}
+
+/* Modal Container
+   ========================================================================== */
+.modal {
+  background: var(--surface-elevated);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: scaleIn 0.3s ease-out;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: default;
+}
+
+/* Prevent closing when clicking modal content */
+.modal-overlay--closeable .modal {
+  pointer-events: auto;
+}
+
+/* Modal Sizes
+   ========================================================================== */
+
+/* Small - 400px */
+.modal--sm {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Medium - 600px (default) */
+.modal--md,
+.modal--medium {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Large - 800px */
+.modal--lg,
+.modal--large {
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Extra Large - 1200px */
+.modal--xl,
+.modal--xlarge {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Custom size for paste modal - 1000px */
+.modal--paste {
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Full screen */
+.modal--fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  border-radius: 0;
+}
+
+/* Modal Elements
+   ========================================================================== */
+
+/* Modal Header */
+.modal__header {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.modal__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.modal__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+}
+
+/* Modal Body */
+.modal__body {
+  padding: var(--space-lg);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Modal Footer */
+.modal__footer {
+  padding: var(--space-lg);
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.modal__footer--center {
+  justify-content: center;
+}
+
+.modal__footer--between {
+  justify-content: space-between;
+}
+
+/* Close Button */
+.modal__close,
+.modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface-glass);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  color: var(--text-secondary);
+  border: none;
+  font-size: 1rem;
+}
+
+.modal__close:hover,
+.modal-close:hover {
+  background: var(--surface-primary);
+  transform: rotate(90deg);
+  color: var(--color-plasma);
+  border-color: var(--color-plasma);
+}
+
+/* Modal States
+   ========================================================================== */
+
+/* Loading state */
+.modal.is-loading .modal__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+/* Closing animation */
+.modal-overlay.is-closing {
+  animation: fadeOut 0.2s ease-out forwards;
+}
+
+.modal-overlay.is-closing .modal {
+  animation: scaleOut 0.2s ease-out forwards;
+}
+
+/* Modal Variants
+   ========================================================================== */
+
+/* Alert Modal */
+.modal--alert {
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal--alert .modal__icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+}
+
+.modal--alert .modal__icon--success {
+  color: var(--color-success);
+}
+
+.modal--alert .modal__icon--warning {
+  color: var(--color-warning);
+}
+
+.modal--alert .modal__icon--error {
+  color: var(--color-error);
+}
+
+/* Confirmation Modal */
+.modal--confirm .modal__body {
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+/* Image Modal */
+.modal--image .modal__body {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-cosmos);
+}
+
+.modal--image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Form Modal Styles
+   ========================================================================== */
+
+/* Input fields for paste modal and forms */
+.modal__input,
+.modal__textarea {
+  width: 100%;
+  padding: var(--space-md);
+  background: var(--surface-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: all var(--transition-base);
+}
+
+.modal__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.modal__input:focus,
+.modal__textarea:focus {
+  border-color: var(--color-plasma);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  outline: none;
+}
+
+/* Form group */
+.modal__form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.modal__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.modal__help {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: var(--space-xs);
+}
+
+/* Special Modals
+   ========================================================================== */
+
+/* Paste Modal specific styles */
+.paste-modal-input,
+.paste-modal-textarea {
+  width: 100%;
+  padding: var(--space-md);
+  background: var(--surface-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: all var(--transition-base);
+}
+
+.paste-modal-textarea {
+  min-height: 200px;
+  font-family: var(--font-mono);
+}
+
+.paste-modal-input:focus,
+.paste-modal-textarea:focus {
+  border-color: var(--color-plasma);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  outline: none;
+}
+
+/* Animations
+   ========================================================================== */
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: var(--space-md);
+  }
+  
+  .modal {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .modal--lg,
+  .modal--xl {
+    max-width: 100%;
+  }
+  
+  .modal__header,
+  .modal__body,
+  .modal__footer {
+    padding: var(--space-md);
+  }
+  
+  .modal__footer {
+    flex-wrap: wrap;
+  }
+  
+  .modal__footer > * {
+    flex: 1;
+    min-width: 120px;
+  }
+}

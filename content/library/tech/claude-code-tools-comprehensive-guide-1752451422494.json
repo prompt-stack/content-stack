@@ -1,0 +1,62 @@
+{
+  "id": "processed-1752464045379",
+  "source_metadata_id": "paste-1752451422494",
+  "category": "tech",
+  "content_type": "article",
+  "confidence": "high",
+  "score": 10,
+  "title": "Claude Code Tools Comprehensive Guide",
+  "summary": "Complete reference guide for Claude Code's WebSearch, WebFetch, and all built-in tools, plus custom tool creation methods including MCP, hooks, and API extensions",
+  "key_points": [
+    "WebSearch provides snippets with citations, WebFetch retrieves full page content",
+    "14 built-in tools covering file operations, web access, shell commands, and task management",
+    "Custom tools can be created via bash scripts, slash commands, MCP, hooks, or API definitions",
+    "Some tools require explicit permissions for file modification or shell execution",
+    "Claude Code is extensible to integrate with external APIs and custom workflows"
+  ],
+  "hooks": [
+    "Claude Code has 14 built-in tools - here's the complete list",
+    "WebSearch vs WebFetch: Which tool should you use and when?",
+    "5 ways to extend Claude Code with your own custom tools"
+  ],
+  "quotable_moments": [
+    "WebSearch is for quick, up-to-date snippets with citations. WebFetch is for retrieving and analyzing the full content of a specific web page",
+    "Claude Code is designed to be extensible, enabling you to add your own tools and automate workflows beyond the built-in set",
+    "Place custom command scripts in a .claude/commands directory in your project. Each script becomes a slash command"
+  ],
+  "topics": [
+    "claude code",
+    "AI tools",
+    "development automation",
+    "web scraping",
+    "custom tooling",
+    "MCP protocol",
+    "API integration"
+  ],
+  "metrics": {
+    "word_count": 1831,
+    "reading_time": "8 minutes",
+    "language": "en"
+  },
+  "channel_fitness": {
+    "tweet_single": 0.2,
+    "tweet_thread": 0.8,
+    "linkedin_post": 0.7,
+    "newsletter_section": 0.9,
+    "blog_article": 1.0,
+    "short_video_script": 0.3,
+    "knowledge_base_card": 1.0
+  },
+  "suggested_styles": [
+    "technical documentation",
+    "how-to guide",
+    "reference manual",
+    "tool comparison"
+  ],
+  "action_flags": {
+    "needs_fact_check": false,
+    "contains_sensitive_content": false
+  },
+  "review_notes": "Excellent technical documentation with clear tables, practical examples, and comprehensive coverage of Claude Code's capabilities and extensibility options.",
+  "processed_at": "2025-07-14T10:40:45.379Z"
+}

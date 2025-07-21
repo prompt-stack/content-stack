@@ -1,0 +1,180 @@
+{
+  "categories": {
+    "tech": {
+      "name": "Technology",
+      "description": "Programming, AI, software, digital tools, automation",
+      "color": "#6366f1"
+    },
+    "business": {
+      "name": "Business",
+      "description": "Entrepreneurship, marketing, strategy, growth",
+      "color": "#10b981"
+    },
+    "finance": {
+      "name": "Finance",
+      "description": "Investing, crypto, money management, economics",
+      "color": "#f59e0b"
+    },
+    "health": {
+      "name": "Health & Wellness",
+      "description": "Fitness, wellness, nutrition, mental health",
+      "color": "#ef4444"
+    },
+    "cooking": {
+      "name": "Cooking",
+      "description": "Recipes, food prep, culinary techniques",
+      "color": "#ec4899"
+    },
+    "education": {
+      "name": "Education",
+      "description": "Learning, tutorials, how-to guides",
+      "color": "#8b5cf6"
+    },
+    "lifestyle": {
+      "name": "Lifestyle",
+      "description": "Personal development, habits, productivity",
+      "color": "#06b6d4"
+    },
+    "entertainment": {
+      "name": "Entertainment",
+      "description": "Pop culture, media, gaming, arts",
+      "color": "#a855f7"
+    },
+    "general": {
+      "name": "General",
+      "description": "Cross-category or uncategorized content",
+      "color": "#6b7280"
+    }
+  },
+  "contentTypes": {
+    "youtube": {
+      "name": "YouTube Transcript",
+      "description": "Video transcripts with timestamps, educational content, tutorials",
+      "icon": "🎬",
+      "indicators": ["timestamps", "video_id", "duration"]
+    },
+    "tiktok": {
+      "name": "TikTok Script",
+      "description": "Short-form scripts, hook-driven content, viral patterns",
+      "icon": "🎵",
+      "indicators": ["hook", "short_form", "viral_potential"]
+    },
+    "article": {
+      "name": "Article",
+      "description": "Long-form text with structure, headers, formal writing",
+      "icon": "📄",
+      "indicators": ["headers", "sections", "formal_tone"]
+    },
+    "voice-note": {
+      "name": "Voice Note",
+      "description": "Personal monologues, stream-of-consciousness, insights",
+      "icon": "🎙️",
+      "indicators": ["personal", "conversational", "insights"]
+    },
+    "chat-thread": {
+      "name": "Chat Thread",
+      "description": "Conversations, dialogues, Q&A sessions",
+      "icon": "💬",
+      "indicators": ["participants", "dialogue", "back_and_forth"]
+    },
+    "twitter-thread": {
+      "name": "Twitter Thread",
+      "description": "Multi-tweet threads, numbered sequences",
+      "icon": "🧵",
+      "indicators": ["numbered", "thread_structure", "tweets"]
+    },
+    "linkedin-post": {
+      "name": "LinkedIn Post",
+      "description": "Professional updates, thought leadership content",
+      "icon": "💼",
+      "indicators": ["professional", "insights", "industry"]
+    },
+    "newsletter": {
+      "name": "Newsletter",
+      "description": "Email newsletter content, curated insights",
+      "icon": "📧",
+      "indicators": ["sections", "curated", "subscribers"]
+    },
+    "podcast": {
+      "name": "Podcast Transcript",
+      "description": "Audio podcast transcripts, interview format",
+      "icon": "🎧",
+      "indicators": ["speakers", "interview", "audio_transcript"]
+    },
+    "general": {
+      "name": "General Content",
+      "description": "Content that doesn't fit other categories",
+      "icon": "📝",
+      "indicators": []
+    }
+  },
+  "channelFitness": {
+    "tweet_single": {
+      "name": "Single Tweet",
+      "description": "Short, punchy insights, hot takes (< 280 chars)",
+      "maxLength": 280
+    },
+    "tweet_thread": {
+      "name": "Twitter Thread",
+      "description": "Educational content, step-by-step guides, stories",
+      "idealLength": "5-15 tweets"
+    },
+    "linkedin_post": {
+      "name": "LinkedIn Post",
+      "description": "Professional insights, industry analysis, thought leadership",
+      "idealLength": "500-1300 chars"
+    },
+    "newsletter_section": {
+      "name": "Newsletter Section",
+      "description": "In-depth analysis, curated insights, trends",
+      "idealLength": "200-500 words"
+    },
+    "blog_article": {
+      "name": "Blog Article",
+      "description": "Comprehensive guides, detailed explanations",
+      "idealLength": "800-2000 words"
+    },
+    "short_video_script": {
+      "name": "Short Video Script",
+      "description": "Visual concepts, demonstrations, quick tips",
+      "idealLength": "30-60 seconds"
+    },
+    "knowledge_base_card": {
+      "name": "Knowledge Base Card",
+      "description": "Reference material, definitions, frameworks",
+      "idealLength": "100-300 words"
+    }
+  },
+  "transformationStyles": {
+    "educational": {
+      "name": "Educational",
+      "description": "Teaching moments, how-to content, explanations",
+      "tone": "informative"
+    },
+    "viral": {
+      "name": "Viral",
+      "description": "Controversial takes, surprising insights, engagement bait",
+      "tone": "provocative"
+    },
+    "story": {
+      "name": "Story",
+      "description": "Personal narratives, case studies, journeys",
+      "tone": "narrative"
+    },
+    "personal": {
+      "name": "Personal",
+      "description": "Opinions, experiences, reflections",
+      "tone": "authentic"
+    },
+    "analytical": {
+      "name": "Analytical",
+      "description": "Data-driven insights, research, comparisons",
+      "tone": "objective"
+    },
+    "motivational": {
+      "name": "Motivational",
+      "description": "Inspiring content, calls-to-action, empowerment",
+      "tone": "uplifting"
+    }
+  }
+}

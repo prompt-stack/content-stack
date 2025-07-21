@@ -1,0 +1,284 @@
+/* ==========================================================================
+   Badge Component
+   ========================================================================== */
+
+/**
+ * Small labeling component for status, counts, and categories
+ * Supports multiple color variants and sizes
+ */
+
+/* Base Badge
+   ========================================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-md);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  transition: all var(--transition-base);
+}
+
+/* Badge Variants
+   ========================================================================== */
+
+/* Blue/Info - Primary information */
+.badge--blue,
+.badge--info {
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--color-plasma);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+/* Green/Success - Positive states */
+.badge--green,
+.badge--success {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--color-success);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+/* Yellow/Warning - Caution states */
+.badge--yellow,
+.badge--warning {
+  background: rgba(255, 170, 0, 0.1);
+  color: var(--color-warning);
+  border: 1px solid rgba(255, 170, 0, 0.2);
+}
+
+/* Red/Error - Negative states */
+.badge--red,
+.badge--error {
+  background: rgba(255, 51, 102, 0.1);
+  color: var(--color-error);
+  border: 1px solid rgba(255, 51, 102, 0.2);
+}
+
+/* Gray/Neutral - Default state */
+.badge--gray,
+.badge--neutral {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+/* Glass style */
+.badge--glass {
+  background: var(--surface-glass);
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(12px);
+}
+
+/* Solid variants (no transparency) */
+.badge--solid-blue {
+  background: var(--color-plasma);
+  color: var(--text-inverse);
+  border: none;
+}
+
+.badge--solid-green {
+  background: var(--color-success);
+  color: var(--color-cosmos);
+  border: none;
+}
+
+.badge--solid-yellow {
+  background: var(--color-warning);
+  color: var(--color-cosmos);
+  border: none;
+}
+
+.badge--solid-red {
+  background: var(--color-error);
+  color: var(--text-inverse);
+  border: none;
+}
+
+/* Badge Sizes
+   ========================================================================== */
+
+/* Extra Small - for compact tags */
+.badge--xs {
+  padding: 0.125rem 0.5rem;
+  font-size: 0.625rem;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Small */
+.badge--sm {
+  padding: calc(var(--space-xs) * 0.5) var(--space-sm);
+  font-size: 0.625rem;
+}
+
+/* Medium - default size */
+.badge--md {
+  padding: var(--space-xs) var(--space-md);
+  font-size: 0.75rem;
+}
+
+/* Large */
+.badge--lg {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 0.875rem;
+}
+
+/* Badge with Icon
+   ========================================================================== */
+
+.badge__icon {
+  margin-right: var(--space-xs);
+  font-size: 1.125em;
+}
+
+.badge--sm .badge__icon {
+  margin-right: calc(var(--space-xs) * 0.5);
+}
+
+/* Dot indicator */
+.badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  margin-right: var(--space-xs);
+}
+
+/* Badge Groups
+   ========================================================================== */
+
+.badge-group {
+  display: inline-flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+/* Special Badge Types
+   ========================================================================== */
+
+/* Count badge (for numbers) */
+.badge--count {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--space-xs);
+  font-size: 0.625rem;
+}
+
+/* Tag variant - for category tags */
+.badge--tag {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+  border-radius: var(--radius-sm);
+}
+
+/* Status badge with pulse */
+.badge--live {
+  position: relative;
+}
+
+.badge--live::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: inherit;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s ease-out infinite;
+  z-index: -1;
+}
+
+/* Removable badge */
+.badge--removable {
+  padding-right: var(--space-xs);
+}
+
+.badge__remove {
+  margin-left: var(--space-xs);
+  padding: 2px;
+  border-radius: 50%;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge__remove:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.badge__remove .fas {
+  font-size: 0.7rem;
+}
+
+/* Badge positioned absolute (for avatars, cards, etc) */
+.badge--absolute {
+  position: absolute;
+}
+
+.badge--top-right {
+  top: 0;
+  right: 0;
+  transform: translate(25%, -25%);
+}
+
+.badge--top-left {
+  top: 0;
+  left: 0;
+  transform: translate(-25%, -25%);
+}
+
+.badge--bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: translate(25%, 25%);
+}
+
+.badge--bottom-left {
+  bottom: 0;
+  left: 0;
+  transform: translate(-25%, 25%);
+}
+
+/* Interactive badges */
+.badge--clickable {
+  cursor: pointer;
+}
+
+.badge--clickable:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Tier badges (from mobile menu) */
+.badge--tier {
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Smaller badges on mobile */
+  .badge {
+    padding: calc(var(--space-xs) * 0.75) var(--space-sm);
+    font-size: 0.625rem;
+  }
+  
+  .badge--lg {
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.75rem;
+  }
+}

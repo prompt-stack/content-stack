@@ -1,0 +1,305 @@
+/* ==========================================================================
+   Button Component
+   ========================================================================== */
+
+/**
+ * Futuristic button styles following the George Jetson aesthetic
+ * Naming convention: .btn base class with BEM modifiers
+ */
+
+/* Base Button
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  /* Prevent text selection on double click */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Focus state for accessibility */
+.btn:focus-visible {
+  outline: 2px solid var(--color-plasma);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+.btn:disabled,
+.btn.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Button Variants
+   ========================================================================== */
+
+/* Primary Button - Plasma gradient */
+.btn--primary {
+  background: linear-gradient(135deg, var(--color-plasma), #0099ff);
+  color: var(--text-inverse);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+.btn--primary:hover:not(:disabled):not(.is-disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+}
+
+.btn--primary:active:not(:disabled):not(.is-disabled) {
+  transform: translateY(0);
+}
+
+/* Secondary Button - Glass morphism */
+.btn--secondary {
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+.btn--secondary:hover:not(:disabled):not(.is-disabled) {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--border-medium);
+}
+
+/* Ghost Button - Minimal style */
+.btn--ghost {
+  background: transparent;
+  color: var(--color-plasma);
+  border: 1px solid transparent;
+}
+
+.btn--ghost:hover:not(:disabled):not(.is-disabled) {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--color-plasma);
+}
+
+/* Danger Button - Destructive actions */
+.btn--danger {
+  background: linear-gradient(135deg, var(--color-error), #ff1744);
+  color: var(--text-inverse);
+  box-shadow: 0 4px 12px rgba(255, 51, 102, 0.3);
+}
+
+.btn--danger:hover:not(:disabled):not(.is-disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 51, 102, 0.4);
+}
+
+/* Button Sizes
+   ========================================================================== */
+
+/* Extra Small - For input groups */
+.btn--xs {
+  padding: 0.375rem 0.875rem;
+  font-size: 0.8125rem;
+  gap: var(--space-xs);
+  letter-spacing: 0.01em;
+  height: 2.5rem;
+  line-height: 1.2;
+  font-weight: 450;
+}
+
+/* Small */
+.btn--sm {
+  padding: var(--space-xs) var(--space-md);
+  font-size: 0.8125rem;
+  gap: var(--space-xs);
+  height: 2.75rem;
+}
+
+/* Large */
+.btn--lg {
+  padding: var(--space-md) var(--space-xl);
+  font-size: 1rem;
+  gap: var(--space-md);
+}
+
+/* Full width */
+.btn--full {
+  width: 100%;
+}
+
+/* Button States
+   ========================================================================== */
+
+/* Loading state */
+.btn.is-loading {
+  color: transparent;
+  pointer-events: none;
+}
+
+.btn.is-loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* Adjust spinner size for button sizes */
+.btn--sm.is-loading::after {
+  width: 12px;
+  height: 12px;
+}
+
+.btn--lg.is-loading::after {
+  width: 20px;
+  height: 20px;
+}
+
+/* Button Elements
+   ========================================================================== */
+
+/* Icon in button */
+.btn__icon {
+  font-size: 1.125em;
+  line-height: 1;
+}
+
+/* Icon positioning */
+.btn__icon-left,
+.btn__icon-right {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.125em;
+  line-height: 1;
+}
+
+.btn__spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* Icon only button */
+.btn--icon-only {
+  padding: var(--space-sm);
+  gap: 0;
+}
+
+.btn--icon-only.btn--sm {
+  padding: var(--space-xs);
+}
+
+.btn--icon-only.btn--lg {
+  padding: var(--space-md);
+}
+
+/* Button Group
+   ========================================================================== */
+
+.btn-group {
+  display: inline-flex;
+  gap: var(--space-xs);
+}
+
+/* Attached button group - no gaps */
+.btn-group--attached {
+  gap: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-default);
+}
+
+.btn-group--attached .btn {
+  border-radius: 0;
+  border: none;
+  border-right: 1px solid var(--border-default);
+}
+
+.btn-group--attached .btn:last-child {
+  border-right: none;
+}
+
+.btn-group--attached .btn:not(:first-child) {
+  margin-left: 0;
+}
+
+/* Vertical button group */
+.btn-group--vertical {
+  flex-direction: column;
+}
+
+.btn-group--vertical.btn-group--attached {
+  overflow: hidden;
+}
+
+.btn-group--vertical.btn-group--attached .btn {
+  border-right: none;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.btn-group--vertical.btn-group--attached .btn:last-child {
+  border-bottom: none;
+}
+
+/* Special Effects
+   ========================================================================== */
+
+/* Glow effect for primary buttons */
+.btn--glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Pulse effect */
+.btn--pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Input Group Integration
+   ========================================================================== */
+
+/* Ensure buttons in input groups match input height exactly */
+.btn--xs,
+.btn--sm {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* When used with inputs, match the exact input height */
+.input + .btn--xs,
+.input ~ .btn--xs,
+div:has(> .input) > .btn--xs {
+  height: 2.5rem !important;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Responsive
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Stack button groups on mobile */
+  .btn-group--stack-mobile {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-group--stack-mobile .btn {
+    width: 100%;
+  }
+}

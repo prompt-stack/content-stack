@@ -1,0 +1,52 @@
+/* ==========================================================================
+   FileInput Component
+   ========================================================================== */
+
+/**
+ * FileInput primitive component styles
+ * Hidden native input with custom clickable area
+ */
+
+.fileinput {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fileinput__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.fileinput__label {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: all var(--transition-base);
+}
+
+.fileinput:hover:not(.fileinput--disabled) .fileinput__label {
+  background: var(--color-primary-dark);
+}
+
+.fileinput:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+
+.fileinput--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

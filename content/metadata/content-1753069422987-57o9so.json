@@ -1,0 +1,25 @@
+{
+  "id": "content-1753069422987-57o9so",
+  "created_at": "2025-07-21T03:43:42.987Z",
+  "updated_at": "2025-07-21T14:23:35.823Z",
+  "status": "inbox",
+  "source": {
+    "method": "upload",
+    "url": null
+  },
+  "content": {
+    "type": "image",
+    "title": "IMG_0079.jpg",
+    "full_text": "Binary file: IMG_0079.jpg (1368KB)",
+    "word_count": 4,
+    "hash": "sha256-d88f19340caf8f5f1e1a5012472531f3cba26bdc91fcbd72808619dde717c60c"
+  },
+  "location": {
+    "inbox_path": "content/inbox/upload-1753069422987-57o9so.jpg",
+    "final_path": null
+  },
+  "llm_analysis": null,
+  "tags": [
+    "prompt-stack"
+  ]
+}

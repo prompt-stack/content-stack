@@ -1,0 +1,227 @@
+/* ==========================================================================
+   Spinner Component - Loading Indicators
+   ========================================================================== */
+
+/**
+ * Consistent loading spinners across the application
+ * Supports multiple sizes and styles
+ */
+
+/* Base Spinner
+   ========================================================================== */
+.spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--border-light);
+  border-top-color: var(--color-plasma);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Spinner Sizes
+   ========================================================================== */
+
+/* Extra Small - 1rem */
+.spinner--xs {
+  width: 1rem;
+  height: 1rem;
+  border-width: 2px;
+}
+
+/* Small - 1.5rem */
+.spinner--sm {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-width: 2px;
+}
+
+/* Medium - 2rem (default) */
+.spinner--md {
+  width: 2rem;
+  height: 2rem;
+  border-width: 2px;
+}
+
+/* Large - 3rem */
+.spinner--lg {
+  width: 3rem;
+  height: 3rem;
+  border-width: 3px;
+}
+
+/* Extra Large - 4rem */
+.spinner--xl {
+  width: 4rem;
+  height: 4rem;
+  border-width: 4px;
+}
+
+/* Spinner Variants
+   ========================================================================== */
+
+/* Dots spinner */
+.spinner--dots {
+  display: inline-flex;
+  gap: var(--space-xs);
+  border: none;
+  animation: none;
+}
+
+.spinner--dots::before,
+.spinner--dots::after,
+.spinner--dots span {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-plasma);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.spinner--dots::after {
+  animation-delay: 0.2s;
+}
+
+.spinner--dots span {
+  animation-delay: 0.4s;
+}
+
+/* Pulse spinner */
+.spinner--pulse {
+  border: none;
+  background: var(--color-plasma);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Ghost spinner - transparent background */
+.spinner--ghost {
+  border-color: transparent;
+  border-top-color: var(--color-plasma);
+  border-right-color: var(--color-plasma);
+}
+
+/* Spinner States
+   ========================================================================== */
+
+/* Centered in container */
+.spinner--centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Full page overlay */
+.spinner--overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: var(--z-spinner, 9999);
+}
+
+/* With backdrop */
+.spinner-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--surface-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-spinner-backdrop, 9998);
+}
+
+/* Inline with text */
+.spinner--inline {
+  vertical-align: middle;
+  margin: 0 var(--space-xs);
+}
+
+/* Spinner with Label
+   ========================================================================== */
+
+.spinner-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.spinner-label {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+}
+
+/* Color Variants
+   ========================================================================== */
+
+.spinner--primary {
+  border-top-color: var(--color-plasma);
+}
+
+.spinner--success {
+  border-top-color: var(--color-success);
+}
+
+.spinner--warning {
+  border-top-color: var(--color-warning);
+}
+
+.spinner--error {
+  border-top-color: var(--color-error);
+}
+
+.spinner--white {
+  border-color: rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+}
+
+/* Animations
+   ========================================================================== */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.75);
+  }
+}
+
+/* Dark Mode Support
+   ========================================================================== */
+
+[data-theme="dark"] .spinner {
+  border-color: var(--border-dark);
+}
+
+[data-theme="dark"] .spinner-backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Accessibility
+   ========================================================================== */
+
+/* Screen reader text */
+.spinner[role="status"] > .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

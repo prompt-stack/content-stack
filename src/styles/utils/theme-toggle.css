@@ -1,0 +1,269 @@
+/* ==========================================================================
+   Theme Toggle Feature
+   ========================================================================== */
+
+/**
+ * Theme switcher component with light/dark/system options
+ * Features glassmorphic styling and smooth transitions
+ */
+
+/* Theme Toggle Container
+   ========================================================================== */
+.theme-toggle {
+  display: flex;
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  padding: var(--space-xs);
+  gap: var(--space-xs);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Theme Options
+   ========================================================================== */
+.theme-toggle__option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  z-index: 2;
+}
+
+.theme-toggle__option:hover {
+  color: var(--text-primary);
+}
+
+/* Active state */
+.theme-toggle__option.is-active,
+.theme-toggle__option--active {
+  background: var(--surface-primary);
+  color: var(--color-plasma);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Option Icons */
+.theme-toggle__icon {
+  font-size: 1rem;
+  transition: transform var(--transition-base);
+}
+
+.theme-toggle__option:hover .theme-toggle__icon {
+  transform: scale(1.1);
+}
+
+.theme-toggle__option.is-active .theme-toggle__icon,
+.theme-toggle__option--active .theme-toggle__icon {
+  transform: scale(1);
+}
+
+/* Option Label */
+.theme-toggle__label {
+  font-size: inherit;
+}
+
+/* Theme Toggle Variants
+   ========================================================================== */
+
+/* Compact variant */
+.theme-toggle--compact {
+  padding: var(--space-2xs);
+}
+
+.theme-toggle--compact .theme-toggle__option {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 0.75rem;
+}
+
+.theme-toggle--compact .theme-toggle__icon {
+  font-size: 0.875rem;
+}
+
+/* Pills variant */
+.theme-toggle--pills {
+  background: transparent;
+  border: none;
+  gap: var(--space-sm);
+}
+
+.theme-toggle--pills .theme-toggle__option {
+  background: var(--surface-glass);
+  border: 1px solid var(--border-light);
+}
+
+.theme-toggle--pills .theme-toggle__option:hover {
+  border-color: var(--color-plasma);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.theme-toggle--pills .theme-toggle__option.is-active,
+.theme-toggle--pills .theme-toggle__option--active {
+  background: linear-gradient(135deg, var(--color-plasma), #0099ff);
+  color: var(--text-inverse);
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+/* Header Integration
+   ========================================================================== */
+.header__theme-toggle {
+  margin-left: var(--space-md);
+}
+
+/* Animated Background Effect
+   ========================================================================== */
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent, rgba(0, 212, 255, 0.05));
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.theme-toggle:hover::before {
+  opacity: 1;
+}
+
+/* Theme Transition Animation
+   ========================================================================== */
+@keyframes themeSwitch {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.theme-toggle__option.is-transitioning {
+  animation: themeSwitch 0.3s ease-out;
+}
+
+/* Tooltip Support
+   ========================================================================== */
+.theme-toggle__option[data-tooltip] {
+  position: relative;
+}
+
+.theme-toggle__option[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--surface-elevated);
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  font-weight: 400;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.theme-toggle__option[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+/* Dark Mode Specific Styles
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  .theme-toggle__option.is-active,
+  .theme-toggle__option--active {
+    background: var(--surface-glass);
+    color: var(--color-plasma);
+  }
+  
+  .theme-toggle::before {
+    background: linear-gradient(135deg, transparent, rgba(0, 212, 255, 0.1));
+  }
+}
+
+/* Responsive
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Hide text labels on mobile */
+  .theme-toggle__label {
+    display: none;
+  }
+  
+  .theme-toggle__option {
+    padding: var(--space-sm);
+  }
+  
+  .theme-toggle {
+    gap: var(--space-2xs);
+  }
+  
+  /* Show tooltips on mobile since labels are hidden */
+  .theme-toggle__option[data-tooltip]::after {
+    font-size: 0.625rem;
+    padding: var(--space-2xs) var(--space-xs);
+  }
+}
+
+@media (max-width: 400px) {
+  .theme-toggle {
+    transform: scale(0.9);
+    transform-origin: center right;
+  }
+}
+
+/* Legacy Support - can be removed after React components are updated
+   ========================================================================== */
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  z-index: 2;
+}
+
+.theme-option:hover {
+  color: var(--text-primary);
+}
+
+.theme-option.is-active,
+.theme-option--active {
+  background: var(--surface-primary);
+  color: var(--color-plasma);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-theme-toggle {
+  margin-left: var(--space-md);
+}
