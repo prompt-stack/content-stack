@@ -1,3 +1,15 @@
+/**
+ * @file hooks/useTheme.ts
+ * @purpose Hook for Theme management
+ * @layer hook
+ * @deps none
+ * @used-by [Header, MobileMenu]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useState, useEffect } from 'react'
 
 export type Theme = 'light' | 'dark' | 'system'

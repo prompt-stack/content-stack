@@ -1,12 +1,20 @@
-import { forwardRef, ReactNode, CSSProperties } from 'react';
-import { Box, BoxProps } from './Box';
-
 /**
+ * @file components/ScrollContainer.tsx
+ * @purpose Component for ScrollContainer
  * @layer primitive
- * @cssFile /styles/components/scroll-container.css
- * @dependencies Box
- * @className .scroll-container
+ * @deps Box
+ * @used-by [ContentInboxQueuePanel, InboxWorkflowDemo]
+ * @css /styles/components/scroll-container.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
+
+import { forwardRef, useRef, useEffect } from 'react';
+import type { ReactNode } from 'react';
+import clsx from 'clsx';
+import { Box } from './Box';
+import type { BoxProps } from './Box';
 
 export interface ScrollContainerProps extends Omit<BoxProps, 'ref'> {
   children: ReactNode;

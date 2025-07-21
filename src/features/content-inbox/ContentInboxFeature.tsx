@@ -1,8 +1,13 @@
 /**
+ * @file features/content-inbox/ContentInboxFeature.tsx
+ * @purpose Component for ContentInboxFeature
  * @layer feature
- * @cssFile /styles/features/content-inbox.css
- * @dependencies Box, Button, Card
- * @className .content-inbox__
+ * @deps Box, Button, Card
+ * @used-by [InboxPage, InboxPlayground]
+ * @css /styles/features/content-inbox.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 import { Box } from '@/components/Box';
 import { Button } from '@/components/Button';

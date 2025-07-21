@@ -1,12 +1,13 @@
 /**
+ * @file components/Select.tsx
+ * @purpose Select dropdown component - maps to HTML select element
  * @layer primitive
- * @description Select dropdown component - maps to HTML select element
- * @dependencies None (primitive component)
- * @cssFile /styles/components/forms.css
- * @className .select
- * 
- * This is a PRIMITIVE component that wraps the native HTML <select> element
- * with consistent styling. For custom dropdowns, use the Dropdown composed component.
+ * @deps None (primitive component)
+ * @used-by [Select]
+ * @css /styles/components/forms.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

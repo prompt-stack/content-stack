@@ -22,7 +22,7 @@ npm run audit:component Card
 - Proper className handling with clsx
 
 ### 2. System-Level Audit (IMPLEMENTED)
-**Script:** `design-system/scripts/css-audit.sh`  
+**Script:** `design-system/scripts/audit-css.sh`  
 **NPM Command:** `npm run audit:system`  
 **Speed:** 30-60 seconds  
 
@@ -38,9 +38,9 @@ npm run audit:component Card
 ```json
 {
   "audit:component": "./design-system/scripts/audit-component.sh",
-  "audit:system": "./design-system/scripts/css-audit.sh",
+  "audit:system": "./design-system/scripts/audit-css.sh",
   "audit:quick": "./design-system/scripts/audit-component.sh",
-  "audit:full": "./design-system/scripts/css-audit.sh"
+  "audit:full": "./design-system/scripts/audit-css.sh"
 }
 ```
 
@@ -86,7 +86,7 @@ npm run audit:full
 | Audit Level | Status | Script | Speed |
 |------------|---------|---------|--------|
 | Component | ✅ Implemented | audit-component.sh | 1-2s |
-| System | ✅ Implemented | css-audit.sh | 30-60s |
+| System | ✅ Implemented | audit-css.sh | 30-60s |
 | Feature | 🚧 Planned | audit-feature.sh | 5-10s |
 | Page | 🚧 Planned | audit-page.sh | 10-15s |
 

@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/card.css
+ * @purpose Component styles for card
+ * @layer component-styles
+ * @component /src/components/card.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Card Component
    ========================================================================== */

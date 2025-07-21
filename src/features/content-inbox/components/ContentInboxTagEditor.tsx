@@ -1,3 +1,15 @@
+/**
+ * @file features/content-inbox/components/ContentInboxTagEditor.tsx
+ * @purpose [TODO: Add purpose]
+ * @layer feature
+ * @deps none
+ * @used-by [ContentInboxQueuePanel]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useState, KeyboardEvent } from 'react';
 
 interface ContentInboxTagEditorProps {

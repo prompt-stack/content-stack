@@ -1,4 +1,14 @@
 /**
+ * @file content/blog/kiro/assets/scripts/modules/ContentLoader.js
+ * @purpose Blog content script: ContentLoader
+ * @layer content
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
+/**
  * ContentLoader - Handles dynamic content loading and rendering
  */
 export class ContentLoader {

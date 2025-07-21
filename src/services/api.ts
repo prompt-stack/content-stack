@@ -1,3 +1,15 @@
+/**
+ * @file services/api.ts
+ * @purpose [TODO: Add purpose]
+ * @layer service
+ * @deps none
+ * @used-by [ContentInboxApi, HealthPage, api, constants, useInbox, useUserTier]
+ * @css none
+ * @llm-read true
+ * @llm-write read-only
+ * @llm-role async-service
+ */
+
 import { api as apiClient, ApiError } from '@/lib/api'
 import type { ContentItem, TierLevel } from '@/types'
 

@@ -1,4 +1,16 @@
 /**
+ * @file playground/utils/formatters.ts
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [Dropzone, InboxItem, MetadataPanel]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
+/**
  * Utility functions for formatting data in the inbox interface
  */
 

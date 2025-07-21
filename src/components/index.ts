@@ -1,4 +1,16 @@
 /**
+ * @file components/index.ts
+ * @purpose [TODO: Add purpose]
+ * @layer primitive
+ * @deps none
+ * @used-by [main]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
+/**
  * Components Export
  * 
  * This file exports all primitive and composed components.

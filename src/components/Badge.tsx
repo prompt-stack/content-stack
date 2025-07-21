@@ -1,10 +1,13 @@
-import { ReactNode } from 'react';
-
 /**
+ * @file components/Badge.tsx
+ * @purpose Component for Badge
  * @layer primitive
- * @cssFile /styles/components/badge.css
- * @dependencies None
- * @className .badge
+ * @deps None
+ * @used-by [InboxWorkflowDemo]
+ * @css /styles/components/badge.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 export interface BadgeProps {

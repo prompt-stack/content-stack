@@ -1,3 +1,13 @@
+/**
+ * @file server/utils/hashing.js
+ * @purpose Server-side hashing logic
+ * @layer backend
+ * @deps [import crypto from 'crypto';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import crypto from 'crypto';
 
 /**

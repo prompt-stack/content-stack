@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/spinner.css
+ * @purpose Component styles for spinner
+ * @layer component-styles
+ * @component /src/components/spinner.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Spinner Component - Loading Indicators
    ========================================================================== */

@@ -1,3 +1,15 @@
+/**
+ * @file hooks/useUser.ts
+ * @purpose Hook for User management
+ * @layer hook
+ * @deps none
+ * @used-by [Header, MobileMenu, SubscriptionPage]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useState, useEffect } from 'react'
 
 export interface User {

@@ -1,3 +1,13 @@
+/**
+ * @file server/services/ps-inbox-validator.js
+ * @purpose Server-side ps-inbox-validator logic
+ * @layer backend
+ * @deps [import { METADATA_SCHEMA } from '../../config/metadata-schema.js';, import { isValidId,  isValidFilename,  sanitizeFilename as utilSanitizeFilename } from '../utils/validation.js';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import { isValidId, isValidFilename, sanitizeFilename as utilSanitizeFilename } from '../utils/validation.js';
 import { METADATA_SCHEMA } from '../../config/metadata-schema.js';
 

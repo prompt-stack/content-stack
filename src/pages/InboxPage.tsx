@@ -1,4 +1,16 @@
 /**
+ * @file pages/InboxPage.tsx
+ * @purpose Inbox page component
+ * @layer page
+ * @deps none
+ * @used-by [main]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role entrypoint
+ */
+
+/**
  * @page Inbox
  * @route /inbox
  * @cssFile /styles/pages/inbox.css

@@ -1,4 +1,14 @@
 /**
+ * @file content/blog/kiro/assets/scripts/modules/Navigation.js
+ * @purpose Blog content script: Navigation
+ * @layer content
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
+/**
  * Navigation - Handles navigation component and progress tracking
  */
 export class Navigation {

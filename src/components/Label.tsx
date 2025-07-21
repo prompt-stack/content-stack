@@ -1,12 +1,13 @@
 /**
+ * @file components/Label.tsx
+ * @purpose Form label component - maps to HTML label element
  * @layer primitive
- * @description Form label component - maps to HTML label element
- * @dependencies None (primitive component)
- * @cssFile /styles/components/forms.css
- * @className .label
- * 
- * This is a PRIMITIVE component that wraps the HTML <label> element for
- * consistent form labeling with proper accessibility.
+ * @deps None (primitive component)
+ * @used-by [Label]
+ * @css /styles/components/forms.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

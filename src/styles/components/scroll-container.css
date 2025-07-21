@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/scroll-container.css
+ * @purpose Component styles for scroll-container
+ * @layer component-styles
+ * @component /src/components/scroll-container.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ScrollContainer Component Styles */
 
 .scroll-container {

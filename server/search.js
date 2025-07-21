@@ -1,4 +1,14 @@
 /**
+ * @file server/search.js
+ * @purpose Server-side search logic
+ * @layer backend
+ * @deps [import path from 'path';, import { promises as fs } from 'fs';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
+/**
  * Search functionality for Content Stack
  */
 

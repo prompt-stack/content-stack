@@ -1,19 +1,14 @@
 /**
+ * @file components/Button.tsx
+ * @purpose Core button component - maps directly to HTML button element
  * @layer primitive
- * @description Core button component - maps directly to HTML button element
- * @dependencies None (primitive component)
- * @cssFile /styles/components/button.css
- * @className .btn
- * @variants ["primary", "secondary", "danger"]
- * @sizes ["xs", "sm", "md", "lg", "xl"]
- * @states ["loading", "disabled"]
+ * @deps None (primitive component)
+ * @used-by [App, Button, ButtonPlayground, CardPlayground, CompositionPlayground, ContentInboxFeature, ContentInboxInputPanel, ContentInboxQueuePanel, EditableField, FormPlayground, Header, InboxPlayground, InboxWorkflowDemo, ModalPlayground, PlaygroundPage, SubscriptionPage, UtilityPlayground]
+ * @css /styles/components/button.css
  * @status stable
- * @since 2025-07-19
- * @a11y aria-label required for icon-only buttons, aria-busy when loading
- * @performance Debounce onClick for heavy operations
- * 
- * This is a PRIMITIVE component - it has zero dependencies on other custom components
- * and maps 1:1 to the HTML <button> element with styling and variants.
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/modal.css
+ * @purpose Component styles for modal
+ * @layer component-styles
+ * @component /src/components/modal.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Modal Component
    ========================================================================== */

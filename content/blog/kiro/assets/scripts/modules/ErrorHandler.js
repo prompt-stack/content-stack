@@ -1,4 +1,14 @@
 /**
+ * @file content/blog/kiro/assets/scripts/modules/ErrorHandler.js
+ * @purpose Blog content script: ErrorHandler
+ * @layer content
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
+/**
  * ErrorHandler - Centralized error handling and user feedback
  * Will be fully implemented in task 10
  */

@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/pages/playground.css
+ * @purpose Page-specific styles for playground
+ * @layer page-styles
+ * @component /src/pages/playground.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
 /* Playground - Component Development Environment */
 @layer pages {
   .playground {

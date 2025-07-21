@@ -1,3 +1,15 @@
+/**
+ * @file playground/components/LayoutPlayground.tsx
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [PlaygroundPage]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 import { Card } from '@/components/Card'
 import { DemoSection } from '../PlaygroundLayout'
 

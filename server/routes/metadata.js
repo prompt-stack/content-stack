@@ -1,3 +1,13 @@
+/**
+ * @file server/routes/metadata.js
+ * @purpose Server-side metadata logic
+ * @layer backend
+ * @deps [import express from 'express';, import path from 'path';, import { PATHS,  pathHelpers } from '../../config/paths.js';, import { isValidId,  isPathWithinDirectory } from '../utils/validation.js';, import { promises as fs } from 'fs';, import { readJsonFile } from '../utils/file-lock.js';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import express from 'express';
 import { promises as fs } from 'fs';
 import path from 'path';

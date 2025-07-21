@@ -1,4 +1,14 @@
 /**
+ * @file content/blog/kiro/assets/scripts/modules/ProgressTracker.js
+ * @purpose Blog content script: ProgressTracker
+ * @layer content
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
+/**
  * ProgressTracker - Handles user progress tracking and persistence
  */
 export class ProgressTracker {

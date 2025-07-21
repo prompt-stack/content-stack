@@ -851,7 +851,7 @@ They want me to look at their design system as an example of this kind of struct
         "type": "file"
       },
       {
-        "name": "css-audit.sh",
+        "name": "audit-css.sh",
         "type": "file"
       },
       {

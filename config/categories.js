@@ -1,4 +1,14 @@
 /**
+ * @file config/categories.js
+ * @purpose Configuration for categories
+ * @layer config
+ * @deps none
+ * @llm-read true
+ * @llm-write read-only
+ * @llm-role entrypoint
+ */
+
+/**
  * Library Categories Configuration
  * Central source of truth for content categorization
  */

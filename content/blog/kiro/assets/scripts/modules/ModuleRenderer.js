@@ -1,4 +1,14 @@
 /**
+ * @file content/blog/kiro/assets/scripts/modules/ModuleRenderer.js
+ * @purpose Blog content script: ModuleRenderer
+ * @layer content
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
+/**
  * ModuleRenderer - Handles rendering of module cards and content
  */
 export class ModuleRenderer {

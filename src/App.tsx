@@ -1,3 +1,15 @@
+/**
+ * @file App.tsx
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [main]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'

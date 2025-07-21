@@ -1,4 +1,14 @@
 /**
+ * @file config/tier-system/features.js
+ * @purpose Configuration for features
+ * @layer config
+ * @deps none
+ * @llm-read true
+ * @llm-write read-only
+ * @llm-role entrypoint
+ */
+
+/**
  * Canonical Feature Configuration - Single Source of Truth
  * Based on feedback recommendations for tiered UX monetization
  */

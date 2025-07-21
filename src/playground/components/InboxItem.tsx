@@ -1,10 +1,14 @@
 /**
- * @component InboxItem
+ * @file playground/components/InboxItem.tsx
+ * @purpose Individual inbox item card
  * @layer composed
- * @description Individual inbox item card
- * @cssFile /styles/features/inbox.css
+ * @deps none
+ * @used-by [InboxQueue]
+ * @css /styles/features/inbox.css
  * @status stable
- * @since 2025-07-20
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import clsx from 'clsx'

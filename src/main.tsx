@@ -1,3 +1,15 @@
+/**
+ * @file main.tsx
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps [App, layout/Layout, pages/HealthPage, pages/InboxPage, pages/PlaygroundPage, pages/SubscriptionPage]
+ * @used-by none
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'

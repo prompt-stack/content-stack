@@ -1,3 +1,15 @@
+/**
+ * @file hooks/useBreakpoint.ts
+ * @purpose Hook for Breakpoint management
+ * @layer hook
+ * @deps [useMediaQuery]
+ * @used-by [Header]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useMediaQuery } from './useMediaQuery'
 import { MEDIA_QUERIES } from '@/lib/breakpoints'
 

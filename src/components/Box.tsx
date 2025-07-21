@@ -1,18 +1,13 @@
 /**
+ * @file components/Box.tsx
+ * @purpose Layout box component - maps to HTML div element
  * @layer primitive
- * @description Layout box component - maps to HTML div element
- * @dependencies None (primitive component)
- * @cssFile none (utilities only)
- * @utilities spacing, display, flexbox, background, shadow, border
- * @className Composed from utility classes based on props
- * 
- * This is a PRIMITIVE component that provides a flexible container wrapper with
- * common layout properties exposed as props. It's the foundation building block
- * for layout and spacing, using your existing utility class system.
- * 
- * Box serves as the bridge between your utility system and components,
- * allowing composed components to use utilities via props rather than
- * mixing utility classes directly in className.
+ * @deps None (primitive component)
+ * @used-by [Card, ContentInboxFeature, ContentInboxInputPanel, ContentInboxQueuePanel, EditableField, InboxPage, InboxPlayground, InboxWorkflowDemo]
+ * @css none(utilitiesonly)
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

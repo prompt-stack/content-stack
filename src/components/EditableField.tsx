@@ -1,15 +1,16 @@
-import { useState, useRef, useEffect, KeyboardEvent } from 'react';
-import { Box } from './Box';
-import { Text } from './Text';
-import { Input } from './Input';
-import { Button } from './Button';
-
 /**
+ * @file components/EditableField.tsx
+ * @purpose Component for EditableField
  * @layer composed
- * @cssFile /styles/components/editable-field.css
- * @dependencies Box, Text, Input, Button
- * @className .editable-field
+ * @deps Box, Text, Input, Button
+ * @used-by none
+ * @css /styles/components/editable-field.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
+
+import type { ReactNode } from 'react';
 
 export interface EditableFieldProps {
   value: string;
@@ -20,7 +21,7 @@ export interface EditableFieldProps {
   required?: boolean;
   disabled?: boolean;
   validator?: (value: string) => string | undefined; // Returns error message if invalid
-  renderValue?: (value: string) => React.ReactNode; // Custom render for display mode
+  renderValue?: (value: string) => ReactNode; // Custom render for display mode
   multiline?: boolean;
   maxLength?: number;
   className?: string;

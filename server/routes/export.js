@@ -1,3 +1,13 @@
+/**
+ * @file server/routes/export.js
+ * @purpose Server-side export logic
+ * @layer backend
+ * @deps [import archiver from 'archiver';, import express from 'express';, import path from 'path';, import { PATHS } from '../../config/paths.js';, import { Parser } from 'json2csv';, import { promises as fs } from 'fs';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import express from 'express';
 import { promises as fs } from 'fs';
 import path from 'path';

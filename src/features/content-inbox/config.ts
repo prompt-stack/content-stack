@@ -1,7 +1,13 @@
 /**
+ * @file features/content-inbox/config.ts
+ * @purpose Content Inbox feature-specific configuration
  * @layer feature-config
- * @description Content Inbox feature-specific configuration
- * @dependencies /config (global configs)
+ * @deps /config (global configs)
+ * @used-by [ContentInboxQueuePanel, config, useContentQueue]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import contentTypes from '/config/content-types.json';

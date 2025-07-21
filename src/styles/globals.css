@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/globals.css
+ * @purpose Global CSS reset and base styles
+ * @layer base-styles
+ * @component none
+ * @deps none
+ * @llm-read true
+ * @llm-write read-only
+ * @llm-role pure-view
+ */
+
 /* Futuristic Minimalist Design System */
 :root {
   /* Space-Age Color Palette */

@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/pages/inbox.css
+ * @purpose Page-specific styles for inbox
+ * @layer page-styles
+ * @component /src/pages/inbox.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Inbox Page
    ========================================================================== */

@@ -1,3 +1,13 @@
+/**
+ * @file config/paths.js
+ * @purpose Configuration for paths
+ * @layer config
+ * @deps [import path from 'path';, import { fileURLToPath } from 'url';]
+ * @llm-read true
+ * @llm-write read-only
+ * @llm-role entrypoint
+ */
+
 import { fileURLToPath } from 'url';
 import path from 'path';
 

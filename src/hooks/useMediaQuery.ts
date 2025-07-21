@@ -1,3 +1,15 @@
+/**
+ * @file hooks/useMediaQuery.ts
+ * @purpose Hook for MediaQuery management
+ * @layer hook
+ * @deps none
+ * @used-by [useBreakpoint]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useState, useEffect } from 'react'
 
 export function useMediaQuery(query: string): boolean {

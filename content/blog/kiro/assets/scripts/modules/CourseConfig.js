@@ -1,4 +1,14 @@
 /**
+ * @file content/blog/kiro/assets/scripts/modules/CourseConfig.js
+ * @purpose Blog content script: CourseConfig
+ * @layer content
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
+/**
  * CourseConfig - Handles loading and managing course configuration
  */
 export class CourseConfig {

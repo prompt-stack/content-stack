@@ -1,3 +1,15 @@
+/**
+ * @file playground/InboxWorkflowDemo.tsx
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [PlaygroundPage]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 import { useState } from 'react';
 import { Box } from '@/components/Box';
 import { Button } from '@/components/Button';

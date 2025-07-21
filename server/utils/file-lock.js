@@ -1,3 +1,13 @@
+/**
+ * @file server/utils/file-lock.js
+ * @purpose Server-side file-lock logic
+ * @layer backend
+ * @deps [import path from 'path';, import { promises as fs } from 'fs';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import { promises as fs } from 'fs';
 import path from 'path';
 

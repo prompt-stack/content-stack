@@ -1,12 +1,13 @@
 /**
+ * @file components/Textarea.tsx
+ * @purpose Textarea component - maps to HTML textarea element
  * @layer primitive
- * @description Textarea component - maps to HTML textarea element
- * @dependencies None (primitive component)
- * @cssFile /styles/components/forms.css
- * @className .textarea
- * 
- * This is a PRIMITIVE component that wraps the HTML <textarea> element
- * with consistent styling.
+ * @deps None (primitive component)
+ * @used-by [ContentInboxInputPanel, Textarea]
+ * @css /styles/components/forms.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

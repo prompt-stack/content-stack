@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/toggle.css
+ * @purpose Component styles for toggle
+ * @layer component-styles
+ * @component /src/components/toggle.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Toggle Component
    ========================================================================== */

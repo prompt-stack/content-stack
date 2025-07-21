@@ -1,12 +1,13 @@
 /**
+ * @file components/Text.tsx
+ * @purpose Typography component - maps to HTML text elements (p, span, h1-h6)
  * @layer primitive
- * @description Typography component - maps to HTML text elements (p, span, h1-h6)
- * @dependencies None (primitive component)
- * @cssFile Uses global typography styles
- * @className Varies by element
- * 
- * This is a PRIMITIVE component for consistent typography. It wraps various HTML text
- * elements and ensures consistent styling through our design tokens.
+ * @deps None (primitive component)
+ * @used-by [ContentInboxFeature, ContentInboxInputPanel, ContentInboxQueuePanel, EditableField, InboxPlayground, InboxWorkflowDemo, Textarea]
+ * @css Usesglobaltypographystyles
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

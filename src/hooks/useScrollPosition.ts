@@ -1,3 +1,15 @@
+/**
+ * @file hooks/useScrollPosition.ts
+ * @purpose Hook for ScrollPosition management
+ * @layer hook
+ * @deps none
+ * @used-by [ContentInboxQueuePanel]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useRef, useCallback, useEffect } from 'react';
 
 interface ScrollPosition {

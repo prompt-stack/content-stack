@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/badge.css
+ * @purpose Component styles for badge
+ * @layer component-styles
+ * @component /src/components/badge.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Badge Component
    ========================================================================== */

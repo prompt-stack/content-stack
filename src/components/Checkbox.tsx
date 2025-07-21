@@ -1,12 +1,13 @@
 /**
+ * @file components/Checkbox.tsx
+ * @purpose Checkbox component - maps to HTML input[type="checkbox"] element
  * @layer primitive
- * @description Checkbox component - maps to HTML input[type="checkbox"] element
- * @dependencies None (primitive component)
- * @cssFile /styles/components/forms.css
- * @className .checkbox
- * 
- * This is a PRIMITIVE component that wraps the HTML checkbox input with
- * consistent styling and optional label integration.
+ * @deps None (primitive component)
+ * @used-by [ContentInboxQueuePanel]
+ * @css /styles/components/forms.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

@@ -1,12 +1,13 @@
 /**
+ * @file layout/Header.tsx
+ * @purpose Application header with navigation and user controls
  * @layer layout
- * @description Application header with navigation and user controls
- * @dependencies Button (primitive), MobileMenu (layout)
- * @cssFile /styles/layout/header.css
- * @className .header
- * 
- * This is a LAYOUT component that provides the top-level navigation structure
- * for the application, including responsive mobile menu support.
+ * @deps Button (primitive), MobileMenu (layout)
+ * @used-by [Layout]
+ * @css /styles/layout/header.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { useState, useEffect } from 'react'

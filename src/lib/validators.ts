@@ -1,3 +1,15 @@
+/**
+ * @file lib/validators.ts
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [Dropzone]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 export function validateURL(url: string): boolean {
   try {
     new URL(url)

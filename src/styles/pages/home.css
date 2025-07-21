@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/pages/home.css
+ * @purpose Page-specific styles for home
+ * @layer page-styles
+ * @component /src/pages/home.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Home Page
    ========================================================================== */

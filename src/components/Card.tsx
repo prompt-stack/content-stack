@@ -1,15 +1,13 @@
 /**
+ * @file components/Card.tsx
+ * @purpose Component for Card
  * @layer composed
- * @description Container component with styled card appearance
- * @dependencies Box primitive
- * @cssFile /styles/components/card.css
- * @utilities spacing (via Box), shadow (via Box)
- * @variants ["default", "elevated", "outlined", "glass"]
- * @className .card
- * 
- * This is a COMPOSED component that provides a styled container with variants.
- * It uses Box primitive for utility props (spacing, shadow) while maintaining
- * its own CSS file for card-specific styling (variants, hover effects).
+ * @deps none
+ * @used-by [App, CardPlayground, CompositionPlayground, ContentInboxInputPanel, ContentInboxQueuePanel, HealthPage, InboxPlayground, InboxWorkflowDemo, LayoutPlayground, PlaygroundHome, PlaygroundPage, SubscriptionPage, UtilityPlayground]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

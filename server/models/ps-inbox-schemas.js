@@ -1,3 +1,13 @@
+/**
+ * @file server/models/ps-inbox-schemas.js
+ * @purpose Server-side ps-inbox-schemas logic
+ * @layer backend
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 export const InboxItemSchema = {
   id: {
     type: 'string',

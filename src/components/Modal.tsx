@@ -1,12 +1,13 @@
 /**
+ * @file components/Modal.tsx
+ * @purpose Modal dialog component with overlay and portal rendering
  * @layer composed
- * @description Modal dialog component with overlay and portal rendering
- * @dependencies Box, Button primitives
- * @cssFile /styles/components/modal.css
- * @className .modal, .modal-overlay
- * 
- * This is a COMPOSED component that combines multiple primitives (div for overlay,
- * div for modal, button for close) to create a reusable modal dialog pattern.
+ * @deps Box, Button primitives
+ * @used-by [ContentInboxFeature, ContentInboxQueuePanel, ModalPlayground, PlaygroundPage]
+ * @css /styles/components/modal.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { useEffect, useRef } from 'react';

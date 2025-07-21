@@ -1,10 +1,14 @@
 /**
- * @component InboxQueue
+ * @file playground/components/InboxQueue.tsx
+ * @purpose Queue list view for inbox items
  * @layer composed
- * @description Queue list view for inbox items
- * @cssFile /styles/features/inbox.css
+ * @deps none
+ * @used-by [ContentInboxFeature]
+ * @css /styles/features/inbox.css
  * @status stable
- * @since 2025-07-20
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { InboxItem } from './InboxItem'

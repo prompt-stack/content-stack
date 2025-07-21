@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/editabletext.css
+ * @purpose Component styles for editabletext
+ * @layer component-styles
+ * @component /src/components/editabletext.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    EditableText Component
    ========================================================================== */

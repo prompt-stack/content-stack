@@ -1,3 +1,15 @@
+/**
+ * @file playground/components/ButtonPlayground.tsx
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [PlaygroundPage]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 import { Button } from '@/components/Button'
 import { DemoSection } from '../PlaygroundLayout'
 

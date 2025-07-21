@@ -1,3 +1,13 @@
+/**
+ * @file server/routes/content.js
+ * @purpose Server-side content logic
+ * @layer backend
+ * @deps [import express from 'express';, import path from 'path';, import { PATHS } from '../../config/paths.js';, import { dirCache } from '../utils/dir-cache.js';, import { findContentById,  getContentStats } from '../utils/files.js';, import { promises as fs } from 'fs';, import { searchCache } from '../utils/search-cache.js';, import { searchContent,  findSimilarContent,  detectDuplicates } from '../search.js';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import express from 'express';
 import { promises as fs } from 'fs';
 import path from 'path';

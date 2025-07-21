@@ -1,12 +1,13 @@
 /**
+ * @file components/Image.tsx
+ * @purpose Image component - maps to HTML img element
  * @layer primitive
- * @description Image component - maps to HTML img element
- * @dependencies None (primitive component)
- * @cssFile Uses global image styles
- * @className Inherits from global styles
- * 
- * This is a PRIMITIVE component that wraps the HTML <img> element with
- * consistent behavior and optional lazy loading support.
+ * @deps None (primitive component)
+ * @used-by none
+ * @css Usesglobalimagestyles
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

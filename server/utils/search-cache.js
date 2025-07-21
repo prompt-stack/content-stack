@@ -1,3 +1,13 @@
+/**
+ * @file server/utils/search-cache.js
+ * @purpose Server-side search-cache logic
+ * @layer backend
+ * @deps [import { buildSearchIndex } from '../search.js';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import { buildSearchIndex } from '../search.js';
 
 /**

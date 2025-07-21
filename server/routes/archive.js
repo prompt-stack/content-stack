@@ -1,3 +1,13 @@
+/**
+ * @file server/routes/archive.js
+ * @purpose Server-side archive logic
+ * @layer backend
+ * @deps [import express from 'express';, import path from 'path';, import { PATHS } from '../../config/paths.js';, import { isValidId,  isPathWithinDirectory } from '../utils/validation.js';, import { promises as fs } from 'fs';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import express from 'express';
 import { promises as fs } from 'fs';
 import path from 'path';

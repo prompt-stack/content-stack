@@ -1,3 +1,13 @@
+/**
+ * @file server/services/ps-inbox-storage.js
+ * @purpose Server-side ps-inbox-storage logic
+ * @layer backend
+ * @deps [import fs from 'fs/promises';, import path from 'path';, import { PATHS } from '../../config/paths.js';, import { dirCache } from '../utils/dir-cache.js';, import { isValidFilename,  isPathWithinDirectory } from '../utils/validation.js';, import { withLock } from '../utils/file-lock.js';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import fs from 'fs/promises';
 import path from 'path';
 import { PATHS } from '../../config/paths.js';

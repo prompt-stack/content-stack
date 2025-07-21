@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/tag.css
+ * @purpose Component styles for tag
+ * @layer component-styles
+ * @component /src/components/tag.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Tag Component
    ========================================================================== */

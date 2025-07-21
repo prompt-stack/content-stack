@@ -1,7 +1,13 @@
 /**
+ * @file components/FileInput.tsx
+ * @purpose Component for FileInput
  * @layer primitive
- * @cssFile /styles/components/fileinput.css
- * @className .fileinput
+ * @deps none
+ * @used-by [ContentInboxInputPanel]
+ * @css /styles/components/fileinput.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 import React, { useRef } from 'react';
 import { clsx } from 'clsx';

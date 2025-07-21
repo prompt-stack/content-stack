@@ -1,4 +1,14 @@
 /**
+ * @file config/metadata-schema.js
+ * @purpose Configuration for metadata-schema
+ * @layer config
+ * @deps none
+ * @llm-read true
+ * @llm-write read-only
+ * @llm-role entrypoint
+ */
+
+/**
  * Metadata Schema Configuration
  * Defines the standard structure for all metadata files in the system
  */

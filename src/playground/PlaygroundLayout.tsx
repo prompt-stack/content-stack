@@ -1,3 +1,15 @@
+/**
+ * @file playground/PlaygroundLayout.tsx
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [ButtonPlayground, CardPlayground, CompositionPlayground, FormPlayground, InboxPlayground, LayoutPlayground, ModalPlayground, UtilityPlayground]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 import { ReactNode } from 'react'
 
 interface PlaygroundLayoutProps {

@@ -181,7 +181,7 @@ echo "src/styles/components/[componentname].css"
 echo "src/styles/pages/[pagename].css"
 
 # Check violations
-./design-system/scripts/css-audit.sh | grep "violations"
+./design-system/scripts/audit-css.sh | grep "violations"
 ```
 
 **CRITICAL**: Never guess file locations. Always verify using the patterns above.

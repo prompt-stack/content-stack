@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/button.css
+ * @purpose Component styles for button
+ * @layer component-styles
+ * @component /src/components/button.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Button Component
    ========================================================================== */

@@ -1,12 +1,13 @@
 /**
+ * @file components/Dropdown.tsx
+ * @purpose Custom dropdown/select component with enhanced styling
  * @layer composed
- * @description Custom dropdown/select component with enhanced styling
- * @dependencies Button, Box primitives
- * @cssFile /styles/components/forms.css
- * @className .dropdown
- * 
- * This is a COMPOSED component that creates a custom dropdown to replace the native
- * select element with better styling control and features.
+ * @deps Button, Box primitives
+ * @used-by none
+ * @css /styles/components/forms.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { useState, useRef, useEffect } from 'react';

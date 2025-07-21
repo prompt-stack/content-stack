@@ -1,4 +1,16 @@
 /**
+ * @file playground/InboxPlayground.tsx
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps [PlaygroundLayout]
+ * @used-by [PlaygroundPage]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
+/**
  * @page playground
  * @title Content Inbox Interface
  * @description Interactive demonstration of the Prompt Stack content inbox system

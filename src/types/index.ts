@@ -1,3 +1,15 @@
+/**
+ * @file types/index.ts
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [main]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 // Content types
 export type ContentSource = 'youtube' | 'tiktok' | 'reddit' | 'article' | 'file-upload' | 'paste';
 export type ContentType = 'file' | 'url' | 'text' | 'paste';

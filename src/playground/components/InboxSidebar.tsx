@@ -1,10 +1,14 @@
 /**
- * @component InboxSidebar
+ * @file playground/components/InboxSidebar.tsx
+ * @purpose Sidebar navigation for inbox folders
  * @layer composed
- * @description Sidebar navigation for inbox folders
- * @cssFile /styles/features/inbox.css
+ * @deps none
+ * @used-by none
+ * @css /styles/features/inbox.css
  * @status stable
- * @since 2025-07-20
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { useState } from 'react'

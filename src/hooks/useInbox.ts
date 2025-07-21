@@ -1,3 +1,15 @@
+/**
+ * @file hooks/useInbox.ts
+ * @purpose Hook for Inbox management
+ * @layer hook
+ * @deps none
+ * @used-by none
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from '@/services/api'
 import toast from 'react-hot-toast'

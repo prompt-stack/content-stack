@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/playground/inbox-workflow-demo.css
+ * @purpose Styles for inbox-workflow-demo
+ * @layer styles
+ * @component none
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* Inbox Workflow Demo Styles */
 
 .inbox-workflow-demo {

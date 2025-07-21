@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/fileinput.css
+ * @purpose Component styles for fileinput
+ * @layer component-styles
+ * @component /src/components/fileinput.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    FileInput Component
    ========================================================================== */

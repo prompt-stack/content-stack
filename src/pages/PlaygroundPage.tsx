@@ -1,3 +1,15 @@
+/**
+ * @file pages/PlaygroundPage.tsx
+ * @purpose Playground page component
+ * @layer page
+ * @deps none
+ * @used-by [main]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role entrypoint
+ */
+
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 

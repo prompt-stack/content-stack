@@ -1,10 +1,13 @@
 /**
+ * @file components/Tag.tsx
+ * @purpose Component for Tag
  * @layer primitive
- * @cssFile /styles/components/tag.css
- * @dependencies None (primitive component)
- * @utilities None
- * @variants ["default", "primary", "success", "warning", "danger"]
- * @className .tag
+ * @deps None (primitive component)
+ * @used-by [ContentInboxQueuePanel]
+ * @css /styles/components/tag.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 import { clsx } from 'clsx';
 

@@ -1,3 +1,14 @@
+/**
+ * @file scripts/validate-component-styles.cjs
+ * @purpose Build/tool script: validate-component-styles
+ * @module-type CommonJS
+ * @layer tooling
+ * @deps [fs, glob, path]
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 #!/usr/bin/env node
 
 /**

@@ -101,7 +101,7 @@ npm run audit:system  # 30-60 seconds
 
 ### Quick Health Check
 ```bash
-./design-system/scripts/css-audit.sh | grep "violations"
+./design-system/scripts/audit-css.sh | grep "violations"
 # Expected: "Total violations: 0"
 ```
 

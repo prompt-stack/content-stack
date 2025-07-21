@@ -1,10 +1,14 @@
 /**
- * @component MetadataPanel
+ * @file playground/components/MetadataPanel.tsx
+ * @purpose Metadata inspector panel for inbox items
  * @layer composed
- * @description Metadata inspector panel for inbox items
- * @cssFile /styles/features/inbox.css
+ * @deps none
+ * @used-by none
+ * @css /styles/features/inbox.css
  * @status stable
- * @since 2025-07-20
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { formatFileSize } from '../utils/formatters'

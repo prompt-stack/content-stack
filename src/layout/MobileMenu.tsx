@@ -1,12 +1,13 @@
 /**
+ * @file layout/MobileMenu.tsx
+ * @purpose Mobile navigation menu with slide-out drawer
  * @layer layout
- * @description Mobile navigation menu with slide-out drawer
- * @dependencies Box (primitive)
- * @cssFile /styles/layout/mobile-menu.css
- * @className .mobile-menu
- * 
- * This is a LAYOUT component that provides responsive navigation
- * for mobile viewports with body scroll locking and theme controls.
+ * @deps Box (primitive)
+ * @used-by [Header]
+ * @css /styles/layout/mobile-menu.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { NavLink } from 'react-router-dom'

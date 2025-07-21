@@ -1,3 +1,15 @@
+/**
+ * @file pages/SubscriptionPage.tsx
+ * @purpose Subscription page component
+ * @layer page
+ * @deps none
+ * @used-by [main]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role entrypoint
+ */
+
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card } from '@/components/Card'

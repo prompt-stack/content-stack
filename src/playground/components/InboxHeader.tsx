@@ -1,10 +1,14 @@
 /**
- * @component InboxHeader
+ * @file playground/components/InboxHeader.tsx
+ * @purpose Header with breadcrumb navigation and actions
  * @layer composed
- * @description Header with breadcrumb navigation and actions
- * @cssFile /styles/features/inbox.css
+ * @deps none
+ * @used-by none
+ * @css /styles/features/inbox.css
  * @status stable
- * @since 2025-07-20
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 interface InboxHeaderProps {

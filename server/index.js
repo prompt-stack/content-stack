@@ -1,3 +1,13 @@
+/**
+ * @file server/index.js
+ * @purpose Server-side index logic
+ * @layer backend
+ * @deps [import dotenv from 'dotenv';, import express from 'express';, import path from 'path';, import { fileURLToPath } from 'url';, middleware/index, routes/archive, routes/content, routes/export, routes/inbox, routes/index, routes/metadata, utils/dir-cache, utils/files, utils/search-cache]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';

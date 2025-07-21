@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/editable-field.css
+ * @purpose Component styles for editable-field
+ * @layer component-styles
+ * @component /src/components/editable-field.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* EditableField Component Styles */
 
 .editable-field {

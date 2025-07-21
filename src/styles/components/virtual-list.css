@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/virtual-list.css
+ * @purpose Component styles for virtual-list
+ * @layer component-styles
+ * @component /src/components/virtual-list.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* VirtualList Component Styles */
 
 .virtual-list {

@@ -1,3 +1,13 @@
+/**
+ * @file server/routes/inbox.js
+ * @purpose Server-side inbox logic
+ * @layer backend
+ * @deps [import multer from 'multer';, import os from 'os';, import path from 'path';, import { PSInboxValidator } from '../services/ps-inbox-validator.js';, import { Router } from 'express';, import { extractContent } from '../extractors.js';, import { inboxService } from '../services/ps-inbox-service.js';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import { Router } from 'express';
 import multer from 'multer';
 import path from 'path';

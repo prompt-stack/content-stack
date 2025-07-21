@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/features/content-inbox.css
+ * @purpose Feature styles for content-inbox
+ * @layer feature-styles
+ * @component /src/features/content-inbox/content-inbox.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Content Inbox Feature
    ========================================================================== */

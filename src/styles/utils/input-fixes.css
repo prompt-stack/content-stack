@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/utils/input-fixes.css
+ * @purpose Styles for input-fixes
+ * @layer styles
+ * @component none
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Input and Form Fixes - Icon alignment and textarea performance
    ========================================================================== */

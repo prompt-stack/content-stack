@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/dropzone.css
+ * @purpose Component styles for dropzone
+ * @layer component-styles
+ * @component /src/components/dropzone.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Dropzone Feature
    ========================================================================== */

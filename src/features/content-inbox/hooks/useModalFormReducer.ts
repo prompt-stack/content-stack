@@ -1,3 +1,15 @@
+/**
+ * @file features/content-inbox/hooks/useModalFormReducer.ts
+ * @purpose Hook for ModalFormReducer management
+ * @layer feature
+ * @deps none
+ * @used-by [ContentInboxQueuePanel]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useReducer, useCallback } from 'react';
 import { ContentItem } from '../types';
 

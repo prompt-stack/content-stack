@@ -24,6 +24,12 @@
       "dependencies": "None (primitive component)",
       "utilities": null
     },
+    "ScrollContainer": {
+      "file": "ScrollContainer.tsx",
+      "css": "/styles/components/scroll-container.css",
+      "dependencies": "Box",
+      "utilities": null
+    },
     "Radio": {
       "file": "Radio.tsx",
       "css": "/styles/components/forms.css",
@@ -83,6 +89,12 @@
       "css": "none (utilities only)",
       "dependencies": "None (primitive component)",
       "utilities": "spacing, display, flexbox, background, shadow, border"
+    },
+    "Badge": {
+      "file": "Badge.tsx",
+      "css": "/styles/components/badge.css",
+      "dependencies": "None",
+      "utilities": null
     }
   },
   "composed": {},

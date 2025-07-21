@@ -1,3 +1,13 @@
+/**
+ * @file server/middleware/index.js
+ * @purpose Server-side index logic
+ * @layer backend
+ * @deps [import express from 'express';, import path from 'path';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import express from 'express';
 import path from 'path';
 

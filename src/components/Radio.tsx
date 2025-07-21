@@ -1,12 +1,13 @@
 /**
+ * @file components/Radio.tsx
+ * @purpose Radio button component - maps to HTML input[type="radio"] element
  * @layer primitive
- * @description Radio button component - maps to HTML input[type="radio"] element
- * @dependencies None (primitive component)
- * @cssFile /styles/components/forms.css
- * @className .radio
- * 
- * This is a PRIMITIVE component that wraps the HTML radio input with
- * consistent styling. Use RadioGroup composed component for grouped radios.
+ * @deps None (primitive component)
+ * @used-by none
+ * @css /styles/components/forms.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

@@ -1,3 +1,13 @@
+/**
+ * @file server/utils/validation.js
+ * @purpose Server-side validation logic
+ * @layer backend
+ * @deps [import path from 'path';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import path from 'path';
 
 /**

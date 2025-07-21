@@ -1,3 +1,13 @@
+/**
+ * @file server/utils/metadata-utils.js
+ * @purpose Server-side metadata-utils logic
+ * @layer backend
+ * @deps [import path from 'path';, import { PATHS,  pathHelpers } from '../../config/paths.js';, import { promises as fs } from 'fs';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
 import { promises as fs } from 'fs';
 import path from 'path';
 import { PATHS, pathHelpers } from '../../config/paths.js';

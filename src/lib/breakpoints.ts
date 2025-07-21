@@ -1,3 +1,15 @@
+/**
+ * @file lib/breakpoints.ts
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [useBreakpoint]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 export const BREAKPOINTS = {
   mobile: 480,
   tablet: 768,

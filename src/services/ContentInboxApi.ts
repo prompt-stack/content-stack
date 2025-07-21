@@ -1,4 +1,16 @@
 /**
+ * @file services/ContentInboxApi.ts
+ * @purpose Handle ContentInboxApi operations and data
+ * @layer service
+ * @deps none
+ * @used-by [useContentQueue]
+ * @css none
+ * @llm-read true
+ * @llm-write read-only
+ * @llm-role async-service
+ */
+
+/**
  * @layer service
  * @description API service for content inbox operations - connects to new backend
  * @dependencies @/lib/api, @/types

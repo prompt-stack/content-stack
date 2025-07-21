@@ -1,3 +1,15 @@
+/**
+ * @file features/content-inbox/components/ContentInboxInputPanel.tsx
+ * @purpose [TODO: Add purpose]
+ * @layer feature
+ * @deps none
+ * @used-by [ContentInboxFeature]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useState, useRef } from 'react';
 import { Box } from '@/components/Box';
 import { Button } from '@/components/Button';

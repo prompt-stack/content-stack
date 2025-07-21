@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/pages/subscription.css
+ * @purpose Page-specific styles for subscription
+ * @layer page-styles
+ * @component /src/pages/subscription.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Subscription Page Styles
    ========================================================================== */

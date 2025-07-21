@@ -1,4 +1,14 @@
 /**
+ * @file content/blog/kiro/assets/scripts/modules/InteractiveExamples.js
+ * @purpose Blog content script: InteractiveExamples
+ * @layer content
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
+/**
  * InteractiveExamples - Handles interactive examples and practice exercises
  */
 export class InteractiveExamples {

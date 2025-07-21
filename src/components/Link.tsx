@@ -1,12 +1,13 @@
 /**
+ * @file components/Link.tsx
+ * @purpose Component for Link
  * @layer primitive
- * @description Anchor/link component - maps to HTML anchor element
- * @dependencies None (primitive component)
- * @cssFile Uses global link styles
- * @className Inherits from global styles
- * 
- * This is a PRIMITIVE component that wraps the HTML <a> element with consistent
- * styling and behavior. Direct mapping to native HTML anchor element.
+ * @deps none
+ * @used-by [App, Header, MobileMenu, PlaygroundPage]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

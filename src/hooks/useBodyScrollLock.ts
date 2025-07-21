@@ -1,3 +1,15 @@
+/**
+ * @file hooks/useBodyScrollLock.ts
+ * @purpose Hook for BodyScrollLock management
+ * @layer hook
+ * @deps none
+ * @used-by [MobileMenu]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useEffect } from 'react'
 
 export function useBodyScrollLock(isLocked: boolean): void {

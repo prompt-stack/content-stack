@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# @script rename-docs
+# @purpose Script for rename-docs operations
+# @output console
+# @llm-read true
+# @llm-write full-edit
+# @llm-role utility
+
+
 # Prompt Stack Voice Docs Renaming Script
 # This script renames documents to follow the new naming convention:
 # [date]-[category]-[topic]-[type].md

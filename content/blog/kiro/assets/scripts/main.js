@@ -1,4 +1,14 @@
 /**
+ * @file content/blog/kiro/assets/scripts/main.js
+ * @purpose Blog content script: main
+ * @layer content
+ * @deps [modules/AbstractionViewer, modules/ContentLoader, modules/CourseConfig, modules/DataStructuresViewer, modules/ErrorHandler, modules/ModuleRenderer, modules/Navigation, modules/ProgressTracker]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
+/**
  * Main JavaScript entry point
  * This file initializes the application and coordinates all modules
  */

@@ -1,3 +1,15 @@
+/**
+ * @file lib/api.ts
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [ContentInboxApi, HealthPage, api, constants, useInbox, useUserTier]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3457';
 console.log('API_BASE configured as:', API_BASE); // Debug log
 

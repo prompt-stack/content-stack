@@ -1,4 +1,14 @@
 /**
+ * @file server/extractors.js
+ * @purpose Server-side extractors logic
+ * @layer backend
+ * @deps [import { dirname,  join } from 'path';, import { fileURLToPath } from 'url';]
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role async-service
+ */
+
+/**
  * Content Extractors for Content Stack
  * Integrates the extractors from tools folder
  */

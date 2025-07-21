@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/components/forms.css
+ * @purpose Component styles for forms
+ * @layer component-styles
+ * @component /src/components/forms.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Form Components
    ========================================================================== */

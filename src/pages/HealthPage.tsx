@@ -1,3 +1,15 @@
+/**
+ * @file pages/HealthPage.tsx
+ * @purpose Health page component
+ * @layer page
+ * @deps none
+ * @used-by [main]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role entrypoint
+ */
+
 import { useState, useEffect } from 'react'
 import { Card } from '@/components/Card'
 import { api } from '@/lib/api'

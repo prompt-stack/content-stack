@@ -1,13 +1,20 @@
-import { forwardRef, ReactNode, useCallback, CSSProperties } from 'react';
-import { VariableSizeList as List, ListChildComponentProps } from 'react-window';
-import { Box } from './Box';
-
 /**
+ * @file components/VirtualList.tsx
+ * @purpose Component for VirtualList
  * @layer composed
- * @cssFile /styles/components/virtual-list.css
- * @dependencies Box, react-window
- * @className .virtual-list
+ * @deps Box, react-window
+ * @used-by [ContentInboxQueuePanel]
+ * @css /styles/components/virtual-list.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
+
+import { forwardRef, useCallback } from 'react';
+import type { ReactNode, CSSProperties } from 'react';
+import { FixedSizeList as List } from 'react-window';
+import type { ListChildComponentProps } from 'react-window';
+import { Box } from './Box';
 
 export interface VirtualListProps<T = any> {
   items: T[];

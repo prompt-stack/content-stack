@@ -1,3 +1,15 @@
+/**
+ * @file features/content-inbox/types.ts
+ * @purpose [TODO: Add purpose]
+ * @layer feature
+ * @deps none
+ * @used-by [ContentInboxApi, ContentInboxInputPanel, ContentInboxQueuePanel, api, config, constants, types, useContentQueue, useModalFormReducer, useUserTier]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { ContentItem as GlobalContentItem } from '@/types';
 
 export interface ContentItem extends GlobalContentItem {

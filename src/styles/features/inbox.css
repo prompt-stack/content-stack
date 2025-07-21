@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/features/inbox.css
+ * @purpose Feature styles for inbox
+ * @layer feature-styles
+ * @component /src/features/inbox/inbox.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Inbox Interface (@layer feature)
    Dependencies: button.css, badge.css, card.css

@@ -1,4 +1,14 @@
 /**
+ * @file content/blog/kiro/assets/scripts/modules/AbstractionViewer.js
+ * @purpose Blog content script: AbstractionViewer
+ * @layer content
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
+/**
  * AbstractionViewer - Handles interactive abstraction layer visualization
  */
 export class AbstractionViewer {

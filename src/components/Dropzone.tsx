@@ -1,12 +1,13 @@
 /**
+ * @file components/Dropzone.tsx
+ * @purpose Component for Dropzone
  * @layer composed
- * @description File drop zone component with drag-and-drop support
- * @dependencies Box, Text primitives, react-dropzone library
- * @cssFile /styles/components/dropzone.css
- * @className .dropzone
- * 
- * This is a COMPOSED component that combines primitives with the react-dropzone
- * library to create a file upload interface with validation and feedback.
+ * @deps none
+ * @used-by [Dropzone, FormPlayground]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { useCallback, useState, ReactNode } from 'react'

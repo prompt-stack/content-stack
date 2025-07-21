@@ -1,4 +1,14 @@
 /**
+ * @file content/blog/kiro/assets/scripts/modules/DataStructuresViewer.js
+ * @purpose Blog content script: DataStructuresViewer
+ * @layer content
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
+/**
  * DataStructuresViewer - Handles interactive data structures visualization
  */
 export class DataStructuresViewer {

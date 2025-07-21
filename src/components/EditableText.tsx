@@ -1,10 +1,13 @@
 /**
+ * @file components/EditableText.tsx
+ * @purpose Component for EditableText
  * @layer primitive
- * @cssFile /styles/components/editabletext.css
- * @dependencies None (primitive component)
- * @utilities None
- * @variants None
- * @className .editabletext
+ * @deps None (primitive component)
+ * @used-by [ContentInboxQueuePanel]
+ * @css /styles/components/editabletext.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 import { useState, useRef, useEffect } from 'react';
 import { clsx } from 'clsx';

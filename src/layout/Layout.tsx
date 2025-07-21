@@ -1,12 +1,13 @@
 /**
+ * @file layout/Layout.tsx
+ * @purpose Root layout wrapper for the application
  * @layer layout
- * @description Root layout wrapper for the application
- * @dependencies Header (layout)
- * @cssFile Uses global layout styles
- * @className .layout
- * 
- * This is a LAYOUT component that provides the overall page structure
- * with header and main content area using React Router's Outlet.
+ * @deps Header (layout)
+ * @used-by [ButtonPlayground, CardPlayground, CompositionPlayground, FormPlayground, InboxPlayground, LayoutPlayground, ModalPlayground, PlaygroundPage, UtilityPlayground, main]
+ * @css Usesgloballayoutstyles
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { Outlet } from 'react-router-dom'

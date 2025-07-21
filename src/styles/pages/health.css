@@ -1,3 +1,14 @@
+/**
+ * @file src/styles/pages/health.css
+ * @purpose Page-specific styles for health
+ * @layer page-styles
+ * @component /src/pages/health.tsx
+ * @deps none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role pure-view
+ */
+
 /* ==========================================================================
    Health Page Styles
    ========================================================================== */

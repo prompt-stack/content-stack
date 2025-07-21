@@ -1,3 +1,15 @@
+/**
+ * @file features/content-inbox/components/ContentInboxQueuePanel.tsx
+ * @purpose [TODO: Add purpose]
+ * @layer feature
+ * @deps [ContentInboxTagEditor]
+ * @used-by [ContentInboxFeature]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useState, useMemo, useEffect, useRef, memo, useCallback } from 'react';
 import { getPreviewLength, getMaxVisibleTags, contentInboxConfig } from '../config';
 import { Box } from '@/components/Box';

@@ -1,12 +1,13 @@
 /**
+ * @file components/Input.tsx
+ * @purpose Form input component - maps to HTML input element
  * @layer primitive
- * @description Form input component - maps to HTML input element
- * @dependencies None (primitive component)
- * @cssFile /styles/components/forms.css
- * @className .input
- * 
- * This is a PRIMITIVE component that wraps the HTML <input> element with consistent
- * styling and variants. It serves as the base for more complex form components.
+ * @deps None (primitive component)
+ * @used-by [Checkbox, ContentInboxFeature, ContentInboxInputPanel, EditableField, InboxWorkflowDemo, Input, Radio]
+ * @css /styles/components/forms.css
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
  */
 
 import { forwardRef } from 'react';

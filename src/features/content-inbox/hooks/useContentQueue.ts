@@ -1,3 +1,15 @@
+/**
+ * @file features/content-inbox/hooks/useContentQueue.ts
+ * @purpose Hook for ContentQueue management
+ * @layer feature
+ * @deps none
+ * @used-by [ContentInboxFeature]
+ * @css none
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 import { useState, useCallback, useEffect } from 'react';
 import { ContentItem, ContentSubmission, ContentMetadata } from '../types';
 import { contentInboxApi } from '@/services/ContentInboxApi';

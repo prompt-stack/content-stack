@@ -1,3 +1,15 @@
+/**
+ * @file lib/constants.ts
+ * @purpose [TODO: Add purpose]
+ * @layer unknown
+ * @deps none
+ * @used-by [Dropzone]
+ * @css none
+ * @llm-read true
+ * @llm-write suggest-only
+ * @llm-role utility
+ */
+
 import type { TierLevel, TierCapabilities } from '@/types';
 
 export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3468/api';

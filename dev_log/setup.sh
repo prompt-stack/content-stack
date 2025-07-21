@@ -1,4 +1,12 @@
 #!/bin/bash
+
+# @script setup
+# @purpose Script for setup operations
+# @output console
+# @llm-read true
+# @llm-write full-edit
+# @llm-role utility
+
 # Content Stack React Setup Script
 
 echo "🚀 Setting up Content Stack React..."

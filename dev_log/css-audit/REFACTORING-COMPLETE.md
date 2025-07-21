@@ -18,7 +18,7 @@ All CSS files in the codebase now follow proper BEM naming conventions and are c
 - **theme-toggle.css**: Converted to BEM (`.theme-toggle__option`, etc.)
 
 ### 3. Audit Tool Created ✅
-- Created `css-audit.sh` script to automatically check for naming violations
+- Created `audit-css.sh` script to automatically check for naming violations
 - Script checks for:
   - Page prefix compliance
   - BEM naming patterns

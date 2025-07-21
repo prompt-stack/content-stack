@@ -1,3 +1,14 @@
+/**
+ * @file scripts/audit-components.cjs
+ * @purpose Build/tool script: audit-components
+ * @module-type CommonJS
+ * @layer tooling
+ * @deps [fs, glob, path]
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
 #!/usr/bin/env node
 
 /**
