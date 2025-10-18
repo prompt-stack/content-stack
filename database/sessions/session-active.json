@@ -1,0 +1,37 @@
+{
+  "id": "session-active",
+  "type": "session",
+  "created_at": "2025-01-23T10:00:00.000Z",
+  "updated_at": "2025-01-23T10:30:00.000Z",
+  "data": {
+    "userId": "user-default",
+    "token": "session-token-example",
+    "expires": "2025-01-23T22:00:00.000Z",
+    "state": {
+      "currentPage": "/storage",
+      "lastActivity": "2025-01-23T10:30:00.000Z",
+      "preferences": {
+        "view": "grid",
+        "sort": "modified",
+        "filter": "all"
+      },
+      "unsavedWork": {
+        "studio": {
+          "twitter": {
+            "drafts": [],
+            "lastEdit": null
+          }
+        }
+      },
+      "notifications": {
+        "unread": 0,
+        "lastChecked": "2025-01-23T10:00:00.000Z"
+      }
+    },
+    "device": {
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)",
+      "ip": "127.0.0.1",
+      "location": "Local Development"
+    }
+  }
+}

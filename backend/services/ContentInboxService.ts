@@ -19,18 +19,28 @@ import type {
   FileOperationResult
 } from '../types/ContentTypes';
 import { createMetadata } from '../utils/createMetadata';
+import { getStorageDirectory } from '../../config/schemas/content-types.config';
+import { 
+  getStoragePaths, 
+  getMetadataPath,
+  getAllRequiredDirectories,
+  toRelativePath 
+} from '../../config/schemas/paths.config';
 
 export class ContentInboxService {
-  private contentDir: string;
-  private metadataDir: string;
+  private baseDir: string;
+  private storagePaths: ReturnType<typeof getStoragePaths>;
+  private metadataPath: string;
 
   constructor(baseDir: string = process.cwd()) {
-    this.contentDir = join(baseDir, 'content');
-    this.metadataDir = join(baseDir, 'content', 'metadata');
+    this.baseDir = baseDir;
+    this.storagePaths = getStoragePaths(baseDir);
+    this.metadataPath = getMetadataPath(baseDir);
   }
 
+
   /**
-   * Handle new content submission
+   * Handle new content submission with storage splitting
    * Following design-system pattern: handle[Event]
    */
   async handleContentSubmission(input: ContentInboxServiceInput): Promise<ContentCreationResult> {
@@ -41,16 +51,31 @@ export class ContentInboxService {
       // Ensure directories exist
       await this.ensureDirectoriesExist();
       
-      // Write content file to inbox
-      const fileResult = await this.writeContentFile(metadata);
-      if (!fileResult.success) {
+      // Determine storage location based on content type
+      const storageSubDir = getStorageDirectory(metadata.content.type || 'text');
+      
+      // Extract file extension from inbox path
+      const fileExtension = metadata.location.inbox_path.split('.').pop() || 'txt';
+      const storagePath = join(this.storagePaths.root, storageSubDir, `${metadata.id}.${fileExtension}`);
+      
+      // Update metadata with storage path
+      metadata.storage = {
+        path: toRelativePath(storagePath, this.baseDir),
+        type: storageSubDir,
+        size: metadata.content.size || 0
+      };
+      
+      // Write content to storage (not inbox)
+      const storageResult = await this.writeToStorage(metadata, storagePath);
+      if (!storageResult.success) {
         return {
           success: false,
-          error: fileResult.error,
+          error: storageResult.error,
         };
       }
       
-      // Write metadata file
+      // Write metadata file with FULL content for LLM processing
+      // No truncation - we want the complete text for analysis
       const metadataResult = await this.writeMetadataFile(metadata);
       if (!metadataResult.success) {
         return {
@@ -72,14 +97,14 @@ export class ContentInboxService {
   }
 
   /**
-   * Get all content items from inbox
+   * Get all content items with inbox status
    * Following design-system pattern: get[Value]
    */
   async getInboxContent(): Promise<ContentMetadata[]> {
     try {
       await this.ensureDirectoriesExist();
       
-      const metadataFiles = await fs.readdir(this.metadataDir);
+      const metadataFiles = await fs.readdir(this.metadataPath);
       const metadataPromises = metadataFiles
         .filter(file => file.endsWith('.json'))
         .map(file => this.getMetadataById(file.replace('.json', '')));
@@ -93,15 +118,18 @@ export class ContentInboxService {
         if (result.status === 'fulfilled' && result.value !== null) {
           const metadata = result.value;
           
-          // Check if corresponding content file exists
-          const contentPath = join(this.contentDir, '..', metadata.location.inbox_path);
-          try {
-            await fs.access(contentPath);
-            validItems.push(metadata);
-          } catch (error) {
-            // Content file missing - this is orphaned metadata
-            console.log(`[CLEANUP] Found orphaned metadata: ${metadata.id}, missing content file: ${contentPath}`);
-            orphanedMetadata.push(metadata.id);
+          // Include items with 'raw' or 'enriched' status (per new schema)
+          if (metadata.status === 'raw' || metadata.status === 'enriched') {
+            // Check if corresponding content file exists (legacy inbox path)
+            const contentPath = join(this.baseDir, metadata.location.inbox_path);
+            try {
+              await fs.access(contentPath);
+              validItems.push(metadata);
+            } catch (error) {
+              // Content file missing - this is orphaned metadata
+              console.log(`[CLEANUP] Found orphaned metadata: ${metadata.id}, missing content file: ${contentPath}`);
+              orphanedMetadata.push(metadata.id);
+            }
           }
         }
       }
@@ -109,7 +137,7 @@ export class ContentInboxService {
       // Clean up orphaned metadata files
       for (const orphanedId of orphanedMetadata) {
         try {
-          const metadataPath = join(this.metadataDir, `${orphanedId}.json`);
+          const metadataPath = join(this.metadataPath, `${orphanedId}.json`);
           await fs.unlink(metadataPath);
           console.log(`[CLEANUP] Removed orphaned metadata file: ${metadataPath}`);
         } catch (error) {
@@ -130,7 +158,7 @@ export class ContentInboxService {
    */
   async getMetadataById(id: string): Promise<ContentMetadata | null> {
     try {
-      const metadataPath = join(this.metadataDir, `${id}.json`);
+      const metadataPath = join(this.metadataPath, `${id}.json`);
       const metadataContent = await fs.readFile(metadataPath, 'utf-8');
       return JSON.parse(metadataContent) as ContentMetadata;
     } catch {
@@ -182,7 +210,41 @@ export class ContentInboxService {
   }
 
   /**
-   * Delete content item
+   * Remove content from inbox (changes status to 'stored')
+   * Following design-system pattern: remove[Subject]FromInbox
+   */
+  async removeFromInbox(id: string): Promise<FileOperationResult> {
+    try {
+      const existingMetadata = await this.getMetadataById(id);
+      if (!existingMetadata) {
+        return {
+          success: false,
+          error: 'Content not found',
+        };
+      }
+
+      // Update status to 'enriched' and set final_path to remove from inbox view
+      const updatedMetadata: ContentMetadata = {
+        ...existingMetadata,
+        status: 'enriched',
+        location: {
+          ...existingMetadata.location,
+          final_path: existingMetadata.location.inbox_path // Move to final location
+        },
+        updated_at: new Date().toISOString(),
+      };
+
+      return await this.writeMetadataFile(updatedMetadata);
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error occurred',
+      };
+    }
+  }
+
+  /**
+   * Delete content item (PERMANENTLY removes from storage)
    * Following design-system pattern: delete[Subject]
    */
   async deleteContent(id: string): Promise<FileOperationResult> {
@@ -196,7 +258,7 @@ export class ContentInboxService {
       }
 
       // Delete content file (check if exists first)
-      const contentPath = join(this.contentDir, '..', metadata.location.inbox_path);
+      const contentPath = join(this.baseDir, metadata.location.inbox_path);
       console.log(`[DELETE] Attempting to delete content file: ${contentPath}`);
       try {
         await fs.access(contentPath);
@@ -211,7 +273,7 @@ export class ContentInboxService {
       }
 
       // Delete metadata file (check if exists first)
-      const metadataPath = join(this.metadataDir, `${id}.json`);
+      const metadataPath = join(this.metadataPath, `${id}.json`);
       console.log(`[DELETE] Attempting to delete metadata file: ${metadataPath}`);
       try {
         await fs.access(metadataPath);
@@ -237,23 +299,27 @@ export class ContentInboxService {
     }
   }
 
+  
   /**
-   * Write content file to inbox
-   * Private helper method
+   * Write content to storage directory
    */
-  private async writeContentFile(metadata: ContentMetadata): Promise<FileOperationResult> {
+  private async writeToStorage(metadata: ContentMetadata, storagePath: string): Promise<FileOperationResult> {
     try {
-      const contentPath = join(this.contentDir, '..', metadata.location.inbox_path);
-      await fs.writeFile(contentPath, metadata.content.full_text, 'utf-8');
+      // Ensure storage subdirectory exists
+      const storageDir = join(storagePath, '..');
+      await fs.mkdir(storageDir, { recursive: true });
+      
+      // Write content to storage
+      await fs.writeFile(storagePath, metadata.content.full_text, 'utf-8');
       
       return {
         success: true,
-        path: contentPath,
+        path: storagePath,
       };
     } catch (error) {
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Failed to write content file',
+        error: error instanceof Error ? error.message : 'Failed to write to storage',
       };
     }
   }
@@ -264,7 +330,7 @@ export class ContentInboxService {
    */
   private async writeMetadataFile(metadata: ContentMetadata): Promise<FileOperationResult> {
     try {
-      const metadataPath = join(this.metadataDir, `${metadata.id}.json`);
+      const metadataPath = join(this.metadataPath, `${metadata.id}.json`);
       await fs.writeFile(metadataPath, JSON.stringify(metadata, null, 2), 'utf-8');
       
       return {
@@ -284,11 +350,7 @@ export class ContentInboxService {
    * Private helper method
    */
   private async ensureDirectoriesExist(): Promise<void> {
-    const dirs = [
-      join(this.contentDir, 'inbox'),
-      join(this.contentDir, 'storage'),
-      join(this.contentDir, 'metadata'),
-    ];
+    const dirs = getAllRequiredDirectories(this.baseDir);
 
     for (const dir of dirs) {
       await fs.mkdir(dir, { recursive: true });

@@ -4,10 +4,13 @@
  * @layer composed
  * @deps none
  * @used-by [Dropzone, FormPlayground]
- * @css none
+ * @cssFile /styles/components/dropzone.css
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 80
+ * @test-file Dropzone.test.tsx
+ * @test-status missing
  */
 
 import { useCallback, useState, ReactNode } from 'react'

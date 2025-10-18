@@ -1,0 +1,60 @@
+{
+  "id": "example-content-009-config",
+  "created_at": "2025-01-24T10:45:00.000Z",
+  "source": {
+    "method": "manual",
+    "timestamp": "2025-01-24T10:45:00.000Z"
+  },
+  "content": {
+    "type": "data",
+    "full_text": "{\"appConfig\": {\"name\": \"MyAwesomeApp\"...}}",
+    "hash": "sha256-example009",
+    "file_type": "json",
+    "size": 967
+  },
+  "updated_at": "2025-01-24T10:45:00.000Z",
+  "status": "raw",
+  "title": "Application Configuration File",
+  "filename": "example-content-009-config.json",
+  "location": {
+    "inbox_path": "content/inbox/example-content-009-config.json",
+    "final_path": null
+  },
+  "storage": {
+    "path": "content/inbox/example-content-009-config.json",
+    "size": 967
+  },
+  "user_tags": [
+    "config",
+    "settings"
+  ],
+  "metadata": {
+    "language": "en"
+  },
+  "llm_analysis": {
+    "category": "technical",
+    "title": "Production Application Configuration Settings",
+    "tags": [
+      "configuration",
+      "json",
+      "api",
+      "database",
+      "security",
+      "app-settings"
+    ],
+    "summary": "Comprehensive application configuration file containing API settings, database connections, security policies, caching, and feature flags for a production environment.",
+    "reasoning": "Technical configuration file with structured settings for various application components and services.",
+    "confidence": 0.97,
+    "suggested_filename": "app-config-production",
+    "extracted_entities": [
+      "PostgreSQL",
+      "Redis",
+      "GPT-4",
+      "CORS",
+      "SSL"
+    ],
+    "word_count": 145,
+    "analyzed_at": "2025-01-24T10:47:00.000Z",
+    "model_version": "claude-3"
+  }
+}

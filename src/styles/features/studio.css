@@ -1,0 +1,611 @@
+/**
+ * @file styles/features/studio.css
+ * @layer features
+ * @deps [globals.css, theme variables]
+ * @used-by [StudioFeature and platform editors]
+ * @llm-read true
+ * @llm-write full-edit
+ */
+
+/* Studio Container */
+.studio-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-background);
+}
+
+/* Tab Navigation */
+.studio-tabs {
+  display: flex;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.studio-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.studio-tab:hover {
+  background: var(--color-background-secondary);
+  border-color: var(--color-border-hover);
+}
+
+.studio-tab.active {
+  background: var(--tab-color, var(--color-primary));
+  color: white;
+  border-color: var(--tab-color, var(--color-primary));
+}
+
+.studio-tab-icon {
+  font-size: var(--font-size-md);
+}
+
+.studio-tab-name {
+  font-weight: 500;
+}
+
+/* Content Area */
+.studio-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-lg);
+}
+
+.studio-editor-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Common Editor Styles */
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.editor-header h2 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.editor-controls {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.editor-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Twitter Editor Specific */
+.twitter-editor {
+  width: 100%;
+}
+
+.tweet-composer,
+.thread-composer {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.tweet-input-wrapper {
+  position: relative;
+  margin-bottom: var(--spacing-md);
+}
+
+.tweet-textarea {
+  width: 100%;
+  font-size: var(--font-size-md);
+  resize: none;
+}
+
+.character-count {
+  position: absolute;
+  bottom: var(--spacing-sm);
+  right: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.character-count.warning {
+  color: var(--color-error);
+}
+
+.tweet-preview {
+  margin-top: var(--spacing-lg);
+}
+
+.preview-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-sm);
+}
+
+.tweet-card {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--color-background);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.tweet-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-background-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg);
+}
+
+.tweet-content {
+  flex: 1;
+}
+
+.tweet-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.tweet-name {
+  font-weight: 600;
+}
+
+.tweet-handle,
+.tweet-time {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.tweet-text {
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.tweet-actions {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+  color: var(--color-text-secondary);
+}
+
+/* Thread Mode */
+.thread-composer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.thread-tweet {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--color-background);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.thread-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.thread-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-xs);
+}
+
+.add-tweet-btn {
+  align-self: flex-start;
+}
+
+/* Instagram Editor Specific */
+.instagram-editor {
+  width: 100%;
+}
+
+.instagram-composer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.media-section,
+.caption-section {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.media-section h3,
+.caption-section h3,
+.instagram-preview h3 {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xl);
+  text-align: center;
+}
+
+.upload-icon {
+  font-size: 48px;
+}
+
+.upload-hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.media-preview {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.media-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-media {
+  position: absolute;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-badge {
+  position: absolute;
+  bottom: var(--spacing-xs);
+  left: var(--spacing-xs);
+  background: var(--color-primary);
+  color: white;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+.add-more-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-background);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  aspect-ratio: 1;
+}
+
+.instagram-caption {
+  width: 100%;
+  resize: none;
+}
+
+.caption-hints {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Instagram Preview */
+.instagram-preview {
+  grid-column: 1 / -1;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.phone-mockup {
+  max-width: 375px;
+  margin: 0 auto;
+  background: var(--color-background);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.instagram-post {
+  width: 100%;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-background-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.username {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.post-media {
+  aspect-ratio: 1;
+  background: var(--color-background-secondary);
+  position: relative;
+}
+
+.post-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.empty-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-secondary);
+}
+
+.empty-media span {
+  font-size: 48px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.media-indicators {
+  position: absolute;
+  bottom: var(--spacing-sm);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+}
+
+.indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.indicator.active {
+  background: white;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.left-actions {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.post-caption {
+  padding: 0 var(--spacing-md) var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.caption-text {
+  margin-left: var(--spacing-xs);
+  color: var(--color-text-primary);
+}
+
+/* Post Type Selector */
+.post-type-selector {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* Substack Editor */
+.substack-editor {
+  width: 100%;
+}
+
+.substack-composer {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.article-header-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.article-title-input {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.article-subtitle-input {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.writing-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.toolbar-btn {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.toolbar-btn:hover {
+  background: var(--color-background-secondary);
+}
+
+.toolbar-divider {
+  color: var(--color-border);
+  margin: 0 var(--spacing-xs);
+}
+
+.article-editor {
+  width: 100%;
+  min-height: 400px;
+  font-family: var(--font-family-base);
+  line-height: 1.6;
+}
+
+.substack-preview {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  background: var(--color-background);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.preview-title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+.preview-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  margin-bottom: var(--spacing-md);
+}
+
+.preview-meta {
+  display: flex;
+  gap: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.preview-content {
+  font-size: var(--font-size-md);
+  line-height: 1.7;
+  color: var(--color-text-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .studio-tabs {
+    padding: var(--spacing-sm);
+  }
+
+  .studio-content {
+    padding: var(--spacing-md);
+  }
+
+  .instagram-composer {
+    grid-template-columns: 1fr;
+  }
+
+  .editor-actions {
+    flex-direction: column;
+  }
+
+  .editor-actions button {
+    width: 100%;
+  }
+}

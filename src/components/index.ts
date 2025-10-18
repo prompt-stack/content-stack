@@ -8,6 +8,9 @@
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 80
+ * @test-file index.test.ts
+ * @test-status missing
  */
 
 /**
@@ -39,3 +42,7 @@ export { Dropzone } from './Dropzone'
 export { EditableField } from './EditableField'
 export { Modal } from './Modal'
 export { VirtualList } from './VirtualList'
+export { Toast } from './Toast'
+export { ToastContainer } from './ToastContainer'
+export { UserAvatar } from './UserAvatar'
+export { LogoUploader } from './LogoUploader'

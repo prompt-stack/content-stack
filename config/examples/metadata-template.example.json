@@ -1,0 +1,72 @@
+{
+  "// ===== IMMUTABLE FIELDS =====": "Never change these after creation",
+  "id": "content-1753319664670-46u6y7",
+  "created_at": "2025-07-24T01:14:24.670Z",
+  "source": {
+    "method": "paste | upload | url | drop | manual | api",
+    "timestamp": "2025-07-24T01:14:24.670Z"
+  },
+  "content": {
+    "type": "text | code | image | video | audio | document | etc",
+    "full_text": "The complete original content text goes here...",
+    "hash": "sha256-2b9fa7bdae61eb7d13239ec7342464c37856549dd860016533941ecf97654b68",
+    "file_type": "js | md | pdf | etc (optional)",
+    "size": 12345,
+    "duration": "10:34 (for audio/video)",
+    "dimensions": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  
+  "// ===== SYSTEM FIELDS =====": "Updated automatically by the system",
+  "updated_at": "2025-07-24T01:25:00.000Z",
+  "status": "raw | enriched",
+  "title": "content-1753319664670-46u6y7",
+  "filename": "content-1753319664670-46u6y7.js",
+  "location": {
+    "inbox_path": "storage/code/content-1753319664670-46u6y7.js",
+    "final_path": "content/education/data-structures-guide.md",
+    "archive_path": null
+  },
+  "storage": {
+    "path": "storage/code/content-1753319664670-46u6y7.js",
+    "size": 3857,
+    "last_accessed": "2025-07-24T01:25:00.000Z"
+  },
+  
+  "// ===== USER-EDITABLE FIELDS =====": "Users can modify these",
+  "user_tags": ["important", "to-review", "my-project"],
+  "source_url": "https://example.com/actual-source-url",
+  "reference_urls": [
+    "https://example.com/related-resource-1",
+    "https://example.com/alternative-source"
+  ],
+  "metadata": {
+    "author": "John Doe",
+    "source_platform": "YouTube | Twitter | Reddit | etc",
+    "original_date": "2025-01-15",
+    "language": "en",
+    "custom_field": "Any additional user metadata"
+  },
+  
+  "// ===== LLM-ONLY FIELDS =====": "Only AI should modify these during enrichment",
+  "llm_analysis": {
+    "// Core analysis": "Required fields for enrichment",
+    "category": "education | technical | reference | tutorial | etc",
+    "title": "Better Title: Data Structures for Non-Technical Users",
+    "tags": ["data-structures", "json", "api", "beginner-friendly"],
+    
+    "// Extended analysis": "Optional but recommended",
+    "summary": "Brief 2-3 sentence summary of the content explaining key points",
+    "reasoning": "Explanation of why this category was chosen and how it fits",
+    "confidence": 0.95,
+    "suggested_filename": "better-filename-based-on-content",
+    "extracted_entities": ["Person Name", "Company", "Technology", "Location"],
+    
+    "// Metadata": "Analysis metadata",
+    "word_count": 3857,
+    "analyzed_at": "2025-07-24T01:25:00.000Z",
+    "model_version": "claude-3-sonnet | gpt-4 | etc"
+  }
+}

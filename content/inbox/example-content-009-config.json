@@ -1,0 +1,52 @@
+{
+  "appConfig": {
+    "name": "MyAwesomeApp",
+    "version": "2.1.0",
+    "environment": "production",
+    "features": {
+      "darkMode": true,
+      "analytics": true,
+      "notifications": {
+        "email": true,
+        "push": true,
+        "sms": false
+      },
+      "aiAssistant": {
+        "enabled": true,
+        "model": "gpt-4",
+        "maxTokens": 2000
+      }
+    },
+    "api": {
+      "baseUrl": "https://api.myapp.com/v2",
+      "timeout": 30000,
+      "retryAttempts": 3,
+      "headers": {
+        "X-App-Version": "2.1.0",
+        "Accept": "application/json"
+      }
+    },
+    "database": {
+      "type": "postgresql",
+      "host": "db.myapp.com",
+      "port": 5432,
+      "ssl": true,
+      "poolSize": 20
+    },
+    "cache": {
+      "provider": "redis",
+      "ttl": 3600,
+      "maxSize": "100MB"
+    },
+    "security": {
+      "cors": {
+        "allowedOrigins": ["https://myapp.com", "https://app.myapp.com"],
+        "credentials": true
+      },
+      "rateLimit": {
+        "windowMs": 900000,
+        "max": 100
+      }
+    }
+  }
+}

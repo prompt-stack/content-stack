@@ -1,0 +1,28 @@
+{
+  "id": "content-1753280741624-9dexlw",
+  "created_at": "2025-07-23T14:25:41.624Z",
+  "updated_at": "2025-07-23T14:25:41.624Z",
+  "status": "inbox",
+  "source": {
+    "method": "drop",
+    "url": null
+  },
+  "content": {
+    "type": "document",
+    "title": "Cover Contract for 520 Camden Ave.pdf",
+    "full_text": "📄 Binary file: Cover Contract for 520 Camden Ave.pdf\nSize: 783KB\nType: application/pdf...",
+    "word_count": 13,
+    "hash": "sha256-748c284938b7e6cdb632d9700f0343f60b38680b0bfb25808f5982e69693a11b"
+  },
+  "location": {
+    "inbox_path": "storage/documents/content-1753280741624-9dexlw.pdf",
+    "final_path": null
+  },
+  "llm_analysis": null,
+  "tags": [],
+  "storage": {
+    "path": "storage/documents/content-1753280741624-9dexlw.pdf",
+    "type": "documents",
+    "size": 89
+  }
+}

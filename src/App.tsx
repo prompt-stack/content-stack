@@ -85,6 +85,14 @@ function App() {
             <i className="fas fa-credit-card home__quick-link-icon" />
             <span className="home__quick-link-label">Subscription</span>
           </Link>
+          <Link to="/studio" className="home__quick-link">
+            <i className="fas fa-palette home__quick-link-icon" />
+            <span className="home__quick-link-label">Studio</span>
+          </Link>
+          <Link to="/settings" className="home__quick-link">
+            <i className="fas fa-cog home__quick-link-icon" />
+            <span className="home__quick-link-label">Settings</span>
+          </Link>
         </div>
       </div>
     </div>

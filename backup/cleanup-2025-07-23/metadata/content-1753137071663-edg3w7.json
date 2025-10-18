@@ -1,0 +1,32 @@
+{
+  "id": "content-1753137071663-edg3w7",
+  "created_at": "2025-07-21T22:31:11.663Z",
+  "updated_at": "2025-07-22T02:16:18.761Z",
+  "status": "inbox",
+  "source": {
+    "method": "drop",
+    "url": null
+  },
+  "content": {
+    "type": "image",
+    "title": "SCR-20250718-oiru.png",
+    "full_text": "📄 Binary file: SCR-20250718-oiru.png\nSize: 72KB\nType: image/png...lkjkjk",
+    "word_count": 8,
+    "hash": "sha256-05cef1569ff894b0542b2ae76a75d8cc6972a82d1abd0e2cee61876a7318996a"
+  },
+  "location": {
+    "inbox_path": "storage/images/content-1753137071663-edg3w7.png",
+    "final_path": null
+  },
+  "llm_analysis": {
+    "category": "finance"
+  },
+  "tags": [
+    "can"
+  ],
+  "storage": {
+    "path": "storage/images/content-1753137071663-edg3w7.png",
+    "type": "images",
+    "size": 66
+  }
+}

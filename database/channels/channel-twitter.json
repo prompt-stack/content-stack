@@ -1,0 +1,60 @@
+{
+  "id": "channel-twitter",
+  "type": "channel",
+  "created_at": "2025-01-22T00:00:00.000Z",
+  "updated_at": "2025-01-22T00:00:00.000Z",
+  "data": {
+    "platform": "twitter",
+    "name": "Twitter/X",
+    "icon": "fab fa-twitter",
+    "status": "configured",
+    "config": {
+      "handle": "@username",
+      "authenticated": false,
+      "oauth": {
+        "token": null,
+        "secret": null,
+        "expires": null
+      },
+      "limits": {
+        "characterLimit": 280,
+        "mediaLimit": 4,
+        "threadLimit": 25
+      },
+      "defaults": {
+        "visibility": "public",
+        "replySettings": "everyone",
+        "sensitive": false
+      },
+      "scheduling": {
+        "enabled": true,
+        "timezone": "UTC",
+        "optimalTimes": [
+          "09:00",
+          "12:00",
+          "17:00",
+          "20:00"
+        ]
+      }
+    },
+    "templates": {
+      "single": {
+        "format": "{{content}}\n\n{{tags}}",
+        "mediaStrategy": "attach"
+      },
+      "thread": {
+        "format": "🧵 {{title}}\n\n{{content}}",
+        "splitStrategy": "sentence",
+        "numberTweets": true
+      }
+    },
+    "analytics": {
+      "lastSync": null,
+      "metrics": {
+        "followers": 0,
+        "engagement": 0,
+        "impressions": 0
+      }
+    }
+  }
+}

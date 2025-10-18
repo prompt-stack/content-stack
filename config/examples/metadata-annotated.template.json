@@ -1,0 +1,79 @@
+{
+  "_metadata": {
+    "template_version": "1.0.0",
+    "description": "Content metadata template for prompt-stack",
+    "last_updated": "2025-07-24",
+    "sections": {
+      "immutable": "Fields that never change after creation",
+      "system": "Fields updated automatically by the system",
+      "user_editable": "Fields that users can modify",
+      "llm_only": "Fields only AI should modify during enrichment"
+    }
+  },
+  
+  "_comments": "IMMUTABLE FIELDS - Set once at creation, never change",
+  "id": "content-[timestamp]-[random]",
+  "created_at": "2025-07-24T01:14:24.670Z",
+  "source": {
+    "method": "paste | upload | url | drop | manual | api",
+    "timestamp": "ISO timestamp when content was ingested"
+  },
+  "content": {
+    "type": "text | code | image | video | audio | document | etc",
+    "full_text": "The complete original content (for text-based files)",
+    "hash": "SHA256 hash of the content for deduplication",
+    "file_type": "js | md | pdf | etc - file extension",
+    "size": "File size in bytes (number)",
+    "duration": "10:34 format for audio/video files",
+    "dimensions": {
+      "width": "Pixel width for images/videos",
+      "height": "Pixel height for images/videos"
+    }
+  },
+  
+  "_comments2": "SYSTEM FIELDS - Managed by the system",
+  "updated_at": "ISO timestamp of last update",
+  "status": "raw | enriched",
+  "title": "Display title (initially from filename)",
+  "filename": "Current filename",
+  "location": {
+    "inbox_path": "Path where file first lands",
+    "final_path": "Path after organization (null if still in inbox)",
+    "archive_path": "Path if archived (usually null)"
+  },
+  "storage": {
+    "path": "Current storage location",
+    "size": "Storage size in bytes",
+    "last_accessed": "ISO timestamp of last access"
+  },
+  
+  "_comments3": "USER-EDITABLE FIELDS - Users can modify these",
+  "user_tags": ["personal-tag-1", "project-x", "important"],
+  "source_url": "https://example.com/where-this-came-from",
+  "reference_urls": [
+    "https://example.com/related-link-1",
+    "https://archive.org/backup-link"
+  ],
+  "metadata": {
+    "author": "Original author name",
+    "source_platform": "YouTube | Twitter | Reddit | GitHub | etc",
+    "original_date": "When content was originally created",
+    "language": "en | es | fr | etc (ISO 639-1)",
+    "custom_field": "Any additional metadata you want"
+  },
+  
+  "_comments4": "LLM-ONLY FIELDS - Only AI modifies these",
+  "llm_analysis": {
+    "category": "education | technical | reference | business | creative | personal | general",
+    "title": "AI-suggested better title for the content",
+    "tags": ["ai-tag-1", "ai-tag-2", "topic-based-tag"],
+    "summary": "2-3 sentence AI-generated summary of the content",
+    "reasoning": "Why the AI chose this categorization",
+    "confidence": 0.95,
+    "suggested_filename": "better-filename-suggestion",
+    "extracted_entities": ["Person Name", "Company", "Technology mentioned"],
+    "word_count": 1234,
+    "analyzed_at": "ISO timestamp when AI analyzed",
+    "model_version": "claude-3-sonnet | gpt-4 | etc"
+  }
+}

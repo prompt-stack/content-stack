@@ -4,10 +4,13 @@
  * @layer primitive
  * @deps None (primitive component)
  * @used-by none
- * @css /styles/components/forms.css
+ * @cssFile /styles/components/forms.css
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 80
+ * @test-file Radio.test.tsx
+ * @test-status missing
  */
 
 import { forwardRef } from 'react';

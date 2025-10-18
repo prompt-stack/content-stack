@@ -1,0 +1,17 @@
+React Server Components represent a new paradigm in React development that allows components to be rendered on the server, reducing bundle sizes and improving performance.
+
+Key benefits include:
+- Reduced JavaScript bundle size
+- Direct database access
+- Automatic code splitting
+- Improved SEO and initial page load
+
+Server Components can fetch data directly without needing client-side state management or effects. This simplifies data fetching patterns and reduces the complexity of modern React applications.
+
+Example usage:
+async function BlogPost({ id }) {
+  const post = await db.posts.findById(id);
+  return <article>{post.content}</article>;
+}
+
+The future of React is moving towards a hybrid model where developers can choose the best rendering strategy for each component.

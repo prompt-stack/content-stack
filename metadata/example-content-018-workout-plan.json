@@ -1,0 +1,60 @@
+{
+  "id": "example-content-018-workout-plan",
+  "created_at": "2025-01-24T11:30:00.000Z",
+  "source": {
+    "method": "manual",
+    "timestamp": "2025-01-24T11:30:00.000Z"
+  },
+  "content": {
+    "type": "reference",
+    "full_text": "# 12-Week Strength Training Program\n**Goal:** Build muscle and increase overall strength...",
+    "hash": "sha256-example018",
+    "file_type": "md",
+    "size": 5678
+  },
+  "updated_at": "2025-01-24T11:30:00.000Z",
+  "status": "raw",
+  "title": "12-Week Strength Training Program",
+  "filename": "example-content-018-workout-plan.md",
+  "location": {
+    "inbox_path": "content/inbox/example-content-018-workout-plan.md",
+    "final_path": null
+  },
+  "storage": {
+    "path": "content/inbox/example-content-018-workout-plan.md",
+    "size": 5678
+  },
+  "user_tags": [
+    "fitness",
+    "workout",
+    "strength-training"
+  ],
+  "metadata": {
+    "language": "en"
+  },
+  "llm_analysis": {
+    "category": "personal",
+    "title": "Intermediate Strength Training Program Guide",
+    "tags": [
+      "fitness",
+      "strength-training",
+      "workout-plan",
+      "exercise",
+      "nutrition",
+      "muscle-building"
+    ],
+    "summary": "Comprehensive 12-week strength training program with Upper/Lower split, including detailed exercises, nutrition guidelines, recovery protocols, and progress tracking methods.",
+    "reasoning": "Personal fitness content - structured workout program with exercise instructions and health guidance.",
+    "confidence": 0.97,
+    "suggested_filename": "12-week-strength-program",
+    "extracted_entities": [
+      "Upper/Lower Split",
+      "Progressive Overload",
+      "Creatine",
+      "Deload Week"
+    ],
+    "word_count": 1023,
+    "analyzed_at": "2025-01-24T11:32:00.000Z",
+    "model_version": "claude-3"
+  }
+}

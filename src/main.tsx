@@ -22,6 +22,11 @@ import { InboxPage } from './pages/InboxPage'
 import HealthPage from './pages/HealthPage'
 import SubscriptionPage from './pages/SubscriptionPage'
 import { PlaygroundPage } from './pages/PlaygroundPage'
+import { StoragePage } from './pages/StoragePage'
+import { SearchPage } from './pages/SearchPage'
+import { TestSidebarPage } from './pages/TestSidebarPage'
+import { StudioPage } from './pages/StudioPage'
+import { SettingsPage } from './pages/SettingsPage'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,22 +47,43 @@ const router = createBrowserRouter([
         element: <App />
       },
       {
-        path: 'inbox',
-        element: <InboxPage />
-      },
-      {
         path: 'health',
         element: <HealthPage />
       },
       {
         path: 'subscription',
         element: <SubscriptionPage />
-      },
-      {
-        path: 'playground',
-        element: <PlaygroundPage />
       }
     ]
+  },
+  // Pages with their own layouts (no main Layout wrapper)
+  {
+    path: '/inbox',
+    element: <InboxPage />
+  },
+  {
+    path: '/playground',
+    element: <PlaygroundPage />
+  },
+  {
+    path: '/storage',
+    element: <StoragePage />
+  },
+  {
+    path: '/search',
+    element: <SearchPage />
+  },
+  {
+    path: '/test-sidebar',
+    element: <TestSidebarPage />
+  },
+  {
+    path: '/studio',
+    element: <StudioPage />
+  },
+  {
+    path: '/settings',
+    element: <SettingsPage />
   }
 ])
 

@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "created_at": "",
+  "source": {
+    "method": "",
+    "timestamp": ""
+  },
+  "content": {
+    "type": "",
+    "full_text": "",
+    "hash": "",
+    "file_type": "",
+    "size": 0,
+    "duration": "",
+    "dimensions": {
+      "width": 0,
+      "height": 0
+    }
+  },
+  "updated_at": "",
+  "status": "",
+  "title": "",
+  "filename": "",
+  "location": {
+    "inbox_path": "",
+    "final_path": null,
+    "archive_path": null
+  },
+  "storage": {
+    "path": "",
+    "size": 0,
+    "last_accessed": ""
+  },
+  "user_tags": [],
+  "source_url": "",
+  "reference_urls": [],
+  "metadata": {
+    "author": "",
+    "source_platform": "",
+    "original_date": "",
+    "language": ""
+  },
+  "llm_analysis": null
+}

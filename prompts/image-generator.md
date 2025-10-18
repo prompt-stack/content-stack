@@ -1,0 +1,1 @@
+"Create a complete illustration that fits entirely within the image boundaries with adequate white space margins. All elements, text, and drawings must be fully visible and not cut off at any edges. Leave at least 10% margin/border space around all content. Ensure the entire scene is contained within the frame."

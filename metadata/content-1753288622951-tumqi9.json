@@ -1,0 +1,37 @@
+{
+  "id": "content-1753288622951-tumqi9",
+  "created_at": "2025-07-23T16:37:02.952Z",
+  "updated_at": "2025-07-23T16:37:02.952Z",
+  "status": "raw",
+  "source": {
+    "method": "paste",
+    "url": "https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023"
+  },
+  "content": {
+    "type": "text",
+    "title": "Understanding React Server Components",
+    "full_text": "",
+    "text": "React Server Components represent a new paradigm in React development that allows components to be rendered on the server, reducing bundle sizes and improving performance.\n\nKey benefits include:\n- Reduced JavaScript bundle size\n- Direct database access\n- Automatic code splitting\n- Improved SEO and initial page load\n\nServer Components can fetch data directly without needing client-side state management or effects. This simplifies data fetching patterns and reduces the complexity of modern React applications.\n\nExample usage:\nasync function BlogPost({ id }) {\n  const post = await db.posts.findById(id);\n  return <article>{post.content}</article>;\n}\n\nThe future of React is moving towards a hybrid model where developers can choose the best rendering strategy for each component.",
+    "word_count": 111,
+    "hash": "sha256-0000000000000000000000000000000000000000000000000000000056f5aadc"
+  },
+  "location": {
+    "inbox_path": "storage/text/content-1753288622951-tumqi9.txt",
+    "final_path": null
+  },
+  "storage": {
+    "path": "storage/text/content-1753288622951-tumqi9.txt",
+    "type": "text",
+    "size": 782
+  },
+  "category": "tech",
+  "llm_analysis": null,
+  "title": "Understanding React Server Components",
+  "filename": "content-1753288622951-tumqi9.txt",
+  "user_tags": [
+    "react",
+    "javascript",
+    "web-development",
+    "performance"
+  ]
+}

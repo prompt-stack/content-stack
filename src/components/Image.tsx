@@ -8,6 +8,9 @@
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 80
+ * @test-file Image.test.tsx
+ * @test-status missing
  */
 
 import { forwardRef } from 'react';

@@ -8,18 +8,19 @@
  * Following design-system naming convention: create[Subject]
  */
 
-import type { ContentMetadata, MetadataServiceInput } from '../types/ContentTypes';
+import type { ContentMetadata, ContentInboxServiceInput } from '../types/ContentTypes';
 import { generateContentId } from './generateContentId';
 import { detectContentType } from './detectContentType';
 import { extractTitle } from './extractTitle';
 import { calculateWordCount } from './calculateWordCount';
 import { generateHash } from './generateHash';
+import { generateStoragePath } from '../../config/schemas/paths.config';
 
 /**
  * Create metadata for new content
  * Following MVP metadata schema
  */
-export function createMetadata(input: MetadataServiceInput): ContentMetadata {
+export function createMetadata(input: ContentInboxServiceInput): ContentMetadata {
   const id = generateContentId();
   const timestamp = new Date().toISOString();
   const type = detectContentType(input.content, input.filename);
@@ -27,9 +28,9 @@ export function createMetadata(input: MetadataServiceInput): ContentMetadata {
   const wordCount = calculateWordCount(input.content);
   const hash = generateHash(input.content);
   
-  // Generate inbox file path
+  // Generate storage path (no more inbox)
   const fileExtension = getFileExtension(type, input.filename);
-  const inboxPath = `content/inbox/${input.method}-${Date.now()}-${id.split('-')[2]}.${fileExtension}`;
+  const storagePath = generateStoragePath(type, id, fileExtension);
   
   return {
     id,
@@ -38,22 +39,33 @@ export function createMetadata(input: MetadataServiceInput): ContentMetadata {
     status: 'inbox',
     source: {
       method: input.method,
-      url: input.url || null,
+      url: input.metadata?.reference_url || input.url || null,
     },
     content: {
       type,
       title,
-      full_text: input.content,
+      full_text: '', // DEPRECATED - keeping empty for backward compatibility
+      text: shouldExtractText(type) ? input.content : null,  // Extract text for text-based formats
       word_count: wordCount,
       hash,
     },
     location: {
-      inbox_path: inboxPath,
+      inbox_path: storagePath, // DEPRECATED field - kept for compatibility
       final_path: null,
     },
+    category: 'general', // Default category - can be enriched later
     llm_analysis: null,
     tags: [], // Initialize with empty tags array
   };
+}
+
+/**
+ * Check if content type should have text extracted
+ * Text-based formats that don't require external services
+ */
+function shouldExtractText(type: string): boolean {
+  const textBasedTypes = ['text', 'code', 'data', 'web', 'email'];
+  return textBasedTypes.includes(type);
 }
 
 /**

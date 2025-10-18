@@ -8,10 +8,13 @@
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 90
+ * @test-file useInbox.test.ts
+ * @test-status missing
  */
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { api } from '@/services/api'
+import { Api } from '@/services/ApiService'
 import toast from 'react-hot-toast'
 
 export function useInbox() {
@@ -19,11 +22,11 @@ export function useInbox() {
 
   const { data: items = [], isLoading: loading, error } = useQuery({
     queryKey: ['inbox'],
-    queryFn: api.getInboxItems,
+    queryFn: Api.getInboxItems,
   })
 
   const addMutation = useMutation({
-    mutationFn: api.addInboxItem,
+    mutationFn: Api.addInboxItem,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['inbox'] })
       toast.success('Item added to inbox')
@@ -42,7 +45,7 @@ export function useInbox() {
   })
 
   const deleteMutation = useMutation({
-    mutationFn: api.deleteInboxItem,
+    mutationFn: Api.deleteInboxItem,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['inbox'] })
       toast.success('Item deleted')
@@ -53,7 +56,7 @@ export function useInbox() {
   })
 
   const extractURLMutation = useMutation({
-    mutationFn: api.extractURL,
+    mutationFn: Api.extractURL,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['inbox'] })
       toast.success('URL content extracted')

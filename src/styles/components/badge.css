@@ -123,10 +123,11 @@
   letter-spacing: normal;
 }
 
-/* Small */
+/* Small - Ultra Compact */
 .badge--sm {
-  padding: calc(var(--space-xs) * 0.5) var(--space-sm);
-  font-size: 0.625rem;
+  padding: 1px 4px;
+  font-size: 0.5625rem;
+  line-height: 1.2;
 }
 
 /* Medium - default size */
@@ -182,12 +183,15 @@
   font-size: 0.625rem;
 }
 
-/* Tag variant - for category tags */
+/* Tag variant - for category tags - Ultra Compact */
 .badge--tag {
   text-transform: none;
   letter-spacing: normal;
   font-weight: 400;
   border-radius: var(--radius-sm);
+  padding: 1px 4px !important;
+  font-size: 0.5625rem !important;
+  line-height: 1.2 !important;
 }
 
 /* Status badge with pulse */

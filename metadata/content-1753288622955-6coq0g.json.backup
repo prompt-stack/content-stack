@@ -1,0 +1,36 @@
+{
+  "id": "content-1753288622955-6coq0g",
+  "created_at": "2025-07-23T16:37:02.955Z",
+  "updated_at": "2025-07-23T16:37:02.955Z",
+  "status": "inbox",
+  "source": {
+    "method": "upload",
+    "url": null
+  },
+  "content": {
+    "type": "data",
+    "title": "Cryptocurrency Market Analysis Q1 2024",
+    "full_text": "",
+    "text": "{\n  \"market_overview\": {\n    \"total_market_cap\": \"$2.45T\",\n    \"btc_dominance\": \"52.3%\",\n    \"eth_dominance\": \"16.8%\",\n    \"total_cryptocurrencies\": 23451,\n    \"active_markets\": 745\n  },\n  \"top_performers\": [\n    {\n      \"symbol\": \"SOL\",\n      \"name\": \"Solana\",\n      \"change_24h\": \"+8.5%\",\n      \"price\": \"$145.23\"\n    },\n    {\n      \"symbol\": \"AVAX\",\n      \"name\": \"Avalanche\",\n      \"change_24h\": \"+6.2%\",\n      \"price\": \"$42.18\"\n    },\n    {\n      \"symbol\": \"INJ\",\n      \"name\": \"Injective\",\n      \"change_24h\": \"+5.8%\",\n      \"price\": \"$38.92\"\n    }\n  ],\n  \"market_trends\": [\n    \"Layer 2 scaling solutions gaining adoption\",\n    \"RWA (Real World Assets) tokenization growing\",\n    \"AI-crypto intersection creating new opportunities\",\n    \"Institutional adoption continues despite volatility\"\n  ],\n  \"risk_factors\": [\n    \"Regulatory uncertainty in major markets\",\n    \"Macroeconomic headwinds\",\n    \"Technical vulnerabilities in DeFi protocols\"\n  ]\n}",
+    "word_count": 88,
+    "hash": "sha256-0000000000000000000000000000000000000000000000000000000059986860"
+  },
+  "location": {
+    "inbox_path": "storage/data/content-1753288622955-6coq0g.json",
+    "final_path": null
+  },
+  "storage": {
+    "path": "storage/data/content-1753288622955-6coq0g.json",
+    "type": "data",
+    "size": 956
+  },
+  "category": "finance",
+  "llm_analysis": null,
+  "tags": [
+    "cryptocurrency",
+    "bitcoin",
+    "ethereum",
+    "market-analysis",
+    "defi"
+  ]
+}

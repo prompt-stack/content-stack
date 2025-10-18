@@ -12,7 +12,7 @@
 
 import { useState, useEffect } from 'react'
 import { Card } from '@/components/Card'
-import { api } from '@/lib/api'
+import { Api } from '@/lib/api'
 
 interface HealthStatus {
   status: string
@@ -40,9 +40,23 @@ interface ServerStats {
   uptime?: number
 }
 
+interface StorageAuditReport {
+  status: 'healthy' | 'inconsistent'
+  totalStorageItems: number
+  totalMetadataItems: number
+  orphanedStorageItems: string[]
+  missingStorageItems: string[]
+  mismatches: Array<{
+    metadataId: string
+    issue: string
+  }>
+  timestamp: Date
+}
+
 export default function HealthPage() {
   const [health, setHealth] = useState<HealthStatus | null>(null)
   const [stats, setStats] = useState<ServerStats | null>(null)
+  const [storageAudit, setStorageAudit] = useState<StorageAuditReport | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -55,16 +69,24 @@ export default function HealthPage() {
   const checkHealth = async () => {
     try {
       // Check basic health
-      const healthData = await api.get<HealthStatus>('/api/health')
+      const healthData = await Api.get<HealthStatus>('/api/health')
       setHealth(healthData)
 
       // Get detailed stats
       try {
-        const statsData = await api.get<ServerStats>('/api/content/debug/cache-stats')
+        const statsData = await Api.get<ServerStats>('/api/content/debug/cache-stats')
         setStats(statsData)
       } catch (statsErr) {
         // Stats endpoint is optional, don't fail the whole health check
         console.warn('Could not fetch cache stats:', statsErr)
+      }
+
+      // Check storage audit
+      try {
+        const auditData = await Api.get<StorageAuditReport>('/api/health/storage-audit')
+        setStorageAudit(auditData)
+      } catch (auditErr) {
+        console.warn('Could not fetch storage audit:', auditErr)
       }
 
       setError(null)
@@ -72,7 +94,7 @@ export default function HealthPage() {
       console.error('Health check error:', err)
       if (err instanceof Error) {
         setError(err.message.includes('Failed to fetch') 
-          ? 'Cannot connect to server. Make sure the Express server is running on port 3456.'
+          ? 'Cannot connect to server. Make sure the Express server is running on port 3457.'
           : err.message
         )
       } else {
@@ -194,6 +216,58 @@ export default function HealthPage() {
           </Card>
         )}
 
+        {/* Storage Audit */}
+        {storageAudit && (
+          <Card className="health__card">
+            <div className="health__card-header">
+              <h3>Storage/Metadata Audit</h3>
+              {storageAudit.status === 'healthy' ? (
+                <span className="health__status-indicator health__status-indicator--success">
+                  <i className="fas fa-check-circle"></i> Healthy
+                </span>
+              ) : (
+                <span className="health__status-indicator health__status-indicator--warning">
+                  <i className="fas fa-exclamation-triangle"></i> Inconsistent
+                </span>
+              )}
+            </div>
+            <div className="health__metrics">
+              <div className="health__metric">
+                <span className="health__metric-label">Storage Items</span>
+                <span className="health__metric-value">{storageAudit.totalStorageItems}</span>
+              </div>
+              <div className="health__metric">
+                <span className="health__metric-label">Metadata Items</span>
+                <span className="health__metric-value">{storageAudit.totalMetadataItems}</span>
+              </div>
+              {storageAudit.orphanedStorageItems.length > 0 && (
+                <div className="health__metric">
+                  <span className="health__metric-label">Orphaned Files</span>
+                  <span className="health__metric-value health__metric-value--warning">
+                    {storageAudit.orphanedStorageItems.length}
+                  </span>
+                </div>
+              )}
+              {storageAudit.missingStorageItems.length > 0 && (
+                <div className="health__metric">
+                  <span className="health__metric-label">Missing Files</span>
+                  <span className="health__metric-value health__metric-value--warning">
+                    {storageAudit.missingStorageItems.length}
+                  </span>
+                </div>
+              )}
+              {storageAudit.mismatches.length > 0 && (
+                <div className="health__metric">
+                  <span className="health__metric-label">Mismatches</span>
+                  <span className="health__metric-value health__metric-value--warning">
+                    {storageAudit.mismatches.length}
+                  </span>
+                </div>
+              )}
+            </div>
+          </Card>
+        )}
+
         {/* API Endpoints */}
         <Card className="health__card">
           <div className="health__card-header">
@@ -206,19 +280,19 @@ export default function HealthPage() {
               <span className="health__endpoint-status health__endpoint-status--success">Active</span>
             </div>
             <div className="health__endpoint">
-              <code>/api/inbox</code>
+              <code>/api/health/storage-audit</code>
               <span className="health__endpoint-status health__endpoint-status--success">Active</span>
             </div>
             <div className="health__endpoint">
-              <code>/api/content</code>
+              <code>/api/content-inbox</code>
+              <span className="health__endpoint-status health__endpoint-status--success">Active</span>
+            </div>
+            <div className="health__endpoint">
+              <code>/api/storage</code>
               <span className="health__endpoint-status health__endpoint-status--success">Active</span>
             </div>
             <div className="health__endpoint">
               <code>/api/metadata</code>
-              <span className="health__endpoint-status health__endpoint-status--success">Active</span>
-            </div>
-            <div className="health__endpoint">
-              <code>/api/export</code>
               <span className="health__endpoint-status health__endpoint-status--success">Active</span>
             </div>
           </div>

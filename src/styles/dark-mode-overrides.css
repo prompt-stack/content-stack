@@ -1,0 +1,331 @@
+/**
+ * @file styles/dark-mode-overrides.css
+ * @purpose Dark mode specific overrides for inbox and storage pages
+ * @layer theme
+ * @used-by [InboxPage, StoragePage]
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
+/* Dark Mode Overrides for Content Inbox */
+@media (prefers-color-scheme: dark) {
+  /* Content type icon colors - adjusted for dark mode */
+  .content-inbox__content-type-icon {
+    color: var(--color-text-secondary);
+  }
+  
+  .content-inbox__content-type-icon .fa-code { color: #60a5fa; }
+  .content-inbox__content-type-icon .fa-file-text { color: #9ca3af; }
+  .content-inbox__content-type-icon .fa-file-pdf { color: #f87171; }
+  .content-inbox__content-type-icon .fa-image { color: #34d399; }
+  .content-inbox__content-type-icon .fa-video { color: #a78bfa; }
+  .content-inbox__content-type-icon .fa-volume-up { color: #fbbf24; }
+  .content-inbox__content-type-icon .fa-table { color: #10b981; }
+  .content-inbox__content-type-icon .fa-globe { color: #38bdf8; }
+  
+  /* Sync status background */
+  .content-inbox__sync-info:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Content cards */
+  .content-inbox__card {
+    background: var(--color-background-secondary);
+    border-color: var(--color-border);
+  }
+  
+  .content-inbox__card:hover {
+    background: var(--color-background-hover);
+    border-color: var(--color-primary);
+  }
+  
+  /* Drop zone */
+  .content-inbox__drop-zone {
+    border-color: rgba(0, 212, 255, 0.3);
+    background: linear-gradient(90deg, rgba(0, 212, 255, 0.02) 0%, rgba(0, 212, 255, 0.05) 50%, rgba(0, 212, 255, 0.02) 100%);
+  }
+  
+  .content-inbox__drop-zone--active {
+    border-color: rgba(0, 212, 255, 0.5);
+    background: rgba(0, 212, 255, 0.08);
+  }
+  
+  /* Status indicators */
+  .content-inbox__status-indicator {
+    filter: brightness(1.2);
+  }
+  
+  /* Metadata display */
+  .content-inbox__metadata {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Input fields */
+  .content-inbox__input,
+  .content-inbox__textarea {
+    background: var(--color-background);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+  
+  .content-inbox__input:focus,
+  .content-inbox__textarea:focus {
+    border-color: var(--color-primary);
+    outline-color: var(--color-primary);
+  }
+
+  /* Copy ID button in dark mode */
+  .content-inbox__copy-id-btn {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: var(--color-gray-700);
+    color: var(--color-gray-400);
+  }
+
+  .content-inbox__copy-id-btn:hover {
+    background: rgba(0, 0, 0, 0.6);
+    border-color: var(--color-gray-600);
+    color: var(--color-gray-200);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .content-inbox__copy-id-btn--copied {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: var(--color-green-700);
+    color: var(--color-green-400);
+  }
+
+  .content-inbox__copy-id-btn--copied:hover {
+    background: rgba(34, 197, 94, 0.3);
+    border-color: var(--color-green-600);
+    color: var(--color-green-300);
+  }
+}
+
+/* Dark Mode Overrides for Storage Page */
+@media (prefers-color-scheme: dark) {
+  /* Storage table */
+  .storage__table-container {
+    background: var(--color-background-secondary);
+    border-color: var(--color-border);
+  }
+  
+  .storage__table-row {
+    border-color: var(--color-border);
+  }
+  
+  .storage__table-row:hover:not(.storage__table-row--header) {
+    background-color: var(--color-background-hover);
+  }
+  
+  .storage__table-row--header {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--color-text-secondary);
+  }
+  
+  /* Category badges - adjusted for dark mode */
+  .storage__badge--blue {
+    background: rgba(0, 212, 255, 0.15);
+    color: #60a5fa;
+  }
+  
+  .storage__badge--green {
+    background: rgba(46, 204, 113, 0.15);
+    color: #34d399;
+  }
+  
+  .storage__badge--red {
+    background: rgba(231, 76, 60, 0.15);
+    color: #f87171;
+  }
+  
+  .storage__badge--purple {
+    background: rgba(155, 89, 182, 0.15);
+    color: #a78bfa;
+  }
+  
+  .storage__badge--pink {
+    background: rgba(241, 196, 15, 0.15);
+    color: #fbbf24;
+  }
+  
+  .storage__badge--gray {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-secondary);
+  }
+  
+  /* Filter dropdown */
+  .storage__filter-menu {
+    background: var(--color-background-secondary);
+    border-color: var(--color-border);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+  
+  .storage__filter-menu-header {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: var(--color-border);
+  }
+  
+  .storage__filter-menu-item:hover {
+    background: var(--color-background-hover);
+  }
+  
+  /* Active filters */
+  .storage__active-filter {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+  
+  /* Storage stats cards */
+  .storage__stat-card {
+    background: var(--color-background-secondary);
+    border-color: var(--color-border);
+  }
+  
+  /* Storage batch actions */
+  .storage__batch-actions {
+    background: rgba(26, 31, 58, 0.95);
+    border-color: var(--color-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  .storage__stat-card:hover {
+    background: var(--color-background-hover);
+    border-color: var(--color-primary);
+  }
+  
+  /* Empty state */
+  .storage__empty-icon {
+    opacity: 0.3;
+    color: var(--color-text-secondary);
+  }
+  
+  /* Type badges */
+  .storage__type-badge {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-secondary);
+  }
+  
+  /* Tags */
+  .storage__tag {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-secondary);
+  }
+  
+  /* Checkboxes */
+  .storage input[type="checkbox"] {
+    background: var(--color-background);
+    border-color: var(--color-border);
+  }
+  
+  .storage input[type="checkbox"]:checked {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+}
+
+/* Dark Mode Overrides for Sidebar */
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background: var(--color-background-secondary);
+    border-color: var(--color-border);
+  }
+  
+  .sidebar__item:hover {
+    background: var(--color-background-hover);
+  }
+  
+  .sidebar__item--active {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--color-primary);
+  }
+  
+  .sidebar__storage-footer {
+    border-color: var(--color-border);
+  }
+  
+  .sidebar__storage-progress {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .sidebar__footer-item {
+    color: var(--color-text-secondary);
+  }
+  
+  .sidebar__footer-item:hover {
+    color: var(--color-text);
+    background: var(--color-background-hover);
+  }
+}
+
+/* Modal Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .modal__overlay {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal__content {
+    background: var(--color-background-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+  
+  .modal__header {
+    border-color: var(--color-border);
+  }
+  
+  .modal input[type="text"],
+  .modal input[type="url"],
+  .modal textarea {
+    background: var(--color-background);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+  
+  .modal input[type="text"]:focus,
+  .modal input[type="url"]:focus,
+  .modal textarea:focus {
+    border-color: var(--color-primary);
+  }
+}
+
+/* Button Dark Mode Adjustments */
+@media (prefers-color-scheme: dark) {
+  .btn--secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+  
+  .btn--secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-primary);
+  }
+  
+  .btn--primary {
+    background: var(--color-primary);
+    color: #000;
+  }
+  
+  .btn--primary:hover {
+    background: var(--color-primary-hover);
+  }
+}
+
+/* Icon adjustments for dark mode */
+@media (prefers-color-scheme: dark) {
+  .fas, .far, .fab {
+    color: inherit;
+  }
+  
+  /* Ensure proper contrast for action icons */
+  .storage__more-btn {
+    color: var(--color-text-secondary);
+  }
+  
+  .storage__more-btn:hover {
+    color: var(--color-text);
+    background: var(--color-background-hover);
+  }
+}

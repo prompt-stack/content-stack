@@ -46,4 +46,8 @@ export interface ContentSubmission {
     extractMetadata?: boolean;
     autoTag?: boolean;
   };
+  metadata?: {
+    reference_url?: string;
+    [key: string]: string | number | boolean | undefined;
+  };
 }

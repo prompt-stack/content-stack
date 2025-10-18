@@ -50,6 +50,8 @@
 @import './styles/components/tag.css' layer(components);
 @import './styles/components/scroll-container.css' layer(components);
 @import './styles/components/virtual-list.css' layer(components);
+@import './styles/components/sidebar.css' layer(components);
+@import './styles/components/toast.css' layer(components);
 
 /* Feature Styles
    ========================================================================== */
@@ -70,6 +72,7 @@
 @import './styles/layout/navigation.css' layer(pages);
 @import './styles/layout/responsive.css' layer(pages);
 @import './styles/layout/mobile-menu.css' layer(pages);
+@import './styles/layout/inbox-layout.css' layer(pages);
 
 /* Utilities - Always last for highest specificity
    ========================================================================== */
@@ -77,6 +80,10 @@
 @import './styles/utils/spacing-fixes.css' layer(utilities);
 @import './styles/utils/input-fixes.css' layer(utilities);
 @import './styles/utils/theme-toggle.css' layer(utilities);
+
+/* Dark Mode Overrides - Must be after all other styles
+   ========================================================================== */
+@import './styles/dark-mode-overrides.css' layer(utilities);
 
 
 /* Root container */

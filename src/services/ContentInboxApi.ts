@@ -8,6 +8,9 @@
  * @llm-read true
  * @llm-write read-only
  * @llm-role async-service
+ * @test-coverage 95
+ * @test-file ContentInboxApi.test.ts
+ * @test-status missing
  */
 
 /**
@@ -22,7 +25,7 @@
  * - Methods: get[Value], add[Subject], update[Subject], delete[Subject]
  */
 
-import { api as apiClient } from '@/lib/api';
+import { Api as apiClient } from '@/lib/api';
 import type { ContentItem } from '@/types';
 
 // Backend metadata structure (matches our backend types)
@@ -30,7 +33,7 @@ interface BackendContentMetadata {
   id: string;
   created_at: string;
   updated_at: string;
-  status: 'inbox' | 'stored';
+  status: 'inbox' | 'processed' | 'manually_processed' | 'stored';
   source: {
     method: 'paste' | 'upload' | 'url' | 'drop';
     url: string | null;
@@ -39,6 +42,7 @@ interface BackendContentMetadata {
     type: string;
     title: string;
     full_text: string;
+    text?: string | null;
     word_count: number;
     hash: string;
   };
@@ -46,6 +50,12 @@ interface BackendContentMetadata {
     inbox_path: string;
     final_path: string | null;
   };
+  storage?: {
+    path: string;
+    type: string;
+    size: number;
+  };
+  category: string; // Direct category field
   llm_analysis: any | null;
   tags: string[]; // User-assigned tags
 }
@@ -72,27 +82,33 @@ export class ContentInboxApi {
       source: this.mapBackendSourceToFrontend(metadata.source.method),
       status: this.mapBackendStatusToFrontend(metadata.status),
       title: metadata.content.title,
-      content: metadata.content.full_text,
+      content: metadata.content.text || metadata.content.full_text || '',
       timestamp: new Date(metadata.created_at), // Add timestamp for sorting
       sourceUrl: metadata.source.url || undefined, // Add sourceUrl field
       metadata: {
         created_at: metadata.created_at,
         updated_at: metadata.updated_at,
-        size: metadata.content.full_text.length,
+        size: metadata.storage?.size || (metadata.content.text || metadata.content.full_text || '').length,
         url: metadata.source.url || undefined,
         file_type: metadata.content.type,
         content_hash: metadata.content.hash,
         tags: metadata.tags || [], // Use backend tags
         title: metadata.content.title, // Add title to metadata for UI consistency
         wordCount: metadata.content.word_count, // Add word count for UI display
-        category: metadata.llm_analysis?.category || undefined, // Add category to metadata
+        category: metadata.category || metadata.llm_analysis?.category || undefined, // Add category to metadata
+        storage: metadata.storage, // Add storage information
       },
       enrichment: metadata.llm_analysis ? {
         summary: metadata.llm_analysis.reasoning || '',
         key_points: [],
         topics: [],
-        category: metadata.llm_analysis.category || '',
-      } : undefined
+        category: metadata.category || metadata.llm_analysis.category || '',
+      } : (metadata.category ? {
+        summary: '',
+        key_points: [],
+        topics: [],
+        category: metadata.category
+      } : undefined)
     };
   }
 
@@ -176,6 +192,10 @@ export class ContentInboxApi {
     content: string;
     url?: string;
     filename?: string;
+    metadata?: {
+      reference_url?: string;
+      [key: string]: string | number | boolean | undefined;
+    };
   }): Promise<ContentItem> {
     const response = await apiClient.post<BackendResponse<BackendContentMetadata>>('/api/content-inbox/add', data);
     
@@ -215,7 +235,20 @@ export class ContentInboxApi {
   }
 
   /**
-   * Delete content item
+   * Remove content from inbox (changes status to stored)
+   * Following design-system pattern: removeFrom[Location]
+   */
+  async removeFromInbox(id: string): Promise<void> {
+    console.log('REMOVE FROM INBOX: Calling API for item:', id);
+    const response = await apiClient.put<BackendResponse<never>>(`/api/content-inbox/item/${id}/remove`);
+    
+    if (!response.success) {
+      throw new Error(response.error || 'Failed to remove from inbox');
+    }
+  }
+
+  /**
+   * Delete content item (PERMANENTLY)
    * Following design-system pattern: delete[Subject]
    */
   async deleteContentItem(id: string): Promise<void> {

@@ -13,6 +13,10 @@
 import express from 'express';
 import cors from 'cors';
 import contentInboxRoutes from './routes/contentInbox';
+import storageRoutes from './routes/storage';
+import healthRoutes from './routes/health';
+import metadataRoutes from './routes/metadata';
+import emailIntakeRoutes from './routes/emailIntake';
 
 const app = express();
 const PORT = process.env.BACKEND_PORT || process.env.PORT || 3457;
@@ -24,15 +28,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/content-inbox', contentInboxRoutes);
-
-// Health check
-app.get('/health', (req, res) => {
-  res.json({ 
-    status: 'ok', 
-    service: 'content-inbox-api',
-    timestamp: new Date().toISOString()
-  });
-});
+app.use('/api/storage', storageRoutes);
+app.use('/api/health', healthRoutes);
+app.use('/api/metadata', metadataRoutes);
+app.use('/api/email-intake', emailIntakeRoutes);
 
 // Error handling middleware
 app.use((error: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -54,7 +53,8 @@ app.use((req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Content Inbox API server running on port ${PORT}`);
-  console.log(`Health check: http://localhost:${PORT}/health`);
+  console.log(`Health check: http://localhost:${PORT}/api/health`);
+  console.log(`Storage audit: http://localhost:${PORT}/api/health/storage-audit`);
   console.log(`API base: http://localhost:${PORT}/api/content-inbox`);
 });
 

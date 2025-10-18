@@ -19,15 +19,25 @@
  */
 import { Box } from '@/components/Box';
 import { ContentInboxFeature } from '@/features/content-inbox/ContentInboxFeature';
+import { InboxLayout } from '@/layout/InboxLayout';
+import { ContentInboxProvider } from '@/contexts/ContentInboxContext';
+import { useContentQueue } from '@/features/content-inbox/hooks/useContentQueue';
 
 export function InboxPage() {
+  // This is now a wrapper component that provides the content queue context
+  return <InboxPageContent />;
+}
+
+function InboxPageContent() {
+  const { queue, isProcessing, addContent } = useContentQueue();
+  
   return (
-    <Box className="inbox__container">
-      <h1 className="inbox__title">Content Inbox</h1>
-      <div className="inbox__subtitle">
-        Drop, paste, upload or link - your content processing pipeline
-      </div>
-      <ContentInboxFeature />
-    </Box>
+    <ContentInboxProvider value={{ addContent, queue, isProcessing }}>
+      <InboxLayout>
+        <Box className="inbox__container">
+          <ContentInboxFeature />
+        </Box>
+      </InboxLayout>
+    </ContentInboxProvider>
   );
 }

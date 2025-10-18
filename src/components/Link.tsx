@@ -4,10 +4,13 @@
  * @layer primitive
  * @deps none
  * @used-by [App, Header, MobileMenu, PlaygroundPage]
- * @css none
+ * @cssFile none
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 80
+ * @test-file Link.test.tsx
+ * @test-status missing
  */
 
 import { forwardRef } from 'react';

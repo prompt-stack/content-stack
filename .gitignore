@@ -25,3 +25,16 @@ dist-ssr
 
 # Submodules with their own repos
 # (managed via git submodule)
+
+# Large media files (videos, large images)
+# Component library doesn't need large media assets
+media/**/*.mp4
+media/**/*.mov
+media/**/*.avi
+media/**/*.mkv
+media/**/*.webm
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm

@@ -8,9 +8,16 @@
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 80
+ * @test-file EditableField.test.tsx
+ * @test-status missing
  */
 
-import type { ReactNode } from 'react';
+import { useState, useRef, useEffect, type ReactNode } from 'react';
+import { Box } from '@/components/Box';
+import { Text } from '@/components/Text';
+import { Input } from '@/components/Input';
+import { Button } from '@/components/Button';
 
 export interface EditableFieldProps {
   value: string;
@@ -104,7 +111,7 @@ export function EditableField({
     onEditEnd?.(true);
   };
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !multiline) {
       e.preventDefault();
       saveEdit();

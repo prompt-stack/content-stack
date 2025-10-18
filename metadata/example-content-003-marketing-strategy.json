@@ -1,0 +1,55 @@
+{
+  "id": "example-content-003-marketing-strategy",
+  "created_at": "2025-01-24T10:15:00.000Z",
+  "source": {
+    "method": "paste",
+    "timestamp": "2025-01-24T10:15:00.000Z"
+  },
+  "content": {
+    "type": "text",
+    "full_text": "5 Essential Digital Marketing Strategies...",
+    "hash": "sha256-example003",
+    "file_type": "txt",
+    "size": 756
+  },
+  "updated_at": "2025-01-24T10:15:00.000Z",
+  "status": "raw",
+  "title": "5 Essential Digital Marketing Strategies for Small Businesses",
+  "filename": "example-content-003-marketing-strategy.txt",
+  "location": {
+    "inbox_path": "content/inbox/example-content-003-marketing-strategy.txt",
+    "final_path": null
+  },
+  "storage": {
+    "path": "content/inbox/example-content-003-marketing-strategy.txt",
+    "size": 756
+  },
+  "user_tags": [
+    "marketing",
+    "strategy"
+  ],
+  "llm_analysis": {
+    "category": "business",
+    "title": "Digital Marketing Strategies for Small Business Success",
+    "tags": [
+      "marketing",
+      "digital-marketing",
+      "small-business",
+      "seo",
+      "social-media"
+    ],
+    "summary": "Five key digital marketing strategies for small businesses including content marketing with AI, local SEO, social media engagement, email automation, and video marketing.",
+    "reasoning": "Business-focused content providing actionable marketing strategies and budget allocation guidance.",
+    "confidence": 0.92,
+    "suggested_filename": "small-business-digital-marketing-guide",
+    "extracted_entities": [
+      "Google Business Profile",
+      "TikTok",
+      "SEO",
+      "AI"
+    ],
+    "word_count": 198,
+    "analyzed_at": "2025-01-24T10:17:00.000Z",
+    "model_version": "claude-3"
+  }
+}

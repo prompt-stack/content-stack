@@ -76,7 +76,8 @@ export function ContentInboxFeature() {
   }, []);
   
   return (
-    <Box className="content-inbox__container">
+    <Box className="content-inbox__feature">
+      <Box className="content-inbox__container">
       {/* Global Error Display */}
       {error && (
         <div className="content-inbox__error-message">
@@ -89,7 +90,7 @@ export function ContentInboxFeature() {
       )}
       
       <div className="content-inbox__layout">
-        <ContentInboxInputPanel onSubmit={addContent} />
+        {/* Input panel moved to sidebar */}
         <ContentInboxQueuePanel 
           items={queue} 
           onUpdate={updateContent}
@@ -170,6 +171,7 @@ export function ContentInboxFeature() {
           </Box>
         )}
       </Modal>
+    </Box>
     </Box>
   );
 }

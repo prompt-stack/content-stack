@@ -1,0 +1,61 @@
+{
+  "id": "example-content-020-journal-entry",
+  "created_at": "2025-01-24T11:40:00.000Z",
+  "source": {
+    "method": "manual",
+    "timestamp": "2025-01-24T11:40:00.000Z"
+  },
+  "content": {
+    "type": "note",
+    "full_text": "January 24, 2025\n\nDear Journal,\n\nWhat a week it's been...",
+    "hash": "sha256-example020",
+    "file_type": "txt",
+    "size": 3234
+  },
+  "updated_at": "2025-01-24T11:40:00.000Z",
+  "status": "raw",
+  "title": "Personal Journal Entry - January 24, 2025",
+  "filename": "example-content-020-journal-entry.txt",
+  "location": {
+    "inbox_path": "content/inbox/example-content-020-journal-entry.txt",
+    "final_path": null
+  },
+  "storage": {
+    "path": "content/inbox/example-content-020-journal-entry.txt",
+    "size": 3234
+  },
+  "user_tags": [
+    "journal",
+    "personal",
+    "reflection"
+  ],
+  "metadata": {
+    "language": "en"
+  },
+  "llm_analysis": {
+    "category": "personal",
+    "title": "Personal Reflection on Career Growth and Life Changes",
+    "tags": [
+      "journal",
+      "personal-growth",
+      "career",
+      "relationships",
+      "self-reflection",
+      "goals"
+    ],
+    "summary": "Intimate journal entry reflecting on recent promotion to Senior Product Manager, meditation practice, family relationships, startup aspirations, fitness achievements, and relationship dynamics.",
+    "reasoning": "Personal diary entry with introspective thoughts about life changes, goals, and gratitude.",
+    "confidence": 0.95,
+    "suggested_filename": "journal-entry-20250124",
+    "extracted_entities": [
+      "Sarah",
+      "Marcus",
+      "Elena",
+      "Jake",
+      "Senior Product Manager"
+    ],
+    "word_count": 643,
+    "analyzed_at": "2025-01-24T11:42:00.000Z",
+    "model_version": "claude-3"
+  }
+}

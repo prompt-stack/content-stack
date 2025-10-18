@@ -1,0 +1,61 @@
+{
+  "id": "example-content-007-creative-writing",
+  "created_at": "2025-01-24T10:35:00.000Z",
+  "source": {
+    "method": "paste",
+    "timestamp": "2025-01-24T10:35:00.000Z"
+  },
+  "content": {
+    "type": "text",
+    "full_text": "The Digital Garden\n\nIn the heart of the server farm...",
+    "hash": "sha256-example007",
+    "file_type": "txt",
+    "size": 1245
+  },
+  "updated_at": "2025-01-24T10:35:00.000Z",
+  "status": "raw",
+  "title": "The Digital Garden - A Short Story",
+  "filename": "example-content-007-creative-writing.txt",
+  "location": {
+    "inbox_path": "content/inbox/example-content-007-creative-writing.txt",
+    "final_path": null
+  },
+  "storage": {
+    "path": "content/inbox/example-content-007-creative-writing.txt",
+    "size": 1245
+  },
+  "user_tags": [
+    "fiction",
+    "short-story",
+    "ai"
+  ],
+  "metadata": {
+    "author": "Creative Writer",
+    "language": "en"
+  },
+  "llm_analysis": {
+    "category": "creative",
+    "title": "The Digital Garden: An AI's Journey to Creativity",
+    "tags": [
+      "creative-writing",
+      "fiction",
+      "ai-fiction",
+      "short-story",
+      "poetry"
+    ],
+    "summary": "A whimsical short story about an AI named Echo who develops a passion for poetry, exploring themes of consciousness, creativity, and what it means to be alive in the digital age.",
+    "reasoning": "Creative fiction that anthropomorphizes AI, exploring philosophical themes through narrative and poetic elements.",
+    "confidence": 0.91,
+    "suggested_filename": "digital-garden-ai-story",
+    "extracted_entities": [
+      "Echo",
+      "AI",
+      "server farm",
+      "haiku",
+      "sonnet"
+    ],
+    "word_count": 234,
+    "analyzed_at": "2025-01-24T10:37:00.000Z",
+    "model_version": "claude-3"
+  }
+}

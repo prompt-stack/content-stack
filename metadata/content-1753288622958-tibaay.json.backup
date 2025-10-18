@@ -1,0 +1,36 @@
+{
+  "id": "content-1753288622958-tibaay",
+  "created_at": "2025-07-23T16:37:02.958Z",
+  "updated_at": "2025-07-23T16:37:02.958Z",
+  "status": "inbox",
+  "source": {
+    "method": "drop",
+    "url": null
+  },
+  "content": {
+    "type": "code",
+    "title": "Python Data Analysis Tutorial",
+    "full_text": "",
+    "text": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# Python Data Analysis Tutorial\n# Learn the fundamentals of data analysis with pandas\n\n# 1. Loading Data\ndf = pd.read_csv('sales_data.csv')\nprint(f\"Dataset shape: {df.shape}\")\nprint(f\"Columns: {df.columns.tolist()}\")\n\n# 2. Basic Exploration\nprint(df.head())\nprint(df.info())\nprint(df.describe())\n\n# 3. Data Cleaning\n# Check for missing values\nprint(df.isnull().sum())\n\n# Fill missing values\ndf['price'].fillna(df['price'].mean(), inplace=True)\n\n# 4. Data Analysis\n# Group by category\ncategory_sales = df.groupby('category')['revenue'].sum()\nprint(category_sales)\n\n# Time series analysis\ndf['date'] = pd.to_datetime(df['date'])\nmonthly_sales = df.resample('M', on='date')['revenue'].sum()\n\n# 5. Visualization\nplt.figure(figsize=(12, 6))\n\n# Sales by category\nplt.subplot(1, 2, 1)\ncategory_sales.plot(kind='bar')\nplt.title('Sales by Category')\nplt.xticks(rotation=45)\n\n# Monthly trend\nplt.subplot(1, 2, 2)\nmonthly_sales.plot(kind='line', marker='o')\nplt.title('Monthly Sales Trend')\n\nplt.tight_layout()\nplt.show()\n\n# 6. Statistical Analysis\n# Correlation matrix\ncorr_matrix = df[['price', 'quantity', 'revenue']].corr()\nsns.heatmap(corr_matrix, annot=True, cmap='coolwarm')\nplt.title('Correlation Matrix')\nplt.show()\n\n# Key Insights:\n# - Category A generates highest revenue\n# - Strong positive correlation between price and revenue\n# - Seasonal patterns in monthly sales",
+    "word_count": 162,
+    "hash": "sha256-00000000000000000000000000000000000000000000000000000000572b80e6"
+  },
+  "location": {
+    "inbox_path": "storage/code/content-1753288622958-tibaay.py",
+    "final_path": null
+  },
+  "storage": {
+    "path": "storage/code/content-1753288622958-tibaay.py",
+    "type": "code",
+    "size": 1462
+  },
+  "category": "education",
+  "llm_analysis": null,
+  "tags": [
+    "python",
+    "data-analysis",
+    "pandas",
+    "tutorial",
+    "programming"
+  ]
+}

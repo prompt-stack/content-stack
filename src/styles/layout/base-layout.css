@@ -1,0 +1,144 @@
+/**
+ * @file styles/layout/base-layout.css
+ * @purpose Styles for base layout
+ * @layer layout
+ * @used-by [BaseLayout]
+ * @llm-read true
+ * @llm-write full-edit
+ * @llm-role utility
+ */
+
+.base-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: var(--color-background);
+}
+
+/* For content pipeline pages - no scroll */
+.base-layout--no-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar-wrapper {
+  position: relative;
+}
+
+.base-layout__main {
+  flex: 1;
+  margin-left: var(--sidebar-width-expanded);
+  transition: margin-left var(--sidebar-animation-duration) var(--sidebar-animation-easing);
+  position: relative;
+  z-index: 1; /* Ensure it's below the sidebar toggle button */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 0; /* No top padding, header is at the very top */
+}
+
+/* For content pipeline pages - no scroll on main */
+.base-layout--no-scroll .base-layout__main {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* When sidebar is collapsed */
+.base-layout__main--expanded {
+  margin-left: var(--sidebar-width-collapsed);
+}
+
+/* Content area below header */
+.base-layout__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Let individual pages handle their own scrolling */
+}
+
+/* Mobile header */
+.base-layout__mobile-header {
+  display: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.base-layout__mobile-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.base-layout__mobile-brand h1 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+  color: var(--color-text);
+}
+
+/* Drop indicator overlay */
+.sidebar__drop-indicator {
+  position: fixed;
+  bottom: 24px;
+  left: calc(var(--sidebar-width-expanded) + 24px);
+  width: 300px;
+  background: var(--color-background);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  color: var(--color-primary);
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease-out;
+  transition: left var(--sidebar-animation-duration) var(--sidebar-animation-easing);
+}
+
+/* Adjust position when sidebar is collapsed */
+.base-layout:has(.sidebar--collapsed) .sidebar__drop-indicator {
+  left: calc(var(--sidebar-width-collapsed) + 24px);
+}
+
+.sidebar__drop-indicator p {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  margin: 0;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 1024px) {
+  .base-layout__main {
+    margin-left: 0;
+  }
+  
+  .base-layout__mobile-header {
+    display: block;
+  }
+  
+  .sidebar__drop-indicator {
+    left: 24px;
+    right: 24px;
+    width: auto;
+    bottom: 80px; /* Above mobile navigation */
+  }
+}

@@ -8,16 +8,19 @@
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 90
+ * @test-file useUserTier.test.ts
+ * @test-status missing
  */
 
 import { useQuery } from '@tanstack/react-query'
-import { api } from '@/services/api'
+import { Api } from '@/services/ApiService'
 import type { TierLevel } from '@/types'
 
 export function useUserTier(): TierLevel {
   const { data: userInfo } = useQuery({
     queryKey: ['user-info'],
-    queryFn: api.getUserInfo,
+    queryFn: Api.getUserInfo,
   })
 
   return userInfo?.tier || 'free'

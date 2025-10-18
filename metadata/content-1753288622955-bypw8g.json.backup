@@ -1,0 +1,35 @@
+{
+  "id": "content-1753288622955-bypw8g",
+  "created_at": "2025-07-23T16:37:02.955Z",
+  "updated_at": "2025-07-23T16:37:02.955Z",
+  "status": "inbox",
+  "source": {
+    "method": "url",
+    "url": "https://techcrunch.com/2024/ai-startup-funding"
+  },
+  "content": {
+    "type": "text",
+    "title": "The Rise of AI-Powered Startups in 2024",
+    "full_text": "",
+    "text": "The startup ecosystem is experiencing a massive shift as AI becomes more accessible and powerful. In 2024, we're seeing unprecedented growth in AI-first companies across all sectors.\n\nKey trends:\n1. Vertical AI Solutions - Specialized AI for specific industries\n2. AI Infrastructure - Tools and platforms for AI development\n3. AI-Enhanced Productivity - Augmenting human capabilities\n4. Generative AI Applications - Creative and content generation\n\nInvestors are pouring billions into AI startups, with valuations reaching new heights. However, the key to success is not just using AI, but solving real problems that create value for customers.\n\nSuccessful AI startups focus on:\n- Clear value proposition beyond \"we use AI\"\n- Strong moat through data, technology, or network effects\n- Sustainable unit economics\n- Ethical AI practices and transparency",
+    "word_count": 128,
+    "hash": "sha256-0000000000000000000000000000000000000000000000000000000000fb99b9"
+  },
+  "location": {
+    "inbox_path": "storage/text/content-1753288622955-bypw8g.txt",
+    "final_path": null
+  },
+  "storage": {
+    "path": "storage/text/content-1753288622955-bypw8g.txt",
+    "type": "text",
+    "size": 851
+  },
+  "category": "business",
+  "llm_analysis": null,
+  "tags": [
+    "startups",
+    "ai",
+    "venture-capital",
+    "innovation"
+  ]
+}

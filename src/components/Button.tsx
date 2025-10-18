@@ -4,11 +4,13 @@
  * @layer primitive
  * @deps None (primitive component)
  * @used-by [App, Button, ButtonPlayground, CardPlayground, CompositionPlayground, ContentInboxFeature, ContentInboxInputPanel, ContentInboxQueuePanel, EditableField, FormPlayground, Header, InboxPlayground, InboxWorkflowDemo, ModalPlayground, PlaygroundPage, SubscriptionPage, UtilityPlayground]
- * @css /styles/components/button.css
+ * @cssFile /styles/components/button.css
  * @status stable
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 100
+ * @test-file Button.test.tsx
  */
 
 import { forwardRef } from 'react';

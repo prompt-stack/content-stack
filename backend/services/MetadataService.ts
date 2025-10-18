@@ -13,12 +13,13 @@
 import { promises as fs } from 'fs';
 import { join } from 'path';
 import type { ContentMetadata, ContentStatus } from '../types/ContentTypes';
+import { getMetadataPath } from '../../config/schemas/paths.config';
 
 export class MetadataService {
   private metadataDir: string;
 
   constructor(baseDir: string = process.cwd()) {
-    this.metadataDir = join(baseDir, 'content', 'metadata');
+    this.metadataDir = getMetadataPath(baseDir);
   }
 
   /**

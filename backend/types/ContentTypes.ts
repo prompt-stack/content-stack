@@ -56,9 +56,12 @@ export interface ContentSource {
 export interface ContentData {
   type: ContentType;
   title: string;
-  full_text: string;
+  full_text: string;  // DEPRECATED - original submission, use text instead
+  text?: string | null;  // Extracted text for LLM processing
   word_count: number;
   hash: string;
+  file_type?: string;  // MIME type for file uploads
+  size?: number;       // File size in bytes
 }
 
 // File location tracking
@@ -75,6 +78,25 @@ export interface LLMAnalysis {
   suggested_filename: string;
 }
 
+// Storage information
+export interface ContentStorage {
+  path: string;      // Relative path to storage location
+  type: string;      // Storage subdirectory (text, images, etc.)
+  size: number;      // File size in bytes
+}
+
+// Content categories - aligned with categories.config.ts
+export type ContentCategory = 
+  | 'tech' 
+  | 'business' 
+  | 'finance' 
+  | 'health' 
+  | 'cooking' 
+  | 'education' 
+  | 'lifestyle' 
+  | 'entertainment' 
+  | 'general';
+
 // Complete metadata structure (MVP schema)
 export interface ContentMetadata {
   id: string;
@@ -84,6 +106,8 @@ export interface ContentMetadata {
   source: ContentSource;
   content: ContentData;
   location: ContentLocation;
+  storage?: ContentStorage;  // Storage information after splitting
+  category: ContentCategory;  // Required constrained field
   llm_analysis: LLMAnalysis | null;
   tags: string[]; // User-assigned tags for organization
 }
@@ -94,6 +118,10 @@ export interface ContentInboxServiceInput {
   content: string;
   url?: string;
   filename?: string;  // For file uploads
+  metadata?: {
+    reference_url?: string;
+    [key: string]: any;
+  };
 }
 
 export interface MetadataServiceInput {

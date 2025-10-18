@@ -1,0 +1,59 @@
+{
+  "id": "example-content-006-data",
+  "created_at": "2025-01-24T10:30:00.000Z",
+  "source": {
+    "method": "upload",
+    "timestamp": "2025-01-24T10:30:00.000Z"
+  },
+  "content": {
+    "type": "data",
+    "full_text": "Date,Product,Category,Units Sold,Revenue...",
+    "hash": "sha256-example006",
+    "file_type": "csv",
+    "size": 823
+  },
+  "updated_at": "2025-01-24T10:30:00.000Z",
+  "status": "raw",
+  "title": "Sales Data Report - January 2025",
+  "filename": "example-content-006-data.csv",
+  "location": {
+    "inbox_path": "content/inbox/example-content-006-data.csv",
+    "final_path": null
+  },
+  "storage": {
+    "path": "content/inbox/example-content-006-data.csv",
+    "size": 823
+  },
+  "user_tags": [
+    "sales",
+    "data",
+    "report"
+  ],
+  "metadata": {
+    "language": "en"
+  },
+  "llm_analysis": {
+    "category": "business",
+    "title": "Product Sales Performance Data - Q1 2025",
+    "tags": [
+      "sales-data",
+      "csv",
+      "analytics",
+      "business-metrics",
+      "revenue"
+    ],
+    "summary": "Sales performance data showing daily product sales, revenue, and customer satisfaction ratings for electronics, hardware, and software products.",
+    "reasoning": "Business data file containing structured sales metrics and performance indicators suitable for analysis and reporting.",
+    "confidence": 0.94,
+    "suggested_filename": "q1-2025-sales-data",
+    "extracted_entities": [
+      "Widget Pro",
+      "Gadget Plus",
+      "Tool Master",
+      "Service Pack"
+    ],
+    "word_count": 180,
+    "analyzed_at": "2025-01-24T10:32:00.000Z",
+    "model_version": "claude-3"
+  }
+}

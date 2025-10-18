@@ -10,10 +10,11 @@
  * @llm-role utility
  */
 
-import contentTypes from '/config/content-types.json';
+import fileTypes from '/config/schemas/file-types.json';
+import { categoriesConfig } from '/config/schemas/categories.config';
 
 // Import global configurations
-const globalContentTypes = contentTypes;
+const globalFileTypes = fileTypes;
 
 // Feature-specific configuration that extends global configs
 export const contentInboxConfig = {
@@ -115,7 +116,7 @@ export const contentInboxConfig = {
 
   // Extend global categories with inbox-specific settings
   categories: {
-    ...globalContentTypes.categories,
+    ...categoriesConfig,
     // Add inbox-specific category behavior
     defaultCategory: 'general',
     allowCustomCategories: true

@@ -15,6 +15,9 @@ import { ContentItem, ContentSubmission, ContentMetadata } from '../types';
 import { contentInboxApi } from '@/services/ContentInboxApi';
 import { contentInboxConfig, getFileSizeLimit, isVideoFile, shouldReadFileContent } from '../config';
 
+// Check if running on localhost
+const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
 // Simple ID generator for demo
 const generateId = () => `content-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
@@ -90,7 +93,11 @@ export function useContentQueue() {
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to load content';
       setError(errorMessage);
-      console.error('Failed to load queue:', err);
+      // Suppress common connection errors
+      const errMsg = err instanceof Error ? err.message : String(err);
+      if (!errMsg.includes('Failed to fetch') && !errMsg.includes('ERR_CONNECTION_REFUSED')) {
+        console.error('Failed to load queue:', err);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -128,6 +135,7 @@ export function useContentQueue() {
         size: typeof submission.content === 'string' ? submission.content.length : submission.content?.size || 0,
         content_hash: 'pending...',
         tags: [],
+        url: submission.metadata?.reference_url, // Include the reference URL
         isOptimistic: true, // Flag for UI styling
         isNew: true, // Flag for animation styling
         stableKey: stableKey // Stable key for React component identity
@@ -136,7 +144,7 @@ export function useContentQueue() {
 
     // Add optimistic item to UI immediately (batched update)
     setQueue(prev => {
-      console.log('➕ Adding optimistic item to queue');
+      // console.log('➕ Adding optimistic item to queue');
       return [optimisticItem, ...prev];
     });
     
@@ -215,7 +223,8 @@ export function useContentQueue() {
                 submission.type === 'drop' ? 'drop' : 'paste',
         content: contentString,
         url: submission.type === 'url' ? submission.content as string : undefined,
-        filename
+        filename,
+        metadata: submission.metadata
       });
 
       // Smooth transition: merge backend data into optimistic item structure
@@ -233,17 +242,17 @@ export function useContentQueue() {
         }
       };
       
-      console.log('🔄 Transition optimistic→real:', {
-        optimisticId,
-        backendId: newItem.id,
-        wasOptimistic: optimisticItem.metadata.isOptimistic,
-        wasNew: optimisticItem.metadata.isNew,
-        nowOptimistic: mergedItem.metadata.isOptimistic,
-        nowNew: mergedItem.metadata.isNew
-      });
+      // console.log('🔄 Transition optimistic→real:', {
+      //   optimisticId,
+      //   backendId: newItem.id,
+      //   wasOptimistic: optimisticItem.metadata.isOptimistic,
+      //   wasNew: optimisticItem.metadata.isNew,
+      //   nowOptimistic: mergedItem.metadata.isOptimistic,
+      //   nowNew: mergedItem.metadata.isNew
+      // });
       
       setQueue(prev => {
-        console.log('🔄 Updating optimistic→real in queue');
+        // console.log('🔄 Updating optimistic→real in queue');
         return prev.map(item => 
           item.id === optimisticId ? mergedItem : item
         );
@@ -252,7 +261,7 @@ export function useContentQueue() {
       return newItem;
     } catch (error) {
       // Remove optimistic item on error - don't try to update items that don't exist in backend
-      console.log('❌ Error occurred, removing optimistic item:', optimisticId);
+      // console.log('❌ Error occurred, removing optimistic item:', optimisticId);
       setQueue(prev => prev.filter(item => item.id !== optimisticId));
       
       // Check if it's a duplicate error (409 status)
@@ -292,7 +301,7 @@ export function useContentQueue() {
       // Check if this is an optimistic item (doesn't exist in backend yet)
       const item = queue.find(i => i.id === id);
       if (item?.metadata.isOptimistic) {
-        console.log('⚠️ Skipping backend update for optimistic item:', id);
+        // console.log('⚠️ Skipping backend update for optimistic item:', id);
         // Only update UI for optimistic items
         setQueue(prev => 
           prev.map(item => 
@@ -315,10 +324,10 @@ export function useContentQueue() {
 
       // Update backend for real items only
       await contentInboxApi.updateContentItem(id, updates as any);
-      console.log('Content updated successfully:', id, updates);
+      // console.log('Content updated successfully:', id, updates);
       
     } catch (error) {
-      console.error('Update content error:', error);
+      // console.error('Update content error:', error);
       const errorMessage = error instanceof Error ? error.message : 'Failed to update content';
       setError(errorMessage);
       throw error;
@@ -326,27 +335,27 @@ export function useContentQueue() {
   }, [queue]);
 
   const removeContent = useCallback(async (id: string) => {
-    console.log('removeContent called with id:', id);
+    // console.log('removeContent called with id:', id);
     
     // Store item for potential rollback
     const itemToRemove = queue.find(item => item.id === id);
     if (!itemToRemove) {
-      console.log('Item not found in queue:', id);
+      // console.log('Item not found in queue:', id);
       return;
     }
 
     // Optimistically remove from UI immediately
-    console.log('Removing item from UI:', itemToRemove.title);
+    // console.log('Removing item from UI:', itemToRemove.title);
     setQueue(prev => prev.filter(item => item.id !== id));
     
     try {
-      await contentInboxApi.deleteContentItem(id);
+      await contentInboxApi.removeFromInbox(id);
       // Success - item already removed from UI
     } catch (error) {
       // Check if item doesn't exist in backend (old item)
       if (error instanceof Error && (error.message.includes('not found') || error.message.includes('404'))) {
         // Item doesn't exist in backend - remove from frontend and don't show error
-        console.log(`Item ${id} doesn't exist in backend, removing from frontend`);
+        // console.log(`Item ${id} doesn't exist in backend, removing from frontend`);
         return; // Don't rollback, just remove from UI
       }
       
@@ -372,7 +381,7 @@ export function useContentQueue() {
 
 
   const bulkRemove = useCallback(async (ids: string[]) => {
-    console.log('bulkRemove called with ids:', ids);
+    // console.log('bulkRemove called with ids:', ids);
     
     // Show confirmation dialog instead of immediate deletion
     setBulkDeleteDialog({
@@ -391,7 +400,7 @@ export function useContentQueue() {
 
   // Internal function to actually perform bulk delete after confirmation
   const performBulkDelete = useCallback(async (ids: string[]) => {
-    console.log('Performing confirmed bulk delete:', ids);
+    // console.log('Performing confirmed bulk delete:', ids);
     
     // Remove from UI immediately (optimistic)
     setQueue(prev => prev.filter(item => !ids.includes(item.id)));
@@ -399,12 +408,12 @@ export function useContentQueue() {
     // Delete each item from backend
     try {
       for (const id of ids) {
-        console.log('Bulk deleting item:', id);
-        await contentInboxApi.deleteContentItem(id);
+        // console.log('Bulk deleting item:', id);
+        await contentInboxApi.removeFromInbox(id);
       }
-      console.log('Bulk delete completed successfully');
+      // console.log('Bulk delete completed successfully');
     } catch (error) {
-      console.error('Bulk delete failed:', error);
+      // console.error('Bulk delete failed:', error);
       // Reload queue to restore items that failed to delete
       await loadQueue();
       const errorMessage = error instanceof Error ? error.message : 'Failed to bulk delete content';
@@ -453,7 +462,11 @@ export function useContentQueue() {
         serverItems
       };
     } catch (err) {
-      console.error('Sync check failed:', err);
+      // Suppress common connection errors
+      const errMsg = err instanceof Error ? err.message : String(err);
+      if (!errMsg.includes('Failed to fetch') && !errMsg.includes('ERR_CONNECTION_REFUSED')) {
+        console.error('Sync check failed:', err);
+      }
       throw err;
     }
   }, []);

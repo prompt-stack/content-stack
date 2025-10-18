@@ -1,0 +1,59 @@
+{
+  "id": "example-content-012-bash-script",
+  "created_at": "2025-01-24T11:00:00.000Z",
+  "source": {
+    "method": "manual",
+    "timestamp": "2025-01-24T11:00:00.000Z"
+  },
+  "content": {
+    "type": "code",
+    "full_text": "#!/bin/bash\n\n# Automated Backup Script...",
+    "hash": "sha256-example012",
+    "file_type": "sh",
+    "size": 2543
+  },
+  "updated_at": "2025-01-24T11:00:00.000Z",
+  "status": "raw",
+  "title": "Automated Backup Script",
+  "filename": "example-content-012-bash-script.sh",
+  "location": {
+    "inbox_path": "content/inbox/example-content-012-bash-script.sh",
+    "final_path": null
+  },
+  "storage": {
+    "path": "content/inbox/example-content-012-bash-script.sh",
+    "size": 2543
+  },
+  "user_tags": [
+    "bash",
+    "backup",
+    "automation"
+  ],
+  "metadata": {
+    "language": "en"
+  },
+  "llm_analysis": {
+    "category": "technical",
+    "title": "Incremental Backup Automation Script",
+    "tags": [
+      "bash",
+      "shell-script",
+      "backup",
+      "rsync",
+      "automation",
+      "system-administration"
+    ],
+    "summary": "Comprehensive bash script for automated incremental backups with disk space checking, logging, old backup cleanup, and email notifications.",
+    "reasoning": "Technical system administration script with error handling, logging, and automation features.",
+    "confidence": 0.98,
+    "suggested_filename": "incremental-backup-script",
+    "extracted_entities": [
+      "rsync",
+      "bash",
+      "cron"
+    ],
+    "word_count": 312,
+    "analyzed_at": "2025-01-24T11:02:00.000Z",
+    "model_version": "claude-3"
+  }
+}

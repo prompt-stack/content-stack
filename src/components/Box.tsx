@@ -8,13 +8,16 @@
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 80
+ * @test-file Box.test.tsx
+ * @test-status missing
  */
 
 import { forwardRef } from 'react';
 import clsx from 'clsx';
 import type { HTMLAttributes } from 'react';
 
-interface BoxProps extends HTMLAttributes<HTMLDivElement> {
+export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
   as?: 'div' | 'section' | 'article' | 'main' | 'aside' | 'header' | 'footer' | 'nav';
   
   // Display (maps to your .d-* utilities)

@@ -19,7 +19,6 @@ import { Button } from '@/components/Button';
 import { Checkbox } from '@/components/Checkbox';
 import { Modal } from '@/components/Modal';
 import { EditableText } from '@/components/EditableText';
-import { ScrollContainer } from '@/components/ScrollContainer';
 import { VirtualList } from '@/components/VirtualList';
 import { ContentInboxTagEditor } from './ContentInboxTagEditor';
 import { ContentItem } from '../types';
@@ -44,11 +43,36 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
   const [lastClickedIndex, setLastClickedIndex] = useState<number | null>(null);
-  const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
+  const [viewMode, setViewMode] = useState<'list' | 'grid' | 'dense'>(() => {
+    // Load persisted view mode from localStorage
+    const saved = localStorage.getItem('content-inbox-view-mode');
+    return (saved as 'list' | 'grid' | 'dense') || 'list';
+  });
   const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null);
   const categoryDropdownRef = useRef<HTMLDivElement>(null);
   const modalCategoryDropdownRef = useRef<HTMLDivElement>(null);
+  const [containerHeight, setContainerHeight] = useState(600);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const virtualListRef = useRef<any>(null);
+  
+  // Calculate dynamic height for VirtualList
+  useEffect(() => {
+    const calculateHeight = () => {
+      if (containerRef.current && headerRef.current) {
+        const viewportHeight = window.innerHeight;
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const headerHeight = headerRef.current.offsetHeight;
+        // Calculate available height: viewport - container top - header - padding
+        const availableHeight = viewportHeight - containerRect.top - headerHeight - 40;
+        setContainerHeight(Math.max(400, availableHeight)); // Minimum 400px
+      }
+    };
+    
+    calculateHeight();
+    window.addEventListener('resize', calculateHeight);
+    return () => window.removeEventListener('resize', calculateHeight);
+  }, []);
   
   // Categories from configuration
   const availableCategories = Object.keys(contentInboxConfig.categories);
@@ -66,7 +90,52 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
   const [lastSyncCheck, setLastSyncCheck] = useState<Date | null>(null);
   const [copySuccess, setCopySuccess] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [copiedIds, setCopiedIds] = useState<Set<string>>(new Set());
   const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Function to copy content ID
+  const handleCopyId = async (e: React.MouseEvent, itemId: string) => {
+    e.stopPropagation(); // Prevent card click
+    
+    try {
+      await navigator.clipboard.writeText(itemId);
+      setCopiedIds(prev => new Set([...prev, itemId]));
+      
+      // Clear the copied state after 2 seconds
+      setTimeout(() => {
+        setCopiedIds(prev => {
+          const newSet = new Set(prev);
+          newSet.delete(itemId);
+          return newSet;
+        });
+      }, 2000);
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = itemId;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        setCopiedIds(prev => new Set([...prev, itemId]));
+        
+        setTimeout(() => {
+          setCopiedIds(prev => {
+            const newSet = new Set(prev);
+            newSet.delete(itemId);
+            return newSet;
+          });
+        }, 2000);
+      } catch (fallbackErr) {
+        console.error('Failed to copy ID:', fallbackErr);
+      }
+      
+      document.body.removeChild(textArea);
+    }
+  };
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -77,7 +146,7 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
       }
       // Close modal category dropdown
       if (modalCategoryDropdownRef.current && !modalCategoryDropdownRef.current.contains(event.target as Node)) {
-        setModalState(prev => ({ ...prev, showCategoryDropdown: false }));
+        modalActions.setCategoryDropdown(false);
       }
     };
 
@@ -181,7 +250,7 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
   };
 
   const getCategoryColor = (category: string) => {
-    if (!category || category === 'Uncategorized') return 'badge--gray';
+    if (!category || category.toLowerCase() === 'uncategorized') return 'badge--gray';
     
     const colors = {
       // LLM Categories (from INBOX_PROCESSING.md)
@@ -194,6 +263,7 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
       'lifestyle': 'badge--pink',      // Personal development, habits, productivity
       'entertainment': 'badge--gray',  // Pop culture, media, gaming, arts
       'general': 'badge--blue',        // Cross-category or uncategorized
+      'uncategorized': 'badge--gray',  // No category assigned
       
       // Content Source Types (from metadata schema)
       'paste': 'badge--blue',
@@ -243,6 +313,23 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
     }
     
     return color || 'badge--blue'; // Default to blue for unknown categories
+  };
+
+  const getCategoryIcon = (category: string) => {
+    const iconMap: { [key: string]: string } = {
+      'tech': '💻',
+      'business': '💼',
+      'finance': '💰',
+      'health': '🏃',
+      'cooking': '🍳',
+      'education': '📚',
+      'lifestyle': '🌟',
+      'entertainment': '🎮',
+      'general': '📝',
+      'uncategorized': '📋'
+    };
+    
+    return iconMap[category.toLowerCase()] || '📌';
   };
 
 
@@ -402,7 +489,15 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
           }}
         >
           <div className="content-inbox__card-header">
-            <div className={`content-inbox__status-dot content-inbox__status-dot--${item.status}`}></div>
+            {viewMode !== 'dense' && (
+              <button
+                className={`content-inbox__copy-id-btn ${copiedIds.has(item.id) ? 'content-inbox__copy-id-btn--copied' : ''}`}
+                onClick={(e) => handleCopyId(e, item.id)}
+                title={copiedIds.has(item.id) ? 'Copied!' : `Copy ID: ${item.id}`}
+              >
+                <i className={`fas ${copiedIds.has(item.id) ? 'fa-check' : 'fa-copy'}`} />
+              </button>
+            )}
             <div className="content-inbox__header-top">
               <div className="content-inbox__header-left">
                 <Checkbox
@@ -459,7 +554,7 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
             <div className="content-inbox__header-main">
               <h3 className="content-inbox__card-title">
                 <span className="content-inbox__content-type-icon">
-                  {getTypeIcon(item.type)}
+                  {getContentTypeIcon(item.metadata.file_type || item.type || 'text')}
                 </span>
                 <EditableText
                   value={item.metadata.title || 'Untitled'}
@@ -470,29 +565,61 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
                   placeholder="Untitled"
                 />
               </h3>
-              <div className="content-inbox__tags-row">
-                {item.metadata.tags.length === 0 && (
-                  <span className="badge badge--tag badge--sm content-inbox__add-tag">
-                    + Add tag
-                  </span>
-                )}
-                <ContentInboxTagEditor
-                  tags={item.metadata.tags}
-                  onUpdate={(newTags) => onUpdate(item.id, {
-                    metadata: { ...item.metadata, tags: newTags }
-                  })}
-                />
-              </div>
+              {viewMode !== 'dense' && (
+                <div className="content-inbox__tags-row">
+                  <ContentInboxTagEditor
+                    tags={item.metadata.tags}
+                    onUpdate={(newTags) => onUpdate(item.id, {
+                      metadata: { ...item.metadata, tags: newTags }
+                    })}
+                  />
+                </div>
+              )}
             </div>
+            {/* Show action buttons in header for dense view */}
+            {viewMode === 'dense' && (
+              <div className="content-inbox__header-actions">
+                <button
+                  className={`content-inbox__copy-id-btn ${copiedIds.has(item.id) ? 'content-inbox__copy-id-btn--copied' : ''}`}
+                  onClick={(e) => handleCopyId(e, item.id)}
+                  title={copiedIds.has(item.id) ? 'Copied!' : `Copy ID: ${item.id}`}
+                >
+                  <i className={`fas ${copiedIds.has(item.id) ? 'fa-check' : 'fa-copy'}`} />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    modalActions.openModal(item);
+                  }}
+                  className="content-inbox__action-icon"
+                  title="View content"
+                >
+                  <i className="fas fa-eye"></i>
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onRemove(item.id);
+                  }}
+                  className="content-inbox__action-icon content-inbox__action-icon--danger"
+                  title="Remove item"
+                >
+                  <i className="fas fa-trash"></i>
+                </button>
+              </div>
+            )}
           </div>
           
-          <div className="content-inbox__card-body">
-            <p className="content-inbox__item-preview">
-              {getContentPreview(item)}
-            </p>
-          </div>
+          {viewMode !== 'dense' && (
+            <div className="content-inbox__card-body">
+              <p className="content-inbox__item-preview">
+                {getContentPreview(item)}
+              </p>
+            </div>
+          )}
           
-          <div className="content-inbox__card-footer">
+          {viewMode === 'list' && (
+            <div className="content-inbox__card-footer">
             <div className="content-inbox__footer-content">
               <div className="content-inbox__metadata-row">
                 <div className="content-inbox__meta-item">
@@ -507,6 +634,27 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
                   <i className={getSourceIcon(item.source)} title={getSourceTooltip(item.source)}></i>
                   <span>{item.source}</span>
                 </div>
+                {item.metadata.storage && (
+                  <div className="content-inbox__meta-item">
+                    <i className="fas fa-folder" title="Storage location"></i>
+                    <span>{item.metadata.storage.type}</span>
+                  </div>
+                )}
+                {item.metadata.url && (
+                  <div className="content-inbox__meta-item">
+                    <i className="fas fa-link" title="Source URL"></i>
+                    <a 
+                      href={item.metadata.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="content-inbox__source-link"
+                      title="Open source link"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      source
+                    </a>
+                  </div>
+                )}
               </div>
               <div className="content-inbox__card-actions">
                 <button
@@ -532,76 +680,108 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
               </div>
             </div>
           </div>
+          )}
         </Card>
       </div>
     );
-  }, [selectedItems, editingCategoryId, availableCategories, lastClickedIndex, onUpdate, onRemove, modalActions]);
+  }, [selectedItems, editingCategoryId, availableCategories, lastClickedIndex, onUpdate, onRemove, modalActions, viewMode]);
 
   return (
-    <ScrollContainer 
-      className="content-inbox__queue-panel"
-      direction="vertical"
-      smooth
-      fadeEdges
-      onScroll={(e) => {
-        const target = e.target as HTMLElement;
-        setShowBackToTop(target.scrollTop > 200);
-      }}
-    >
-      <Box className="content-inbox__queue-header">
-        <Box display="flex" justify="between" align="center" marginY="3">
-          <Box display="flex" align="center" gap="md">
-            <Text as="h2" className="content-inbox__panel-title">
-              Content Queue
-            </Text>
-            {selectedItems.size > 0 && (
-              <Text size="sm" className="content-inbox__selection-count">
-                {selectedItems.size} selected
-              </Text>
-            )}
-          </Box>
-          <Box display="flex" align="center" gap="sm">
-            {selectedItems.size > 0 && (
-              <Checkbox
-                checked={allSelected}
-                indeterminate={someSelected}
-                onChange={(e) => handleSelectAll(e.target.checked)}
-                title="Select all items"
-                className="content-inbox__select-all"
-              />
-            )}
-            {/* Subtle integrated sync status */}
-            <div 
-              className="content-inbox__sync-info" 
-              onClick={onRefresh ? handleRefresh : undefined}
-              role={onRefresh ? "button" : undefined}
-              tabIndex={onRefresh ? 0 : undefined}
-              onKeyDown={onRefresh ? (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  handleRefresh();
-                }
-              } : undefined}
-              aria-label={
-                syncStatus === 'checking' ? 'Syncing with server...' :
-                syncStatus === 'out-of-sync' ? `${filteredAndSortedItems.length} items - Click to refresh (out of sync)` :
-                onRefresh ? `${filteredAndSortedItems.length} items - Click to refresh` :
-                `${filteredAndSortedItems.length} items`
-              }
-            >
-              <Text variant="secondary" size="sm">
-                {filteredAndSortedItems.length} {filteredAndSortedItems.length === 1 ? 'item' : 'items'}
-              </Text>
+    <Box className="content-inbox__queue-panel" ref={containerRef}>
+      <Box className="content-inbox__queue-header" ref={headerRef}>
+        <Box className="content-inbox__header-info" marginY="3">
+          <Box display="flex" align="center" justify="between">
+            <Box display="flex" align="center" gap="lg">
+              {/* Title with count */}
+              <Box display="flex" align="center" gap="sm">
+                <Text as="h2" className="content-inbox__panel-title">
+                  Inbox
+                </Text>
+                <span className="content-inbox__count-badge">
+                  {filteredAndSortedItems.length}
+                </span>
+              </Box>
               
-              {/* Minimal sync indicator - only show when needed */}
-              {syncStatus === 'checking' && (
-                <i className="fas fa-circle-notch fa-spin content-inbox__sync-dot content-inbox__sync-dot--checking" aria-hidden="true"></i>
-              )}
-              {syncStatus === 'out-of-sync' && (
-                <i className="fas fa-circle content-inbox__sync-dot content-inbox__sync-dot--warning" aria-hidden="true"></i>
-              )}
-              {/* When synced: clean, no visual clutter */}
-            </div>
+              {/* Quick stats */}
+              <Box display="flex" align="center" gap="md" className="content-inbox__quick-stats">
+                {searchQuery && (
+                  <Text size="sm" color="muted">
+                    {filteredAndSortedItems.length} of {items.length} shown
+                  </Text>
+                )}
+                {selectedItems.size > 0 && (
+                  <Box display="flex" align="center" gap="xs">
+                    <Checkbox
+                      checked={allSelected}
+                      indeterminate={someSelected}
+                      onChange={(e) => handleSelectAll(e.target.checked)}
+                      title={allSelected ? "Deselect all" : "Select all visible"}
+                      className="content-inbox__select-all"
+                    />
+                    <Text size="sm" weight="medium" className="content-inbox__selection-info">
+                      {selectedItems.size} selected
+                    </Text>
+                  </Box>
+                )}
+              </Box>
+            </Box>
+            
+            {/* Right side actions */}
+            <Box display="flex" align="center" gap="sm">
+              {/* Sync status button */}
+              <button 
+                className={`content-inbox__sync-button ${syncStatus === 'out-of-sync' ? 'content-inbox__sync-button--warning' : ''}`}
+                onClick={onRefresh ? handleRefresh : undefined}
+                disabled={syncStatus === 'checking'}
+                title={
+                  syncStatus === 'checking' ? 'Syncing...' :
+                  syncStatus === 'out-of-sync' ? 'Out of sync - click to refresh' :
+                  'Click to refresh'
+                }
+              >
+                {syncStatus === 'checking' ? (
+                  <i className="fas fa-circle-notch fa-spin" />
+                ) : syncStatus === 'out-of-sync' ? (
+                  <i className="fas fa-exclamation-circle" />
+                ) : (
+                  <i className="fas fa-sync-alt" />
+                )}
+              </button>
+              
+              {/* Category summary */}
+              {items.length > 0 && (() => {
+                const categoryBreakdown = filteredAndSortedItems.reduce((acc, item) => {
+                  const cat = item.metadata.category || 'uncategorized';
+                  acc[cat] = (acc[cat] || 0) + 1;
+                  return acc;
+                }, {} as Record<string, number>);
+                
+                const totalCategories = Object.keys(categoryBreakdown).length;
+                const uncategorizedCount = categoryBreakdown['uncategorized'] || 0;
+                const categorizedCount = filteredAndSortedItems.length - uncategorizedCount;
+                
+                return (
+                  <Box className="content-inbox__category-stats">
+                    {uncategorizedCount > 0 && (
+                      <span 
+                        className="content-inbox__stat-pill badge--gray"
+                        title={`${uncategorizedCount} items need categorization`}
+                      >
+                        <i className="fas fa-inbox" /> {uncategorizedCount} uncategorized
+                      </span>
+                    )}
+                    {categorizedCount > 0 && (
+                      <span 
+                        className="content-inbox__stat-pill badge--green"
+                        title={`${categorizedCount} items across ${totalCategories - (uncategorizedCount > 0 ? 1 : 0)} categories`}
+                      >
+                        <i className="fas fa-tags" /> {categorizedCount} categorized
+                      </span>
+                    )}
+                  </Box>
+                );
+              })()}
+            </Box>
           </Box>
         </Box>
         
@@ -631,21 +811,40 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
               </select>
             )}
             
-            {/* View Toggle */}
+            {/* View Toggle - Multiple Sizes */}
             <div className="content-inbox__view-toggle">
               <Button
                 size="small"
                 variant={viewMode === 'list' ? 'primary' : 'secondary'}
-                onClick={() => setViewMode('list')}
+                onClick={() => {
+                  setViewMode('list');
+                  localStorage.setItem('content-inbox-view-mode', 'list');
+                }}
                 className="content-inbox__view-btn"
                 iconLeft={<i className="fas fa-list" />}
+                title="List view - Full size"
+              />
+              <Button
+                size="small"
+                variant={viewMode === 'dense' ? 'primary' : 'secondary'}
+                onClick={() => {
+                  setViewMode('dense');
+                  localStorage.setItem('content-inbox-view-mode', 'dense');
+                }}
+                className="content-inbox__view-btn"
+                iconLeft={<i className="fas fa-th-list" />}
+                title="Dense view - Small size"
               />
               <Button
                 size="small"
                 variant={viewMode === 'grid' ? 'primary' : 'secondary'}
-                onClick={() => setViewMode('grid')}
+                onClick={() => {
+                  setViewMode('grid');
+                  localStorage.setItem('content-inbox-view-mode', 'grid');
+                }}
                 className="content-inbox__view-btn"
                 iconLeft={<i className="fas fa-th" />}
+                title="Grid view - Cards"
               />
             </div>
           </Box>
@@ -722,13 +921,15 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
                 }}
               />
               
-              <button
+              <Button
+                size="small"
+                variant="danger"
                 onClick={handleBulkDelete}
-                className="content-inbox__bulk-action content-inbox__bulk-action--danger"
-                title="Delete selected"
+                iconLeft={<i className="fas fa-trash" />}
+                title="Delete selected items"
               >
-                <i className="fas fa-trash"></i>
-              </button>
+                Delete
+              </Button>
               
               <button
                 onClick={() => setSelectedItems(new Set())}
@@ -775,7 +976,13 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
             >
               {/* Card Header */}
               <div className="content-inbox__card-header">
-                <div className={`content-inbox__status-dot content-inbox__status-dot--${item.status}`}></div>
+                <button
+                  className={`content-inbox__copy-id-btn ${copiedIds.has(item.id) ? 'content-inbox__copy-id-btn--copied' : ''}`}
+                  onClick={(e) => handleCopyId(e, item.id)}
+                  title={copiedIds.has(item.id) ? 'Copied!' : `Copy ID: ${item.id}`}
+                >
+                  <i className={`fas ${copiedIds.has(item.id) ? 'fa-check' : 'fa-copy'}`} />
+                </button>
                 <div className="content-inbox__header-top">
                   <div className="content-inbox__header-left">
                     <Checkbox
@@ -809,6 +1016,7 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
                           setEditingCategoryId(editingCategoryId === item.id ? null : item.id);
                         }}
                       >
+                        <span style={{ marginRight: '4px' }}>{getCategoryIcon(item.metadata.category || 'uncategorized')}</span>
                         {(item.metadata.category || 'uncategorized').length > 12 
                           ? (item.metadata.category || 'uncategorized').slice(0, 12) + '...' 
                           : item.metadata.category || 'uncategorized'}
@@ -969,26 +1177,12 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
           ))}
         </div>
       ) : (
-        // List view - use virtual scrolling for performance
-        <VirtualList
-          ref={virtualListRef}
-          items={filteredAndSortedItems}
-          height={600} // Adjust based on your layout
-          itemSize={getItemHeight}
-          renderItem={renderQueueItem}
-          overscan={5}
-          threshold={30} // Use virtual scrolling when more than 30 items
-          className="content-inbox__queue-list"
-          onScroll={(scrollOffset) => {
-            // Save scroll position for persistence
-            if (virtualListRef.current) {
-              const element = virtualListRef.current._outerRef;
-              if (element) {
-                setScrollElement(element);
-              }
-            }
-          }}
-        />
+        // List/Compact/Dense views - different sizes
+        <div className={`content-inbox__queue-${viewMode}`}>
+          {filteredAndSortedItems.map((item, index) => (
+            renderQueueItem(item, index, {})
+          ))}
+        </div>
       )}
       
       {/* Back to Top Button */}
@@ -1060,7 +1254,7 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
                   <div className="content-inbox__category-dropdown" ref={modalCategoryDropdownRef}>
                     <span 
                       className={`badge badge--md ${getCategoryColor(modalState.editedValues.category || 'uncategorized')} content-inbox__modal-category-badge`}
-                      onClick={toggleModalCategoryDropdown}
+                      onClick={modalActions.toggleCategoryDropdown}
                     >
                       {modalState.editedValues.category || 'uncategorized'}
                     </span>
@@ -1071,7 +1265,7 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
                             key={category}
                             onClick={() => {
                               modalActions.updateField('category', category);
-                              setModalState(prev => ({ ...prev, showCategoryDropdown: false }));
+                              modalActions.setCategoryDropdown(false);
                             }}
                             className="content-inbox__category-option"
                           >
@@ -1087,18 +1281,6 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
                 <Box className="content-inbox__modal-field content-inbox__modal-field--tags">
                   <Text size="xs" weight="medium" className="content-inbox__modal-label">Tags:</Text>
                   <Box className="content-inbox__modal-tags-container">
-                    {editingTags.map(tag => (
-                      <div key={tag} className="content-inbox__tag-pill">
-                        <span className="content-inbox__tag-text">{tag}</span>
-                        <button
-                          onClick={() => setEditingTags(prev => prev.filter(t => t !== tag))}
-                          className="content-inbox__tag-remove"
-                          title="Remove tag"
-                        >
-                          <i className="fas fa-times"></i>
-                        </button>
-                      </div>
-                    ))}
                     <ContentInboxTagEditor
                       tags={modalState.editedValues.tags}
                       onUpdate={(newTags) => modalActions.updateField('tags', newTags)}
@@ -1123,12 +1305,9 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
             </Box>
             
             {/* Content Body - Takes up most space */}
-            <ScrollContainer 
+            <Box 
               className="content-inbox__modal-body" 
-              style={{ flex: 1 }}
-              direction="vertical"
-              smooth
-              maxHeight="400px"
+              style={{ flex: 1, overflowY: 'auto', maxHeight: '400px' }}
             >
               <Text size="sm" weight="medium" className="content-inbox__content-label">Content:</Text>
               <textarea
@@ -1148,7 +1327,7 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
                 }}
                 placeholder="Edit content..."
               />
-            </ScrollContainer>
+            </Box>
             
             {/* Modal Actions */}
             <Box display="flex" justify="between" align="center" marginY="3">
@@ -1236,7 +1415,7 @@ function ContentInboxQueuePanelComponent({ items, onUpdate, onRemove, onBulkRemo
           </Box>
         )}
       </Modal>
-    </ScrollContainer>
+    </Box>
   );
 }
 

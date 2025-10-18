@@ -8,6 +8,9 @@
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 90
+ * @test-file useBreakpoint.test.ts
+ * @test-status missing
  */
 
 import { useMediaQuery } from './useMediaQuery'

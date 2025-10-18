@@ -44,7 +44,7 @@ router.get('/items', async (req: Request, res: Response) => {
  */
 router.post('/add', async (req: Request, res: Response) => {
   try {
-    const { method, content, url, filename } = req.body;
+    const { method, content, url, filename, metadata } = req.body;
     
     if (!method || !content) {
       return res.status(400).json({
@@ -57,7 +57,8 @@ router.post('/add', async (req: Request, res: Response) => {
       method,
       content,
       url,
-      filename
+      filename,
+      metadata
     };
 
     const result = await contentInboxService.handleContentSubmission(input);
@@ -195,8 +196,37 @@ router.put('/item/:id', async (req: Request, res: Response) => {
 });
 
 /**
+ * PUT /api/content-inbox/item/:id/remove
+ * Remove item from inbox (changes status to stored)
+ */
+router.put('/item/:id/remove', async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    console.log(`[REMOVE FROM INBOX] Removing item from inbox: ${id}`);
+    const result = await contentInboxService.removeFromInbox(id);
+    
+    if (result.success) {
+      res.json({
+        success: true,
+        message: 'Content removed from inbox'
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        error: result.error
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error instanceof Error ? error.message : 'Failed to remove from inbox'
+    });
+  }
+});
+
+/**
  * DELETE /api/content-inbox/item/:id
- * Delete content item
+ * Delete content item (PERMANENTLY)
  */
 router.delete('/item/:id', async (req: Request, res: Response) => {
   try {

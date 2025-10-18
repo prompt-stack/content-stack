@@ -77,6 +77,27 @@ export function PlaygroundHome({ onNavigate }: { onNavigate: (section: string) =
       description: 'Production-ready MVP feature with complete content management',
       icon: 'fa-inbox',
       components: ['Live Demo', 'Multi-Input', 'Metadata Management', 'Bulk Operations', 'Export']
+    },
+    {
+      id: 'cloud',
+      title: 'Cloud Deploy ☁️',
+      description: 'See how content flows from IDE to cloud platforms',
+      icon: 'fa-cloud',
+      components: ['Architecture', 'Deployment Flow', 'Platform Config', 'Live Demo', 'Commands']
+    },
+    {
+      id: 'social-studio',
+      title: 'Social Studio 🎯',
+      description: 'Command center for multi-platform content management',
+      icon: 'fa-share-nodes',
+      components: ['Live Preview', 'Multi-Platform', 'Analytics', 'Scheduling', 'IDE Sync']
+    },
+    {
+      id: 'email-intake',
+      title: 'Email Intake 📧',
+      description: 'View and read articles extracted from newsletters',
+      icon: 'fa-envelope-open-text',
+      components: ['Newsletter List', 'Article Extraction', 'Full Content', 'Reading View', 'Export']
     }
   ]
 
@@ -208,7 +229,7 @@ export function PlaygroundHome({ onNavigate }: { onNavigate: (section: string) =
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .playground-home {
           max-width: 1200px;
           margin: 0 auto;

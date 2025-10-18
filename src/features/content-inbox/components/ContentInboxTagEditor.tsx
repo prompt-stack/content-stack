@@ -79,6 +79,21 @@ export function ContentInboxTagEditor({ tags, onUpdate }: ContentInboxTagEditorP
 
   return (
     <>
+      {tags.map(tag => (
+        <span key={tag} className="badge badge--tag badge--sm" style={{ marginRight: '4px' }}>
+          {tag}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleRemoveTag(tag);
+            }}
+            style={{ marginLeft: '4px', cursor: 'pointer', background: 'none', border: 'none', color: 'inherit' }}
+          >
+            ×
+          </button>
+        </span>
+      ))}
       {isAdding ? (
         <input
           type="text"
@@ -92,8 +107,19 @@ export function ContentInboxTagEditor({ tags, onUpdate }: ContentInboxTagEditorP
         />
       ) : (
         <button
-          onClick={() => setIsAdding(true)}
+          onClick={(e) => {
+            console.log('Add tag clicked');
+            e.preventDefault();
+            e.stopPropagation();
+            setIsAdding(true);
+          }}
+          onMouseDown={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+          }}
           className="badge badge--tag badge--sm content-inbox__add-tag"
+          type="button"
+          style={{ position: 'relative', zIndex: 100 }}
         >
           + Add tag
         </button>

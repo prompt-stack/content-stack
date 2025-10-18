@@ -1,0 +1,146 @@
+/**
+ * @file styles/components/app-header.css
+ * @purpose Styles for unified app header
+ * @layer component
+ * @used-by [AppHeader]
+ * @llm-read true
+ * @llm-write full-edit
+ */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  height: 48px; /* More minimalist height */
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.app-header__container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-lg);
+  gap: var(--spacing-lg);
+}
+
+/* Removed brand/logo section since logo is in sidebar */
+
+/* Navigation */
+.app-header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex: 1;
+  justify-content: flex-start; /* Align to left since no logo */
+}
+
+.app-header__nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm); /* Increased gap between icon and text */
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.app-header__nav-item:hover {
+  color: var(--color-text);
+  background: var(--color-background-hover);
+}
+
+.app-header__nav-item--active {
+  color: var(--color-primary);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.app-header__nav-item--active::after {
+  content: '';
+  position: absolute;
+  bottom: -9px; /* Adjusted for smaller header */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 3px 3px 0 0;
+}
+
+.app-header__nav-icon {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.app-header__nav-label {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .app-header__nav {
+    gap: var(--spacing-sm);
+  }
+  
+  .app-header__nav-label {
+    display: inline;
+  }
+}
+
+/* Actions */
+.app-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.app-header__action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+.app-header__action-btn:hover {
+  color: var(--color-text);
+  background: var(--color-background-hover);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .app-header {
+    background: var(--color-background);
+    border-bottom-color: var(--color-border);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .app-header__container {
+    padding: 0 var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+  
+  .app-header__nav {
+    gap: 0;
+  }
+  
+  .app-header__nav-item {
+    padding: var(--spacing-sm);
+  }
+}

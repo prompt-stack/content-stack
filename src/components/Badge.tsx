@@ -8,7 +8,12 @@
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 80
+ * @test-file Badge.test.tsx
+ * @test-status exists
  */
+
+import { ReactNode } from 'react';
 
 export interface BadgeProps {
   children: ReactNode;
@@ -19,7 +24,7 @@ export interface BadgeProps {
 
 export function Badge({
   children,
-  variant = 'default',
+  variant = 'gray',
   size = 'md',
   className = ''
 }: BadgeProps) {

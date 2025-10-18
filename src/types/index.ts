@@ -23,6 +23,8 @@ export interface ContentItem {
   status: ContentStatus;
   title: string;
   content?: string;
+  timestamp?: Date; // Add timestamp for sorting
+  sourceUrl?: string; // Add sourceUrl field
   metadata: {
     created_at: string;
     updated_at: string;
@@ -31,7 +33,15 @@ export interface ContentItem {
     file_type?: string;
     content_hash: string;
     tags: string[];
+    category?: string; // Content category
+    title?: string; // Title for UI consistency
+    wordCount?: number; // Word count for UI display
     isOptimistic?: boolean; // For UI styling during upload
+    storage?: {
+      path: string;
+      type: string;
+      size: number;
+    };
   };
   enrichment?: {
     summary: string;

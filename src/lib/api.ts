@@ -10,8 +10,10 @@
  * @llm-role utility
  */
 
+import { logger } from './logger';
+
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3457';
-console.log('API_BASE configured as:', API_BASE); // Debug log
+logger.debug('API_BASE configured as:', API_BASE); // Debug log
 
 class ApiError extends Error {
   constructor(public status: number, message: string) {
@@ -45,7 +47,7 @@ async function handleResponse<T>(response: Response): Promise<T> {
   throw new Error('Response is not JSON');
 }
 
-export const api = {
+export const Api = {
   get: async <T = any>(path: string): Promise<T> => {
     const response = await fetch(`${API_BASE}${path}`);
     return handleResponse<T>(response);
@@ -71,11 +73,11 @@ export const api = {
   
   delete: async <T = any>(path: string): Promise<T> => {
     const fullUrl = `${API_BASE}${path}`;
-    console.log('DELETE request to:', fullUrl);
+    logger.debug('DELETE request to:', fullUrl);
     const response = await fetch(fullUrl, {
       method: 'DELETE'
     });
-    console.log('DELETE response status:', response.status);
+    logger.debug('DELETE response status:', response.status);
     return handleResponse<T>(response);
   },
 

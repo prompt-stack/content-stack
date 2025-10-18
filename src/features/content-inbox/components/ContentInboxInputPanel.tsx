@@ -13,7 +13,7 @@
 import { useState, useRef } from 'react';
 import { Box } from '@/components/Box';
 import { Button } from '@/components/Button';
-import { Textarea } from '@/components/TextArea';
+import { Textarea } from '@/components/Textarea';
 import { FileInput } from '@/components/FileInput';
 import { Card } from '@/components/Card';
 import { Text } from '@/components/Text';

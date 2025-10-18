@@ -4,10 +4,13 @@
  * @layer composed
  * @deps none
  * @used-by [App, CardPlayground, CompositionPlayground, ContentInboxInputPanel, ContentInboxQueuePanel, HealthPage, InboxPlayground, InboxWorkflowDemo, LayoutPlayground, PlaygroundHome, PlaygroundPage, SubscriptionPage, UtilityPlayground]
- * @css none
+ * @cssFile /styles/components/card.css
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 80
+ * @test-file Card.test.tsx
+ * @test-status missing
  */
 
 import { forwardRef } from 'react';

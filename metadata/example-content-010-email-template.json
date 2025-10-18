@@ -1,0 +1,59 @@
+{
+  "id": "example-content-010-email-template",
+  "created_at": "2025-01-24T10:50:00.000Z",
+  "source": {
+    "method": "manual",
+    "timestamp": "2025-01-24T10:50:00.000Z"
+  },
+  "content": {
+    "type": "email",
+    "full_text": "<!DOCTYPE html><html lang=\"en\">...",
+    "hash": "sha256-example010",
+    "file_type": "html",
+    "size": 1876
+  },
+  "updated_at": "2025-01-24T10:50:00.000Z",
+  "status": "raw",
+  "title": "Welcome Newsletter Email Template",
+  "filename": "example-content-010-email-template.html",
+  "location": {
+    "inbox_path": "content/inbox/example-content-010-email-template.html",
+    "final_path": null
+  },
+  "storage": {
+    "path": "content/inbox/example-content-010-email-template.html",
+    "size": 1876
+  },
+  "user_tags": [
+    "email",
+    "template",
+    "newsletter"
+  ],
+  "metadata": {
+    "language": "en"
+  },
+  "llm_analysis": {
+    "category": "business",
+    "title": "Tech Newsletter Welcome Email Template",
+    "tags": [
+      "email-template",
+      "html",
+      "newsletter",
+      "marketing",
+      "welcome-email"
+    ],
+    "summary": "Professional HTML email template for welcoming new newsletter subscribers, featuring personalization variables, social links, and call-to-action buttons.",
+    "reasoning": "Business marketing asset - an email template designed for customer engagement and newsletter onboarding.",
+    "confidence": 0.93,
+    "suggested_filename": "welcome-newsletter-template",
+    "extracted_entities": [
+      "Tech Insights",
+      "Twitter",
+      "LinkedIn",
+      "GitHub"
+    ],
+    "word_count": 198,
+    "analyzed_at": "2025-01-24T10:52:00.000Z",
+    "model_version": "claude-3"
+  }
+}

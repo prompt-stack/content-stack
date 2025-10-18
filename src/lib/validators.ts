@@ -12,8 +12,9 @@
 
 export function validateURL(url: string): boolean {
   try {
-    new URL(url)
-    return true
+    const parsedUrl = new URL(url)
+    // Only allow http and https protocols
+    return ['http:', 'https:'].includes(parsedUrl.protocol)
   } catch {
     return false
   }

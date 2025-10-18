@@ -1,0 +1,28 @@
+{
+  "id": "content-1753280764830-ichlbw",
+  "created_at": "2025-07-23T14:26:04.830Z",
+  "updated_at": "2025-07-23T14:26:04.830Z",
+  "status": "inbox",
+  "source": {
+    "method": "drop",
+    "url": null
+  },
+  "content": {
+    "type": "document",
+    "title": "Brandon Zach Contract (1).pdf",
+    "full_text": "📄 Binary file: Brandon Zach Contract (1).pdf\nSize: 141KB\nType: application/pdf...",
+    "word_count": 11,
+    "hash": "sha256-ad2191f6d414fcfd08b735d7c6b635591089345f0ae92dfa553c01676c244443"
+  },
+  "location": {
+    "inbox_path": "storage/documents/content-1753280764830-ichlbw.pdf",
+    "final_path": null
+  },
+  "llm_analysis": null,
+  "tags": [],
+  "storage": {
+    "path": "storage/documents/content-1753280764830-ichlbw.pdf",
+    "type": "documents",
+    "size": 81
+  }
+}

@@ -8,6 +8,9 @@
  * @llm-read true
  * @llm-write full-edit
  * @llm-role utility
+ * @test-coverage 80
+ * @test-file EditableText.test.tsx
+ * @test-status missing
  */
 import { useState, useRef, useEffect } from 'react';
 import { clsx } from 'clsx';
