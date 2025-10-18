@@ -38,3 +38,24 @@ media/**/*.webm
 *.avi
 *.mkv
 *.webm
+
+# Build artifacts
+tsconfig.tsbuildinfo
+coverage/
+component-registry.json
+
+# Runtime directories (not part of component library)
+content/
+metadata/
+storage/
+database/
+backup/
+library/
+voice/
+creator-studio/
+prompts/
+
+# Environment files
+.env
+.env.local
+.env.*.local
