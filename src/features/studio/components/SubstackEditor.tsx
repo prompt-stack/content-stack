@@ -14,10 +14,52 @@ import { Textarea } from '../../../components/Textarea';
 import { Input } from '../../../components/Input';
 import { Button } from '../../../components/Button';
 
+const EXAMPLE_TITLE = "Building Component Libraries That Scale: Lessons from 36+ Components";
+const EXAMPLE_SUBTITLE = "How strict architecture and automated validation saved my sanity";
+const EXAMPLE_CONTENT = `After building 36+ reusable React components, I've learned that the hard part isn't writing individual components—it's keeping the system maintainable as it grows.
+
+## The Problem
+
+Most component libraries start clean but quickly become spaghetti code. Why? Because there's no enforcement mechanism. Developers can import anything from anywhere, breaking architectural boundaries.
+
+## The Solution: 4-Layer Architecture
+
+I implemented a strict 4-layer system with automated validation:
+
+**Layer 1: Primitives** - Base components (Button, Input, Card)
+**Layer 2: Composed** - Built from primitives (EditableField, ProgressIndicator)
+**Layer 3: Features** - Business logic (ContentInbox, Studio)
+**Layer 4: Pages** - Full page components
+
+The rule: Each layer can ONLY import from layers below. Period.
+
+## Automated Enforcement
+
+The key insight? Architecture without enforcement is just suggestions.
+
+I built audit scripts that run on every commit:
+✅ Validate BEM naming conventions
+✅ Check layer import restrictions
+✅ Verify component metadata
+✅ Ensure TypeScript compliance
+
+If you violate the rules, the build fails. No exceptions.
+
+## Results
+
+- Zero architectural decay over 3 months
+- AI assistants can navigate the codebase easily
+- New developers understand the system in minutes
+- Refactoring is predictable and safe
+
+The lesson? Good architecture + automated validation > lengthy style guides.
+
+What architectural patterns have saved you?`;
+
 export function SubstackEditor() {
-  const [title, setTitle] = useState('');
-  const [subtitle, setSubtitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState(EXAMPLE_TITLE);
+  const [subtitle, setSubtitle] = useState(EXAMPLE_SUBTITLE);
+  const [content, setContent] = useState(EXAMPLE_CONTENT);
   const [showPreview, setShowPreview] = useState(false);
 
   return (

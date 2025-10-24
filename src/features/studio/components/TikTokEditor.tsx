@@ -13,9 +13,21 @@ import { useState } from 'react';
 import { Textarea } from '../../../components/Textarea';
 import { Button } from '../../../components/Button';
 
+const EXAMPLE_CAPTION = `POV: You built a component library with 36+ components and strict BEM validation 🚀
+
+Watch me explain the 4-layer architecture that prevents spaghetti code!
+
+Primitives → Composed → Features → Pages
+
+Each layer can only import from below = clean code guaranteed ✨
+
+#WebDev #ReactJS #Programming #CodeTok #TechTok #Developer #Frontend #CleanCode #fyp`;
+
+const EXAMPLE_SOUND = "original sound - Tech Tutorials";
+
 export function TikTokEditor() {
-  const [caption, setCaption] = useState('');
-  const [sounds, setSounds] = useState('');
+  const [caption, setCaption] = useState(EXAMPLE_CAPTION);
+  const [sounds, setSounds] = useState(EXAMPLE_SOUND);
   const [hashtags, setHashtags] = useState<string[]>([]);
 
   return (

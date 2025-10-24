@@ -14,8 +14,18 @@ import { Textarea } from '../../../components/Textarea';
 import { Button } from '../../../components/Button';
 import { Dropzone } from '../../../components/Dropzone';
 
+const EXAMPLE_CAPTION = `Just shipped a new feature! 🚀
+
+Built a complete component library with 36+ reusable React components following strict BEM methodology. The architecture enforces a 4-layer system:
+
+Primitives → Composed → Features → Pages
+
+Each component has automated validation to prevent architectural decay. Clean code isn't just about formatting - it's about enforceability.
+
+#ReactJS #WebDevelopment #ComponentLibrary #CleanCode #TypeScript #Frontend`;
+
 export function InstagramEditor() {
-  const [caption, setCaption] = useState('');
+  const [caption, setCaption] = useState(EXAMPLE_CAPTION);
   const [images, setImages] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
   const [postType, setPostType] = useState<'post' | 'reel' | 'story'>('post');

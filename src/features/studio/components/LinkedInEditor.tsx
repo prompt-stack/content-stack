@@ -13,8 +13,29 @@ import { useState } from 'react';
 import { Textarea } from '../../../components/Textarea';
 import { Button } from '../../../components/Button';
 
+const EXAMPLE_POST = `🚀 Excited to share my latest project: A production-ready component library with 36+ reusable React components!
+
+Key achievements:
+✅ Strict 4-layer architecture (Primitives → Composed → Features → Pages)
+✅ BEM methodology with automated validation
+✅ 100% TypeScript with comprehensive type safety
+✅ Component playground for interactive testing
+✅ Automated audit scripts to prevent architectural decay
+
+What I learned:
+• Architecture matters more than individual components
+• Enforceability > documentation
+• Layer isolation prevents technical debt
+• AI-assisted development works best with clear patterns
+
+The challenge wasn't building components—it was building a system that stays maintainable at scale.
+
+Check out the live demo and source code in the comments! 👇
+
+#ReactJS #WebDevelopment #SoftwareEngineering #Frontend #TypeScript #ComponentLibrary #CleanCode`;
+
 export function LinkedInEditor() {
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState(EXAMPLE_POST);
 
   return (
     <div className="linkedin-editor" style={{ backgroundColor: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
