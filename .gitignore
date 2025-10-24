@@ -59,3 +59,20 @@ prompts/
 .env
 .env.local
 .env.*.local
+.env.production
+.env.development
+.env.test
+
+# Security - Credentials and secrets
+*credentials*.json
+*secrets*.json
+client_secrets.json
+token.json
+*.key
+*.pem
+*.p12
+*.pfx
+.secure/
+
+# Vercel
+.vercel
