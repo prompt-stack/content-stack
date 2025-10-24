@@ -200,10 +200,16 @@ content-stack-components/
 │   │   ├── features/          # Feature styles
 │   │   ├── pages/             # Page styles
 │   │   └── globals.css        # Global styles
+│   ├── hooks/                  # Custom React hooks
+│   ├── lib/                    # Utility functions
 │   └── types/                  # TypeScript types
 ├── grammar-ops/                # Design system audit tools (submodule)
-│   └── scripts/audit/         # Automated validation scripts
+│   └── scripts/               # Automated validation scripts
 ├── backend/                    # Development API (Express.js)
+├── tests/                      # Jest unit tests
+├── cypress/                    # E2E tests
+├── scripts/                    # Build and maintenance scripts
+├── config/                     # Configuration files
 └── docs/                       # Documentation
 ```
 
