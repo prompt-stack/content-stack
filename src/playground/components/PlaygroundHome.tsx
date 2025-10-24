@@ -91,13 +91,6 @@ export function PlaygroundHome({ onNavigate }: { onNavigate: (section: string) =
       description: 'Command center for multi-platform content management',
       icon: 'fa-share-nodes',
       components: ['Live Preview', 'Multi-Platform', 'Analytics', 'Scheduling', 'IDE Sync']
-    },
-    {
-      id: 'email-intake',
-      title: 'Email Intake 📧',
-      description: 'View and read articles extracted from newsletters',
-      icon: 'fa-envelope-open-text',
-      components: ['Newsletter List', 'Article Extraction', 'Full Content', 'Reading View', 'Export']
     }
   ]
 

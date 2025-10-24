@@ -16,7 +16,6 @@ import contentInboxRoutes from './routes/contentInbox';
 import storageRoutes from './routes/storage';
 import healthRoutes from './routes/health';
 import metadataRoutes from './routes/metadata';
-import emailIntakeRoutes from './routes/emailIntake';
 
 const app = express();
 const PORT = process.env.BACKEND_PORT || process.env.PORT || 3457;
@@ -31,7 +30,6 @@ app.use('/api/content-inbox', contentInboxRoutes);
 app.use('/api/storage', storageRoutes);
 app.use('/api/health', healthRoutes);
 app.use('/api/metadata', metadataRoutes);
-app.use('/api/email-intake', emailIntakeRoutes);
 
 // Error handling middleware
 app.use((error: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {

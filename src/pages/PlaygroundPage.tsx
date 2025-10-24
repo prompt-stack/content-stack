@@ -26,7 +26,6 @@ import { InboxPlayground } from '@/playground/InboxPlayground'
 import { InboxWorkflowDemo } from '@/playground/InboxWorkflowDemo'
 import { CloudDeploymentPlayground } from '@/playground/CloudDeploymentPlayground'
 import { SocialStudioPlayground } from '@/playground/SocialStudioPlayground'
-import { EmailIntakePlayground } from '@/playground/EmailIntakePlayground'
 
 export function PlaygroundPage() {
   const [activeSection, setActiveSection] = useState('home')
@@ -108,17 +107,11 @@ export function PlaygroundPage() {
         >
           <i className="fas fa-cloud"></i> Cloud Deploy
         </button>
-        <button 
+        <button
           className={`playground__nav-item ${activeSection === 'social-studio' ? 'is-active' : ''}`}
           onClick={() => setActiveSection('social-studio')}
         >
           <i className="fas fa-share-nodes"></i> Social Studio
-        </button>
-        <button 
-          className={`playground__nav-item ${activeSection === 'email-intake' ? 'is-active' : ''}`}
-          onClick={() => setActiveSection('email-intake')}
-        >
-          <i className="fas fa-envelope-open-text"></i> Email Intake
         </button>
       </nav>
 
@@ -136,7 +129,6 @@ export function PlaygroundPage() {
         {activeSection === 'inbox-workflow' && <InboxWorkflowDemo />}
         {activeSection === 'cloud' && <CloudDeploymentPlayground />}
         {activeSection === 'social-studio' && <SocialStudioPlayground />}
-        {activeSection === 'email-intake' && <EmailIntakePlayground />}
       </div>
     </div>
   )

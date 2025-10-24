@@ -1,15 +1,3 @@
-[submodule "url-extract"]
-	path = url-extract
-	url = https://github.com/prompt-stack/url-extract.git
 [submodule "grammar-ops"]
 	path = grammar-ops
 	url = https://github.com/prompt-stack/grammar-ops.git
-[submodule "media-processing-tool"]
-	path = media-processing-tool
-	url = https://github.com/prompt-stack/media-processing-tool.git
-[submodule "youtube-uploader-tool"]
-	path = youtube-uploader-tool
-	url = https://github.com/prompt-stack/youtube-uploader-tool.git
-[submodule "intake-tools"]
-	path = intake-tools
-	url = https://github.com/prompt-stack/intake-tools.git
