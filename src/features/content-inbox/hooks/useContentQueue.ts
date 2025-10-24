@@ -14,6 +14,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { ContentItem, ContentSubmission, ContentMetadata } from '../types';
 import { contentInboxApi } from '@/services/ContentInboxApi';
 import { contentInboxConfig, getFileSizeLimit, isVideoFile, shouldReadFileContent } from '../config';
+import { generateMockInboxData, shouldUseMockData } from '@/lib/mockData';
 
 // Check if running on localhost
 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
@@ -85,18 +86,29 @@ export function useContentQueue() {
     try {
       setIsLoading(true);
       setError(null);
-      // console.log('Loading queue from backend...');
+
+      // Check if we should use mock data for demo
+      if (shouldUseMockData()) {
+        const mockData = generateMockInboxData();
+        setQueue(mockData);
+        setIsLoading(false);
+        return;
+      }
+
+      // Try to load from backend
       const items = await contentInboxApi.getInboxItems();
-      // console.log('Loaded items from backend:', items.length, items);
-      // console.log('First item structure:', items[0]);
       setQueue(items);
     } catch (err) {
+      // If backend fails, fall back to mock data for demo
+      const mockData = generateMockInboxData();
+      setQueue(mockData);
+
       const errorMessage = err instanceof Error ? err.message : 'Failed to load content';
       setError(errorMessage);
       // Suppress common connection errors
       const errMsg = err instanceof Error ? err.message : String(err);
       if (!errMsg.includes('Failed to fetch') && !errMsg.includes('ERR_CONNECTION_REFUSED')) {
-        console.error('Failed to load queue:', err);
+        console.error('Failed to load queue, using mock data:', err);
       }
     } finally {
       setIsLoading(false);

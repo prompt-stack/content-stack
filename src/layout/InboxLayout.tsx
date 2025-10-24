@@ -175,6 +175,13 @@ function InboxLayoutContent({ children }: InboxLayoutContentProps) {
     id: 'main',
     items: [
       {
+        id: 'home',
+        label: 'Home',
+        icon: <Home size={20} />,
+        href: '/',
+        active: location.pathname === '/'
+      },
+      {
         id: 'inbox',
         label: 'Inbox',
         icon: <Inbox size={20} />,

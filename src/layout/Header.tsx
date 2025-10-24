@@ -99,7 +99,11 @@ export function Header() {
 
   const navItems = [
     { path: '/inbox', label: 'Inbox', icon: 'inbox' },
-    { path: '/playground', label: 'Playground', icon: 'flask' }
+    { path: '/playground', label: 'Playground', icon: 'flask' },
+    { path: '/studio', label: 'Studio', icon: 'palette' },
+    { path: '/storage', label: 'Storage', icon: 'folder-open' },
+    { path: '/search', label: 'Search', icon: 'search' },
+    { path: '/settings', label: 'Settings', icon: 'cog' }
   ]
 
   const menuItems = [

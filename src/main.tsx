@@ -53,6 +53,26 @@ const router = createBrowserRouter([
       {
         path: 'subscription',
         element: <SubscriptionPage />
+      },
+      {
+        path: 'playground',
+        element: <PlaygroundPage />
+      },
+      {
+        path: 'storage',
+        element: <StoragePage />
+      },
+      {
+        path: 'search',
+        element: <SearchPage />
+      },
+      {
+        path: 'studio',
+        element: <StudioPage />
+      },
+      {
+        path: 'settings',
+        element: <SettingsPage />
       }
     ]
   },
@@ -62,28 +82,8 @@ const router = createBrowserRouter([
     element: <InboxPage />
   },
   {
-    path: '/playground',
-    element: <PlaygroundPage />
-  },
-  {
-    path: '/storage',
-    element: <StoragePage />
-  },
-  {
-    path: '/search',
-    element: <SearchPage />
-  },
-  {
     path: '/test-sidebar',
     element: <TestSidebarPage />
-  },
-  {
-    path: '/studio',
-    element: <StudioPage />
-  },
-  {
-    path: '/settings',
-    element: <SettingsPage />
   }
 ])
 
